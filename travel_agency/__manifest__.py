@@ -17,7 +17,7 @@
     'category': '',
     'website': 'https://www.odoo.com/page/billing',
     'images' : [],
-    'depends' : ['base', 'account', 'sale', 'global_label_fields', 'supplier_from_incadea', 'customer_type_management'],
+    'depends' : ['base', 'account', 'sale', 'global_label_fields', 'supplier_from_incadea', 'customer_type_management', 'contacts_from_incadea'],
     'data': [
         "security/ir.model.access.csv",
         "views/travel.xml",
