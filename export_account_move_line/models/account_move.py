@@ -59,7 +59,7 @@ class AccountMoveLine(models.Model):
         # ----------------------------------------------
         # Instead of query
         # ----------------------------------------------
-        invoices_id = self.env['account.move'].search([('type', 'in', ('in_invoice', 'out_invoice', 'in_refund', 'out_refund'))]).ids
+        invoices_id = self.env['account.move'].search([('move_type', 'in', ('in_invoice', 'out_invoice', 'in_refund', 'out_refund'))]).ids
         move_lines = self.env['account.move.line'].search([('move_id', 'in', invoices_id)])
 
         data = {
@@ -71,6 +71,7 @@ class AccountMoveLine(models.Model):
             'Désignation' : [],
             'Montant' : [],
             'Montant ouvert' : [],
+            'Montant TVA' : [],
             'Groupe compta. marché' : [],
         }
 
@@ -83,6 +84,7 @@ class AccountMoveLine(models.Model):
             data['Désignation'].append(line.name)
             data['Montant'].append(line.balance)
             data['Montant ouvert'].append(line.balance)
+            data['Montant TVA'].append(sum(line.price_unit * line.quantity * tax.amount / 100 for tax in line.tax_ids))
             data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
         df = pd.DataFrame(data)
         # ----------------------------------------------
