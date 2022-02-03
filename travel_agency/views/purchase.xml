@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Add other_tax field in the bottom right of purchase.order form view -->
+		<record id="purchase_insert_other_tax_field" model="ir.ui.view">
+			<field name="name">purchase.order.amount.tax.form.inherited</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form"/>
+			<field name="arch" type="xml">
+				<!-- insert other_tax field in purchase order line column -->
+				<xpath expr="//field[@name='order_line']/tree/field[@name='taxes_id']" position="after">
+					<field name="other_tax"/>
+				</xpath>
+
+				<xpath expr="//field[@name='id']" position="after">
+					<field name="travel_order_id" attrs="{'invisible' : [('travel_order_id', '=', False)]}"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="purchase_insert_amount_tax_field" model="ir.ui.view">
+			<field name="name">purchase.order.amount.tax.form.inherited</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='tax_totals_json']" position="replace">
+					<field name="amount_untaxed" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="amount_tva" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="other_tax" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="amount_total" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

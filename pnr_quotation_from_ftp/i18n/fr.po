@@ -1,0 +1,84 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pnr_quotation_from_ftp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-26 15:42+0000\n"
+"PO-Revision-Date: 2022-01-26 15:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_bank_statement_line__amount_tva
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_move__amount_tva
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_payment__amount_tva
+msgid "Amount TVA"
+msgstr "Montant TVA"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_bank_statement_line__other_tax
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_move__other_tax
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_payment__other_tax
+msgid "Amount Tax"
+msgstr "Montant Taxe"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_travel_order_line__designation
+msgid "Designation"
+msgstr "Désignation"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.actions.server,name:pnr_quotation_from_ftp.import_pnr_quotation_ir_actions_server
+#: model:ir.cron,cron_name:pnr_quotation_from_ftp.import_pnr_quotation
+#: model:ir.cron,name:pnr_quotation_from_ftp.import_pnr_quotation
+msgid "Import of PNR Quotations from FTP Server"
+msgstr "Import des Devis PNR depuis le serveur FTP"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model,name:pnr_quotation_from_ftp.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model,name:pnr_quotation_from_ftp.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_move_line__other_tax
+msgid "Other Taxes"
+msgstr "Autres Taxes"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_travel_order__pnr_number
+msgid "Pnr Number"
+msgstr "Numéro Pnr"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model,name:pnr_quotation_from_ftp.model_travel_order
+msgid "Travel Order"
+msgstr "Commande de Voyage"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model,name:pnr_quotation_from_ftp.model_travel_order_line
+msgid "Travel Order Line"
+msgstr "Ligne d'Ordre de Voyage"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_travel_order_line__num_pnr
+msgid "Travel Order Line Number PNR"
+msgstr "Numéro Pnr de ligne de commande de voyage"
+
+#. module: pnr_quotation_from_ftp
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_bank_statement_line__amount_without_any_tax
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_move__amount_without_any_tax
+#: model:ir.model.fields,field_description:pnr_quotation_from_ftp.field_account_payment__amount_without_any_tax
+msgid "Untaxed Amount"
+msgstr "Montant HT"

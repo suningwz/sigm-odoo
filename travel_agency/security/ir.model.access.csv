@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_travel_order,access.travel.order,model_travel_order,,1,1,1,1
+access_travel_order_line,access.travel.order.line,model_travel_order_line,,1,1,1,1
+access_res_day,access.res.day,model_res_day,,1,1,1,1

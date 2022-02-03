@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="travel_custom_confirm_button" model="ir.ui.view">
+			<field name="name">travel.order.custom.confirm.button.inherited</field>
+			<field name="model">travel.order</field>
+			<field name="inherit_id" ref="travel_agency.travel_form_view_id"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_cancel']" position="before">
+					<field name="show_confirm_button" invisible="1"/>
+                    <button name="action_confirm_confirm" class="btn btn-primary" confirm="This customer has unregulated credit. Would you continue to confirm the quotation?" id="action_confirm_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('show_confirm_button', '=', False)]}"/>
+				</xpath>
+				<xpath expr="//button[@name='action_confirm']" position="attributes">
+					<attribute name="attrs">{'invisible' : ['|', '|', ('show_confirm_button', '=', True), ('state', '!=', 'accepted'), ('id', '=', False)]}</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* customer_type_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-29 13:02+0000\n"
+"PO-Revision-Date: 2021-12-29 13:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: customer_type_management
+#: model:ir.model,name:customer_type_management.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: customer_type_management
+#: model:ir.model.fields,field_description:customer_type_management.field_res_partner__customer_type
+#: model:ir.model.fields,field_description:customer_type_management.field_res_users__customer_type
+msgid "Customer Type"
+msgstr "Type de client"
+
+#. module: customer_type_management
+#: model:ir.model.fields.selection,name:customer_type_management.selection__res_partner__customer_type__account
+msgid "Customer account"
+msgstr "Client en compte"
+
+#. module: customer_type_management
+#: model:ir.model.fields,field_description:customer_type_management.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: customer_type_management
+#: model:ir.model.fields,field_description:customer_type_management.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: customer_type_management
+#: model:ir.model.fields,field_description:customer_type_management.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: customer_type_management
+#: model:ir.model.fields.selection,name:customer_type_management.selection__res_partner__customer_type__passing
+msgid "Passing customer"
+msgstr "Client de passage"

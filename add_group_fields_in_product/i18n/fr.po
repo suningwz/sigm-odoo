@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* add_group_fields_in_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-20 09:51+0000\n"
+"PO-Revision-Date: 2021-12-20 09:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: add_group_fields_in_product
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: add_group_fields_in_product
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_product__in_group_account
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_template__in_group_account
+msgid "Group Account"
+msgstr "Compte Groupe"
+
+#. module: add_group_fields_in_product
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: add_group_fields_in_product
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: add_group_fields_in_product
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_product__out_group_account
+#: model:ir.model.fields,field_description:add_group_fields_in_product.field_product_template__out_group_account
+msgid "Out of Group Account"
+msgstr "Compte Hors Groupe"
+
+#. module: add_group_fields_in_product
+#: model:ir.model,name:add_group_fields_in_product.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"

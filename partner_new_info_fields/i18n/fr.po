@@ -1,0 +1,51 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_new_info_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 10:22+0000\n"
+"PO-Revision-Date: 2021-11-22 10:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_new_info_fields
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_partner__cif
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_users__cif
+msgid "CIF"
+msgstr ""
+
+#. module: partner_new_info_fields
+#: model:ir.model,name:partner_new_info_fields.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: partner_new_info_fields
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_partner__date_issue
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_users__date_issue
+msgid "Date of Issue"
+msgstr "Date de Délivrance"
+
+#. module: partner_new_info_fields
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_partner__nif
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_users__nif
+msgid "NIF"
+msgstr ""
+
+#. module: partner_new_info_fields
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_partner__rcs
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_users__rcs
+msgid "RCS"
+msgstr ""
+
+#. module: partner_new_info_fields
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_partner__stat
+#: model:ir.model.fields,field_description:partner_new_info_fields.field_res_users__stat
+msgid "STAT"
+msgstr ""

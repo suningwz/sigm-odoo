@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* contacts_from_ftp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 07:08+0000\n"
+"PO-Revision-Date: 2021-09-30 07:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: contacts_from_ftp
+#: model:ir.model,name:contacts_from_ftp.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: contacts_from_ftp
+#: model:ir.model.fields,field_description:contacts_from_ftp.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: contacts_from_ftp
+#: model:ir.model.fields,field_description:contacts_from_ftp.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: contacts_from_ftp
+#: model:ir.model.fields,field_description:contacts_from_ftp.field_res_partner__id_hfsql
+#: model:ir.model.fields,field_description:contacts_from_ftp.field_res_users__id_hfsql
+msgid "Id Hfsql"
+msgstr "Id Hfsql"
+
+#. module: contacts_from_ftp
+#: model:ir.actions.server,name:contacts_from_ftp.import_contact_ir_actions_server
+#: model:ir.cron,cron_name:contacts_from_ftp.import_contact
+#: model:ir.cron,name:contacts_from_ftp.import_contact
+msgid "Import of Contacts from FTP Server"
+msgstr "Import des Contacts depuis le server FTP"
+
+#. module: contacts_from_ftp
+#: model:ir.model.fields,field_description:contacts_from_ftp.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"

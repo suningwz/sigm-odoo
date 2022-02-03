@@ -1,0 +1,14 @@
+{
+    "ftp": {      
+        "host": "ftp.cluster020.hosting.ovh.net",
+        "port": 21,
+        "username": "bbmaycoped",
+        "password": "gAAAAABgUkgZNDb46UTDurQicX4GkuILoKJiPB368l2n1T-myhzACHthnJnDyU2OiNN19jGsBzZ6MusU1iKsgLIEuEryW1I3Nw=="
+    },
+    "jsonfiles": {
+        "source": "/sigm/from_HFSQL/json"
+    },
+    "csvfiles": {
+        "source": "/sigm/from_HFSQL/csv"
+    }
+}

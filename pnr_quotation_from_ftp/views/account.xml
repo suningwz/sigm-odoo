@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="insert_other_tax_field" model="ir.ui.view">
+			<field name="name">account.move.other.tax.form.inherited</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='tax_ids']" position="after">
+					<field name="other_tax" optional="show"/>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- For odoo 14 -->
+		<!-- <record id="account_insert_other_tax_field" model="ir.ui.view">
+			<field name="name">account.move.amount.tax.form.inherited</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='amount_untaxed']" position="replace">
+					<field name="amount_without_any_tax" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="other_tax" attrs="{'invisible' : [('other_tax', '=', 0)]}" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+				</xpath>
+
+				<xpath expr="//field[@name='amount_total'][1]" position="attributes">
+					<attribute name="attrs">{'invisible' : ['|', ('amount_tax', '!=', 0), ('other_tax', '!=', 0)]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='amount_total'][2]" position="attributes">
+					<attribute name="attrs">{'invisible' : ['&amp;', ('amount_tax', '=', 0), ('other_tax', '=', 0)]}</attribute>
+				</xpath>
+			</field>
+		</record> -->
+
+		<!-- For odoo 15 -->
+		<record id="account_insert_other_tax_field" model="ir.ui.view">
+			<field name="name">account.move.amount.tax.form.inherited</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='tax_totals_json']" position="replace">
+					<field name="amount_without_any_tax" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="amount_tva" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="other_tax" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+					<field name="amount_total" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

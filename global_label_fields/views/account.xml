@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="account_insert_global_label_field" model="ir.ui.view">
+			<field name="name">account.move.global.label.form.inherited</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='invoice_date']" position="after">
+					<field name="global_label"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

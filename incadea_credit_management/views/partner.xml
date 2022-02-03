@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="res_partner_add_credit_fields" model="ir.ui.view">
+			<field name="name">res.partner.incadea.credit.inherited</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='category_id']" position="after">
+					<field name="credit_limit" attrs="{'invisible' : [('customer_type', '=', 'passing')]}"/>
+					<field name="general_credit"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

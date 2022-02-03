@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="insert_group_acount_fields" model="ir.ui.view">
+			<field name="name">product.template.form.inherited</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='property_account_income_id']" position="after">
+					<field name="in_group_account"/>
+					<field name="out_group_account"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

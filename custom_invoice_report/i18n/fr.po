@@ -1,0 +1,184 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_invoice_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-13 12:11+0000\n"
+"PO-Revision-Date: 2022-01-13 12:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_invoice_report
+#: model:ir.actions.report,print_report_name:custom_invoice_report.action_report_invoice_with_band
+msgid "(object._get_report_base_filename())"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_header
+msgid "- RCS N°"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Montant</span>\n"
+"                                <span groups=\"account.group_show_line_subtotals_tax_included\">Prix Total</span>"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Montant TTC</span>\n"
+"                                <span groups=\"account.group_show_line_subtotals_tax_included\">Prix Total</span>"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<span style=\"display: inline-block;\">Doit : </span>"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<span>Description</span>"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<span>Quantité</span>"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">Total HT</strong>"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong>Customer Code</strong>"
+msgstr "Code Client"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong>Due Date</strong>"
+msgstr "<strong>Date d'échéance</strong>"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong>Invoice Date</strong>"
+msgstr "<strong>Date de la facture</strong>"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong>Reference</strong>"
+msgstr "<strong>Référence</strong>"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "<strong>Source</strong>"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report1
+msgid "<strong>Total TTC</strong>"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Avoir"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Avoir Fournisseur"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_header
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "CIF N°"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_header
+msgid "DGI-B du"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Facture"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Facture Annulée"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Facture Brouillon"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Facture Fournisseur"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model:ir.actions.report,name:custom_invoice_report.action_report_invoice_with_band
+msgid "Invoices (Duplicata)"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model:ir.model,name:custom_invoice_report.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Le"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_header
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "NIF"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "RCS N°"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Ref Commande :"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model:ir.model.fields,field_description:custom_invoice_report.field_account_bank_statement_line__report_printed
+#: model:ir.model.fields,field_description:custom_invoice_report.field_account_move__report_printed
+#: model:ir.model.fields,field_description:custom_invoice_report.field_account_payment__report_printed
+msgid "Report has been printed"
+msgstr "Le rapport a été imprimé"
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "STAT"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Suivi par"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Échéance :"
+msgstr ""
+
+#. module: custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:custom_invoice_report.custom_invoice_report
+msgid "Émis Par"
+msgstr ""

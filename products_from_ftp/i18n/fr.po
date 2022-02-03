@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* products_from_ftp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 07:53+0000\n"
+"PO-Revision-Date: 2021-09-30 07:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: products_from_ftp
+#: model:ir.model.fields,field_description:products_from_ftp.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: products_from_ftp
+#: model:ir.model.fields,field_description:products_from_ftp.field_product_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: products_from_ftp
+#: model:ir.model.fields,field_description:products_from_ftp.field_product_product__id_hfsql
+#: model:ir.model.fields,field_description:products_from_ftp.field_product_template__id_hfsql
+msgid "Id Hfsql"
+msgstr "Id Hfsql"
+
+#. module: products_from_ftp
+#: model:ir.actions.server,name:products_from_ftp.import_product_ir_actions_server
+#: model:ir.cron,cron_name:products_from_ftp.import_product
+#: model:ir.cron,name:products_from_ftp.import_product
+msgid "Import of Products from FTP Server"
+msgstr "Import des Articles depuis le serveur FTP"
+
+#. module: products_from_ftp
+#: model:ir.model.fields,field_description:products_from_ftp.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: products_from_ftp
+#: model:ir.model,name:products_from_ftp.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"

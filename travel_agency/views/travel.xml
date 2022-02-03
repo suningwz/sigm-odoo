@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sequencement -->
+    <record id="travel_order_sequence" model="ir.sequence">
+        <field name="name">Travel Order Sequence</field>
+        <field name="code">travel.order</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">TO</field>
+        <field name="number_increment">1</field>
+        <field name="padding">5</field>
+        <field name="implementation">standard</field>
+        <field name="company_id">1</field>
+    </record>
+
+    <!-- Tree view of the Model -->
+    <record id="travel_tree_view_id" model="ir.ui.view">
+        <field name="name">travel.order.tree</field>
+        <field name="model">travel.order</field>
+        <field name="arch" type="xml">
+            <tree default_order="create_date desc">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <!-- <field name="transmitter" invisible="context.get('default_document_type') != 'amadeus'"/> -->
+                <field name="date_order"/>
+                <field name="amount_untaxed"/>
+                <field name="amount_tax"/>
+                <field name="amount_total"/>
+                <field name="state" decoration-success="state == 'confirmed'" decoration-info="state == 'quotation'" decoration-warning="state == 'canceled'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree view of all record of travel orders -->
+    <record id="all_records_travel_tree_view_id" model="ir.ui.view">
+        <field name="name">all.travel.order.tree</field>
+        <field name="model">travel.order</field>
+        <field name="arch" type="xml">
+            <tree default_order="create_date desc">
+                <field name="document_type"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_order"/>
+                <field name="amount_untaxed"/>
+                <field name="amount_tax"/>
+                <field name="amount_total"/>
+                <field name="state" decoration-success="state == 'confirmed'" decoration-info="state == 'quotation'" decoration-warning="state == 'canceled'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of the Model -->
+    <record id="travel_form_view_id" model="ir.ui.view">
+        <field name="name">travel.order.form</field>
+        <field name="model">travel.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="print_quotation_order" type="object" string="Print Quotation" class="oe_highlight" attrs="{'invisible' : [('state' , '!=', 'quotation')]}"/>
+                    <button name="print_quotation_order" type="object" string="Print Order" class="oe_highlight" attrs="{'invisible' : [('state' , 'in', ('quotation', 'canceled'))]}"/>
+                    <button name="print_proforma" type="object" string="Print Pro Forma" class="oe_highlight" attrs="{'invisible' : [('state', '!=', 'quotation')]}"/>
+                    <button name="action_accept" type="object" string="Accept" attrs="{'invisible' : ['|', ('state', '!=', 'quotation'), ('id', '=', False)]}" class="oe_highlight"/>
+                    <button name="action_confirm" type="object" string="Confirm" attrs="{'invisible' : ['|', ('state', '!=', 'accepted'), ('id', '=', False)]}" class="oe_highlight"/>
+                    <button name="action_cancel" confirm="This will delete the purchase order. Are you sure to continue?" type="object" string="Cancel" attrs="{'invisible' : ['|', ('state', '=', 'canceled'), ('id', '=', False)]}"/>
+                    <button name="action_make_quotation" type="object" string="Back to Quotation" attrs="{'invisible' : ['|', ('state', '!=', 'canceled'), ('id', '=', False)]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet string="Travel Order">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_purchase_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible' : [('purchase_invoice_count', '=', 0)]}">
+                            <field name="purchase_invoice_count" widget="statinfo" string="Purchase Invoices"/>
+                        </button>
+                        <button name="action_view_sale_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible' : [('sale_invoice_count', '=', 0)]}">
+                            <field name="sale_invoice_count" widget="statinfo" string="Sale Invoices"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+                    <group name="main_group">
+                        <group name="group_left">
+                            <field name="document_type" attrs="{'invisible' : [('document_type', '!=', False)], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="num_pnr" attrs="{'invisible' : [('document_type', '!=', 'amadeus')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="folder_number" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="partner_id" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}" required="True" options="{'no_create': True}"/>
+                            <field name="partner_shipping_id" invisible="True"/>
+                            <!-- <field name="transmitter" attrs="{'invisible' : [('document_type', '=', 'to')]}"/> -->
+                            <field name="transmit_date" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="followed_by" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="ref" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="date_order" required="True" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="company_id" invisible="1" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="pricelist_id" options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="global_label" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                        </group>
+                    </group>
+                    <notebook name="order_line_notebook">
+                        <page name="order_line_page" string="Travel Order Line">
+
+                            <!-- Tree view of Travel Order Lines -->
+                            <field name="order_line" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}">
+                                <tree editable="bottom">
+                                    <field name="supplier" attrs="{'readonly' : [('product_id', '=', 196)]}" options="{'no_create': True}"/>
+                                    <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', '=', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
+                                    <field name="name" readonly="True" invisible="1"/>
+                                    <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 2)]}"/>
+                                    <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 2)]}"/>
+                                    <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 2)]}"/>
+                                    <field name="custom_descri" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 1)]}"/>
+                                    <field name="quantity" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')], 'readonly' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="number" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')], 'readonly' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="price_unit"/>
+                                    <field name="percent_commission" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="amount_commission" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"  readonly="True"/>
+                                    <field name="day" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}" options="{'no_create' : False}"/>
+                                    <field name="tax_ids" attrs="{'readonly' : [('product_id', '=', 1)]}" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="amount_tva" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="amount_tax" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')]}"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <!-- <field name="price_subtotal" widget="monetary" options="{'currency_field' : 'currency_id'}"/> -->
+                                    <field name="price_total" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
+                                </tree>
+                            </field>
+
+                            <!-- Display Travel Order Amounts -->
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <!-- <field name="note" nolabel="1" placeholder="Terms and conditions..."/> -->
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="travel_order_total">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_untaxed" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tax" widget="monetary" attrs="{'invisible' : [('document_type', '=', 'to')]}" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tva" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="amount_total"/>
+                                    </div>
+                                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                        <page name="other_info_page" string="Other Informations">
+                            <field name="other_infos"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action of the menu -->
+    <record id="travel_agency_all_record" model="ir.actions.act_window">
+        <field name="name">All Orders</field>
+        <field name="res_model">travel.order</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="all_records_travel_tree_view_id"/>
+        <field name="usage">menu</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_neutral_face">
+                There is no Order yet
+            </p>
+        </field>
+    </record>
+
+    <record id="amadeus_orders_action" model="ir.actions.act_window">
+        <field name="name">Amadeus Orders</field>
+        <field name="res_model">travel.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="travel_tree_view_id"/>
+        <field name="domain">[('document_type', '=', 'amadeus')]</field>
+        <field name="context">{'default_document_type' : 'amadeus'}</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Order
+            </p>
+        </field>
+    </record>
+
+    <record id="to_orders_action" model="ir.actions.act_window">
+        <field name="name">Tour Operator Orders</field>
+        <field name="res_model">travel.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="travel_tree_view_id"/>
+        <field name="domain">[('document_type', '=', 'to')]</field>
+        <field name="context">{'default_document_type' : 'to'}</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new Order
+            </p>
+        </field>
+    </record>
+
+    <!-- Main Menu / Application -->
+    <menuitem name="Travel Agency" id="main_menu" sequence="0" web_icon="travel_agency,static/src/img/plane_departure_icon.png" action="travel_agency_all_record"/>
+
+    <!-- Menus visible on top / On top menus -->
+    <menuitem name="Orders" id="orders_menu" sequence="1" parent="main_menu"/>
+    <menuitem name="Customers" id="customers_menu" sequence="2" parent="main_menu"/>
+    <menuitem name="Products" id="products_menu" sequence="3" parent="main_menu"/>
+
+    <!-- Menus inside the on top menus -->
+    <!-- Inside Orders -->
+    <menuitem name="Amadeus" id="amadeus_orders_menu" sequence="1" parent="orders_menu" action="amadeus_orders_action"/>
+    <menuitem name="Tour Operator" id="to_orders_menu" sequence="2" parent="orders_menu" action="to_orders_action"/>
+    <menuitem name="All Orders" id="all_orders_menu" sequence="3" parent="orders_menu" action="travel_agency_all_record"/>
+
+    <!-- Inside Customers -->
+    <menuitem name="Customers" id="customers_child_menu" sequence="1" parent="customers_menu" action="account.res_partner_action_customer"/>
+
+    <!-- Inside Products -->
+    <menuitem name="Products" id="products_child_menu" sequence="1" parent="products_menu" action="sale.product_template_action"/>
+</odoo>

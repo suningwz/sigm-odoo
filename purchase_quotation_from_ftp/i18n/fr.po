@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_quotation_from_ftp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 11:17+0000\n"
+"PO-Revision-Date: 2021-09-30 11:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order__id
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order__id_hfsql
+msgid "Id Hfsql"
+msgstr "Id Hfsql"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.actions.server,name:purchase_quotation_from_ftp.import_quotation_ir_actions_server
+#: model:ir.cron,cron_name:purchase_quotation_from_ftp.import_quotation
+#: model:ir.cron,name:purchase_quotation_from_ftp.import_quotation
+msgid "Import of Purchase Quotations from FTP Server"
+msgstr "Import des Devis d'Achat depuis le serveur FTP"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model,name:purchase_quotation_from_ftp.model_purchase_order
+msgid "Purchase Order"
+msgstr "Bon de Commande"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model,name:purchase_quotation_from_ftp.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Ligne de commande"
+
+#. module: purchase_quotation_from_ftp
+#: model:ir.model.fields,field_description:purchase_quotation_from_ftp.field_purchase_order_line__id_hfsql
+msgid "Purchase Order Line ID HFSQL"
+msgstr "ID HFSQL de la Ligne de Bons d'Achat"

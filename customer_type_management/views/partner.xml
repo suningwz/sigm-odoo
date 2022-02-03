@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="partner_insert_customer_type_field" model="ir.ui.view">
+			<field name="name">partner.customer_type.field.form.inherited</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='category_id']" position="after">
+					<field name="id_incadea" invisible="1"/>
+					<field name="customer_type" attrs="{'invisible' : [('id_incadea', '=', False)]}"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

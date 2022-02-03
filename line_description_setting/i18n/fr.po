@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* line_description_setting
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-19 09:34+0000\n"
+"PO-Revision-Date: 2021-11-19 09:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: line_description_setting
+#: model:ir.model.fields,field_description:line_description_setting.field_sale_order_line__custom_descri
+msgid "Custom Description"
+msgstr "Description Personnalisée"
+
+#. module: line_description_setting
+#: model:ir.model.fields,field_description:line_description_setting.field_sale_order_line__journey
+msgid "Journey"
+msgstr "Trajet"
+
+#. module: line_description_setting
+#: model:ir.model,name:line_description_setting.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: line_description_setting
+#: model:ir.model.fields,field_description:line_description_setting.field_sale_order_line__ticket_number
+msgid "Ticket Number"
+msgstr "Numéro Billet"

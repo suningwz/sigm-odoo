@@ -1,0 +1,34 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_insert_pnr_sale_order_new_fields" model="ir.ui.view">
+			<field name="name">sale.order.form.inherited</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="pnr_number" invisible="1"/>
+					<field name="transmitter" string="Emission"/>
+					<field name="transmit_date" string="Date d'émission"/>
+					<field name="followed_by" string="Suivi par"/>
+					<field name="order_ref" string="Order Reference"/>
+				</xpath>
+			</field>
+		</record>
+		<record id="view_insert_pnr_sale_order_line_new_fields" model="ir.ui.view">
+			<field name="name">sale.order.line.tree.inherited</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+					<field name="num_pnr" invisible="1"/>
+
+					<field name="passenger" attrs="{'column_invisible': (('num_pnr', '=', False))}"  />
+				</xpath>
+				<xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='tax_id']" position="after">
+					<field name="amount_tax"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo> -->

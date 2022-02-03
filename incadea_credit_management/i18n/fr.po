@@ -1,0 +1,123 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* incadea_credit_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-12 09:56+0000\n"
+"PO-Revision-Date: 2022-01-12 09:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_no_quotation
+msgid "Can confirm no quotation"
+msgstr "Ne peut confirmer aucun devis"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation_even_credit_limit_is_reached
+msgid "Can confirm quotation even when credit limit is reached"
+msgstr "Peut confirmer devis même si le plafond est atteint"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation_account_client
+msgid "Can confirm quotation of account client"
+msgstr "Peut confirmer devis de client en compte"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation_passing_client
+msgid "Can confirm quotation of passing client"
+msgstr "Peut confirmer devis de client de passage"
+
+#. module: incadea_credit_management
+#: code:addons/incadea_credit_management/models/travel.py:0
+#, python-format
+msgid ""
+"Can't confirm this quotation!\n"
+"* Incadea Credit : %s\n"
+"* General Credit : %s\n"
+"* This Credit : %s\n"
+"* Number of Quotation in Credit : %s\n"
+msgstr ""
+"Vous ne pouvez pas valider ce devis!\n"
+"* En cours Incadea : %s\n"
+"* En cours général : %s\n"
+"* En cours actuel : %s\n"
+"* Nombre de devis en cours : %s\n"
+
+#. module: incadea_credit_management
+#: model_terms:ir.ui.view,arch_db:incadea_credit_management.travel_custom_confirm_button
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: incadea_credit_management
+#: model:ir.model,name:incadea_credit_management.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_partner__credit_limit
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__credit_limit
+msgid "Credit Limit"
+msgstr "Limite de crédit"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_partner__general_credit
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__general_credit
+msgid "General Credit"
+msgstr "En Cours Général"
+
+#. module: incadea_credit_management
+#: model:ir.actions.server,name:incadea_credit_management.get_credit_infos_ir_actions_server
+#: model:ir.cron,cron_name:incadea_credit_management.get_credit_infos
+#: model:ir.cron,name:incadea_credit_management.get_credit_infos
+msgid "Import Client Credit Infos from Incadea"
+msgstr "Import des En Cours Client depuis Incadea"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_partner__incadea_credit
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__incadea_credit
+msgid "Incadea Credit"
+msgstr "En Cours Incadea"
+
+#. module: incadea_credit_management
+#: model:ir.model.fields,field_description:incadea_credit_management.field_travel_order__show_confirm_button
+msgid "Show Confirm Button"
+msgstr "Afficher le bouton de confirmation"
+
+#. module: incadea_credit_management
+#: model_terms:ir.ui.view,arch_db:incadea_credit_management.travel_custom_confirm_button
+msgid ""
+"This customer has unregulated credit. Would you continue to confirm the "
+"quotation?"
+msgstr ""
+"Ce client a des en cours non reglés. Voulez-vous continuer à valider le "
+"devis?"
+
+#. module: incadea_credit_management
+#: model:ir.model,name:incadea_credit_management.model_travel_order
+msgid "Travel Order"
+msgstr "Commande de Voyage"
+
+#. module: incadea_credit_management
+#: model:ir.model,name:incadea_credit_management.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: incadea_credit_management
+#: code:addons/incadea_credit_management/models/travel.py:0
+#, python-format
+msgid "You don't have the right to confirm a passing customer's quotation!"
+msgstr "Vous n'avez pas le droit de valider le devis d'un client de passage!"
+
+#. module: incadea_credit_management
+#: code:addons/incadea_credit_management/models/travel.py:0
+#, python-format
+msgid "You don't have the right to confirm an account customer's quotation!"
+msgstr "Vous n'avez pas le droit de valider le devis d'un client en compte!"

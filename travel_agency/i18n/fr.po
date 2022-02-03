@@ -1,0 +1,934 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* travel_agency
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-31 09:06+0000\n"
+"PO-Revision-Date: 2022-01-31 09:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "&amp;nbsp;<span>on</span>&amp;nbsp;"
+msgstr "&amp;nbsp;<span>le</span>&amp;nbsp;"
+
+#. module: travel_agency
+#: model:ir.actions.report,print_report_name:travel_agency.action_report_travelorder_proforma
+msgid "'PRO FORMA - %s' % (object.name)"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.actions.report,print_report_name:travel_agency.action_report_travelorder
+msgid ""
+"(object.state in ('quotation') and 'Quotation - %s' % (object.name)) or "
+"'Order - %s' % (object.name)"
+msgstr ""
+"(object.state in ('quotation', 'confirmed') and 'Devis - %s' % "
+"(object.name)) or 'Commande - %s' % (object.name)"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<span>PRO FORMA # </span>"
+msgstr "<span>PRO FORMA N°</span>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">Sous-total</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr "<strong>Remarque Position Fiscale:</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Order Date:</strong>"
+msgstr "<strong>Date de Commande:</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Quotation Date:</strong>"
+msgstr "<strong>Date du Devis:</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Signature</strong>"
+msgstr ""
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Sous-total</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total TTC</strong>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Accept"
+msgstr "Accepter"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__state__accepted
+msgid "Accepted"
+msgstr "Accepté"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_needaction
+msgid "Action Needed"
+msgstr "Action Nécessaire"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_product_product__active_product
+msgid "Active Product"
+msgstr "Article actif"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_partner__active_supplier
+#: model:ir.model.fields,field_description:travel_agency.field_res_users__active_supplier
+msgid "Active Supplier"
+msgstr "Fournisseur actif"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_ids
+msgid "Activities"
+msgstr "Activités"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Décoration d'Exception d'Activité"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_state
+msgid "Activity State"
+msgstr "État d'Activité"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icône du Type d'Activité"
+
+#. module: travel_agency
+#: model:ir.actions.act_window,name:travel_agency.travel_agency_all_record
+#: model:ir.ui.menu,name:travel_agency.all_orders_menu
+msgid "All Orders"
+msgstr "Toutes les Commandes"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__product_template__used_for__amadeus
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__document_type__amadeus
+#: model:ir.ui.menu,name:travel_agency.amadeus_orders_menu
+msgid "Amadeus"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__product_template__used_for__both
+msgid "Amadeus & Tour Operator"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.actions.act_window,name:travel_agency.amadeus_orders_action
+msgid "Amadeus Orders"
+msgstr "Commandes Amadeus"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Amount"
+msgstr "Montant"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_purchase_order__amount_tva
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__amount_tva
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__amount_tva
+msgid "Amount TVA"
+msgstr "Montant TVA"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__amount_tax
+msgid "Amount Tax"
+msgstr "Montant Taxe"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__amount_total
+msgid "Amount Total"
+msgstr "Montant Total"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__amount_untaxed
+msgid "Amount Untaxed"
+msgstr "Montant HT"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de Pièces Jointes"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Back to Quotation"
+msgstr "Remettre en Devis"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__state__canceled
+msgid "Canceled"
+msgstr "Annulé"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__percent_commission
+msgid "Commission (%)"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__amount_commission
+msgid "Commission (Amount)"
+msgstr "Commission (Montant)"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__state__confirmed
+msgid "Confirmed"
+msgstr "Confirmé"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: travel_agency
+#: model_terms:ir.actions.act_window,help:travel_agency.amadeus_orders_action
+#: model_terms:ir.actions.act_window,help:travel_agency.to_orders_action
+msgid "Create new Order"
+msgstr "Créer une Nouvelle Commande"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__create_uid
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__create_uid
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__create_date
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__create_date
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__currency_id
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__custom_descri
+msgid "Custom Description"
+msgstr "Description Personnalisée"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__partner_id
+msgid "Customer"
+msgstr "Client"
+
+#. module: travel_agency
+#: model:ir.ui.menu,name:travel_agency.customers_child_menu
+#: model:ir.ui.menu,name:travel_agency.customers_menu
+msgid "Customers"
+msgstr "Clients"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_order
+msgid "Date"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__transmit_date
+msgid "Date of Issue"
+msgstr "Date d'émission"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_res_day
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__day
+msgid "Day"
+msgstr "Jour"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__partner_shipping_id
+msgid "Delivery Address"
+msgstr "Adresse de Livraison"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__name
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Description"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__discount
+msgid "Discount (%)"
+msgstr "Remise (%)"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__display_name
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__display_name
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__display_type
+msgid "Display Type"
+msgstr "Type d'Affichage"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_product_product__display_in_invoice_report
+#: model:ir.model.fields,field_description:travel_agency.field_product_template__display_in_invoice_report
+msgid "Display in invoice report"
+msgstr "Afficher dans la facture"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__document_type
+msgid "Document Type"
+msgstr "Type de Document"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__fiscal_position_id
+msgid "Fiscal Position"
+msgstr "Position Fiscale"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__fiscal_position_id
+msgid ""
+"Fiscal positions are used to adapt taxes and accounts for particular "
+"customers or travels orders/invoices.The default value comes from the "
+"customer."
+msgstr ""
+"Les positions fiscales sont utilisées pour adapter les taxes et les comptes "
+"pour desclients particuliers ou des commandes/factures de voyage. La valeur "
+"par défaut provient du client."
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__folder_number
+msgid "Folder Number"
+msgstr "Numéro de dossier"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__followed_by
+msgid "Followed by"
+msgstr "Suivi par"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnés (Partenaires)"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_from
+msgid "From"
+msgstr "De"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_account_bank_statement_line__global_label
+#: model:ir.model.fields,field_description:travel_agency.field_account_move__global_label
+#: model:ir.model.fields,field_description:travel_agency.field_account_payment__global_label
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__global_label
+msgid "Global Label"
+msgstr "Libellé Global"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__has_message
+msgid "Has Message"
+msgstr "A un message"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__id
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__id
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__id
+msgid "ID"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_exception_icon
+msgid "Icon"
+msgstr "Icône"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icône pour indiquer une activité d'exception"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_needaction
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+"Si cette case est cochée, de nouveaux messages nécessitent votre attention."
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_has_error
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+"Si cette case est cochée, certains messages présentent une erreur de "
+"livraison"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__pricelist_id
+msgid "If you change the pricelist, only newly added lines will be affected."
+msgstr ""
+"Si vous modifiez la liste de prix, seules les lignes nouvellement ajoutées "
+"seront affectées"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_is_follower
+msgid "Is Follower"
+msgstr "Est Abonné"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__journey
+msgid "Journey"
+msgstr "Trajet"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day____last_update
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order____last_update
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__write_uid
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__write_uid
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__write_uid
+msgid "Last Updated by"
+msgstr "Dernière Mise à jour par"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__write_date
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__write_date
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__write_date
+msgid "Last Updated on"
+msgstr "Dernière Mise à jour le"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Pièce Jointe Principale"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_has_error
+msgid "Message Delivery error"
+msgstr "Erreur de Livraison du Message"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Mon Délai d'Activité"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_res_day__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "New"
+msgstr "Nouveau"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Date limite de la prochaine Activité"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_summary
+msgid "Next Activity Summary"
+msgstr "Prochain résumé de l'Activité"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_type_id
+msgid "Next Activity Type"
+msgstr "Type d'Activité Suivant"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__display_type__line_note
+msgid "Note"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__name
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__number
+msgid "Number"
+msgstr "Numéro"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__num_pnr
+msgid "Number PNR"
+msgstr "Numéro PNR"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'Actions"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Nombre de messages nécessitant une action"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Nombre de messages avec erreur de livraison"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Nombre de messages non lus"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Order #"
+msgstr "Commande N°"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__order_id
+msgid "Order Reference"
+msgstr "Référence Commande"
+
+#. module: travel_agency
+#: model:ir.ui.menu,name:travel_agency.orders_menu
+msgid "Orders"
+msgstr "Commandes"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Other Informations"
+msgstr "Autres Informations"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__other_infos
+msgid "Other Infos"
+msgstr "Autres Infos"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_purchase_order__other_tax
+#: model:ir.model.fields,field_description:travel_agency.field_purchase_order_line__other_tax
+msgid "Other Tax"
+msgstr "Autre Taxe"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__amount_tax
+msgid "Other Taxes"
+msgstr "Autres Taxes"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger
+msgid "Passenger"
+msgstr "Passager"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__payment_term_id
+msgid "Payment Terms"
+msgstr "Conditions de paiement"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__user_id
+msgid "Person"
+msgstr "Personne"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_unit
+msgid "Price Unit"
+msgstr "Prix Unitaire"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__pricelist_id
+msgid "Pricelist"
+msgstr "Liste de Prix"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.account_move_print_report_button
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Print Order"
+msgstr "Imprimer la Commande"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Print Pro Forma"
+msgstr "Imprimer Pro Forma"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Print Quotation"
+msgstr "Imprimer le Devis"
+
+#. module: travel_agency
+#: model:ir.actions.report,name:travel_agency.action_report_travelorder_proforma
+msgid "Pro Forma"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_product_product
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__product_id
+msgid "Product"
+msgstr "Article"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: travel_agency
+#: model:ir.ui.menu,name:travel_agency.products_child_menu
+#: model:ir.ui.menu,name:travel_agency.products_menu
+msgid "Products"
+msgstr "Articles"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__purchase_invoice_count
+msgid "Purchase Invoice Count"
+msgstr "Nombre de Facture Fournisseur"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__purchase_invoice_ids
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Purchase Invoices"
+msgstr "Factures Fournisseurs"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_purchase_order
+msgid "Purchase Order"
+msgstr "Commande fournisseur"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Ligne de commande d'achat"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__quantity
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__state__quotation
+msgid "Quotation"
+msgstr "Devis"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Quotation #"
+msgstr "Devis N°"
+
+#. module: travel_agency
+#: model:ir.actions.report,name:travel_agency.action_report_travelorder
+msgid "Quotation / Order"
+msgstr "Devis / Commande"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__ref
+msgid "Reference"
+msgstr "Référence"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_user_id
+msgid "Responsible User"
+msgstr "Utilisateur Responsable"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Erreur de Livraison SMS"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__sale_invoice_count
+msgid "Sale Invoice Count"
+msgstr "Nombre de Facture Client"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__sale_invoice_ids
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Sale Invoices"
+msgstr "Factures Clients"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__display_type__line_section
+msgid "Section"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__signature
+msgid "Signature"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__signature
+msgid "Signature received through the portal."
+msgstr "Signature reçue via le portail."
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__state
+msgid "State"
+msgstr "État"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#: code:addons/travel_agency/models/travel.py:0
+#: code:addons/travel_agency/models/travel.py:0
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "State : %s → %s"
+msgstr "État : %s → %s"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Statut basé sur les activités\n"
+"En retard: La date d'échéance est déjà dépassée\n"
+"Aujourd'hui: La date d'activité est aujourd'hui\n"
+"Prévu: Activités futures."
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_subtotal
+msgid "Subtotal"
+msgstr "Sous-total"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__supplier
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__amount_by_group
+msgid "Tax amount by group"
+msgstr "Montant de la Taxe par groupe"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Taxes"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order_line__display_type
+msgid "Technical field for UX purpose."
+msgstr "Champs technique à pour l'UX"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__note
+msgid "Terms and conditions"
+msgstr "Termes et Conditions"
+
+#. module: travel_agency
+#: model_terms:ir.actions.act_window,help:travel_agency.travel_agency_all_record
+msgid "There is no Order yet"
+msgstr "Il n'y a pas encore de commande"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "This will delete the purchase order. Are you sure to continue?"
+msgstr ""
+"Ceci supprimera la commande d'achat correspondant. Êtes-vous sûr de vouloir "
+"continuer?"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__ticket_number
+msgid "Ticket Number"
+msgstr "Numéro de Billet"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_to
+msgid "To"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_total
+msgid "Total"
+msgstr ""
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Total Price"
+msgstr "Prix Total"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_tax
+msgid "Total Tax"
+msgstr "Total Taxe"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__product_template__used_for__to
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__document_type__to
+#: model:ir.ui.menu,name:travel_agency.to_orders_menu
+msgid "Tour Operator"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.actions.act_window,name:travel_agency.to_orders_action
+msgid "Tour Operator Orders"
+msgstr "Commandes Tour Operator"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__transmitter
+msgid "Transmitter"
+msgstr "Émission"
+
+#. module: travel_agency
+#: model:ir.ui.menu,name:travel_agency.main_menu
+msgid "Travel Agency"
+msgstr "Agence de Voyage"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "Travel Invoice : %s"
+msgstr "Facture de Voyage : %s"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_travel_order
+#: model:ir.model.fields,field_description:travel_agency.field_purchase_order__travel_order_id
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Travel Order"
+msgstr "Commande de Voyage"
+
+#. module: travel_agency
+#: model:ir.model,name:travel_agency.model_travel_order_line
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Travel Order Line"
+msgstr "Ligne de Commande de Voyage"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__order_line
+msgid "Travel Order Lines"
+msgstr "Lignes de Commande de Voyage"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Type d'activité d'exception enregistrée."
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "Unit Price"
+msgstr "Transport"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_unread
+msgid "Unread Messages"
+msgstr "Messages Non Lus"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Compteur de Messages Non Lus"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_product_product__used_for
+#: model:ir.model.fields,field_description:travel_agency.field_product_template__used_for
+msgid "Used For"
+msgstr "Utilisé Pour"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__tax_ids
+msgid "VAT"
+msgstr "TVA"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__website_message_ids
+msgid "Website Messages"
+msgstr "Messages du Site Web"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__website_message_ids
+msgid "Website communication history"
+msgstr "Historiques des communications du site web"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "You cannot delete document that has been %s!"
+msgstr "Vous ne pouvez pas effacer un document qui a été %s!"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "You don't have the right to confirm a quotation!"
+msgstr "Vous n'avez pas le droit de confirmer un devis"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "accepted"
+msgstr "accepté"
+
+#. module: travel_agency
+#: code:addons/travel_agency/models/travel.py:0
+#, python-format
+msgid "confirmed"
+msgstr "confirmé"
+
+#. module: travel_agency
+#: model:ir.model.fields,help:travel_agency.field_travel_order__amount_by_group
+msgid "type : [(name, amount, base, formated amount, formated base)]"
+msgstr "type : [(nom, montant, base, montant formaté, base formatée)]"

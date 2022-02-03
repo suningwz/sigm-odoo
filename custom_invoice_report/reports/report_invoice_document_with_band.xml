@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="invoice_report_with_band">
+		<!-- <t t-call="account.report_invoice_document"/> -->
+		<t t-call="web.external_layout">
+			<div>This is my custom report with band</div>
+		</t>
+	</template>
+</odoo>

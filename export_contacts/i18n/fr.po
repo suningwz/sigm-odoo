@@ -1,0 +1,43 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* export_contacts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 07:30+0000\n"
+"PO-Revision-Date: 2021-09-30 07:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: export_contacts
+#: model:ir.model,name:export_contacts.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: export_contacts
+#: model:ir.model.fields,field_description:export_contacts.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: export_contacts
+#: model:ir.actions.server,name:export_contacts.export_contacts_ir_actions_server
+#: model:ir.cron,cron_name:export_contacts.export_contacts
+#: model:ir.cron,name:export_contacts.export_contacts
+msgid "Export Contacts into an FTP server"
+msgstr "Export des Contacts vers un serveur FTP"
+
+#. module: export_contacts
+#: model:ir.model.fields,field_description:export_contacts.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: export_contacts
+#: model:ir.model.fields,field_description:export_contacts.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
