@@ -63,15 +63,15 @@ class AccountMoveLine(models.Model):
         move_lines = self.env['account.move.line'].search([('move_id', 'in', invoices_id)])
 
         data = {
-            'N° Séquence' : []
-            'Date Compta.' : []
-            'N° Document' : []
-            'N° compte général' : []
-            'Type origine' : []
-            'Désignation' : []
-            'Montant' : []
-            'Montant ouvert' : []
-            'Groupe compta. marché' : []
+            'N° Séquence' : [],
+            'Date Compta.' : [],
+            'N° Document' : [],
+            'N° compte général' : [],
+            'Type origine' : [],
+            'Désignation' : [],
+            'Montant' : [],
+            'Montant ouvert' : [],
+            'Groupe compta. marché' : [],
         }
 
         for line in move_lines:
