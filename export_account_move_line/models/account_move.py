@@ -27,32 +27,67 @@ class AccountMoveLine(models.Model):
         # ---------------------------------------------------------------------------------------------
         #                                       Get data from query                                   #
         # ---------------------------------------------------------------------------------------------
-        query = """
-            SELECT
-                aml.id ,
-                aml.date ,
-                aml.move_name ,
-                aa.code ,
-                aj.name ,
-                aml.name ,
-                aml.price_total,
-                CASE WHEN rp.in_group = True THEN 'C10' ELSE 'C5' END
-            FROM account_move_line aml
-            INNER JOIN account_move am 
-            ON am.id = aml.move_id
-            INNER JOIN account_account aa 
-            ON aa.id = aml.account_id
-            INNER JOIN account_journal aj 
-            ON aj.id = aml.journal_id
-            INNER JOIN res_partner rp
-            ON rp.id = am.partner_id;
-        """
+        # query = """
+        #     SELECT
+        #         aml.id ,
+        #         aml.date ,
+        #         aml.move_name ,
+        #         aa.code ,
+        #         aj.name ,
+        #         aml.name ,
+        #         aml.balance,
+        #         aml.balance,
+        #         CASE WHEN rp.in_group = True THEN 'C10' ELSE 'C5' END
+        #     FROM account_move_line aml
+        #     INNER JOIN account_move am 
+        #     ON am.id = aml.move_id
+        #     INNER JOIN account_account aa 
+        #     ON aa.id = aml.account_id
+        #     INNER JOIN account_journal aj 
+        #     ON aj.id = aml.journal_id
+        #     INNER JOIN res_partner rp
+        #     ON rp.id = am.partner_id
+        #     WHERE am.type like '%_invoice' or am.type like '%_refund';
+        # """
 
-        self.env.cr.execute(query)
-        data = self.env.cr.fetchall()
+        # self.env.cr.execute(query)
+        # data = self.env.cr.fetchall()
 
-        # df = pd.DataFrame(data, columns=['ID', 'Libellé', 'Numéro', 'Date', 'Journal', 'Société', 'Débit', 'Crédit', 'Balance', 'Client/Fournisseur'])
-        df = pd.DataFrame(data, columns=['N° Séquence', 'Date Compta.', 'N° Document', 'N° compte général', 'Type origine', 'Désignation', 'Montant', 'Groupe compta. marché'])
+        # # df = pd.DataFrame(data, columns=['ID', 'Libellé', 'Numéro', 'Date', 'Journal', 'Société', 'Débit', 'Crédit', 'Balance', 'Client/Fournisseur'])
+        # df = pd.DataFrame(data, columns=['N° Séquence', 'Date Compta.', 'N° Document', 'N° compte général', 'Type origine', 'Désignation', 'Montant', 'Montant ouvert', 'Groupe compta. marché'])
+
+        # ----------------------------------------------
+        # Instead of query
+        # ----------------------------------------------
+        invoices_id = self.env['account.move'].search([('type', 'in', ('in_invoice', 'out_invoice', 'in_refund', 'out_refund'))]).ids
+        move_lines = self.env['account.move.line'].search([('move_id', 'in', invoices_id)])
+
+        data = {
+            'N° Séquence' : []
+            'Date Compta.' : []
+            'N° Document' : []
+            'N° compte général' : []
+            'Type origine' : []
+            'Désignation' : []
+            'Montant' : []
+            'Montant ouvert' : []
+            'Groupe compta. marché' : []
+        }
+
+        for line in move_lines:
+            data['N° Séquence'].append(line.id)
+            data['Date Compta.'].append(line.date)
+            data['N° Document'].append(line.move_id.name)
+            data['N° compte général'].append(line.account_id.name)
+            data['Type origine'].append(line.journal_id.name)
+            data['Désignation'].append(line.name)
+            data['Montant'].append(line.balance)
+            data['Montant ouvert'].append(line.balance)
+            data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
+        df = pd.DataFrame(data)
+        # ----------------------------------------------
+
+
         # df.to_csv(static_folder_path + "/CSV/account_move_line.csv", sep=';')
         buffer = StringIO()
         df.to_csv(buffer, sep=';', index=False)
