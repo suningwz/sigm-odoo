@@ -17,4 +17,4 @@ class ProductTemplate(models.Model):
 						documents.append(line.order_id.name)
 				raise UserError(_("This product is used in the following documents and cannot be deleted:\n%s") % ", ".join(documents))
 			else:
-				raise UserError("This product can be deleted")
+				super(ProductTemplate, record).unlink()
