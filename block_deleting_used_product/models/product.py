@@ -11,8 +11,10 @@ class ProductTemplate(models.Model):
 			tol = self.env['travel.order.line'].search([('product_id', '=', record.id)])
 
 			if tol:
-				orders = [line.order_id for line in tol]
-				documents_name = [order.name for order in orders if order.name not in documents_name]
-				raise UserError(_("This product is used in the following documents and cannot be deleted:\n%s") % ", ".join(documents_name))
+				documents = []
+				for line in tol:
+					if line.order_id.name not in documents:
+						documents.append(line.order_id.name)
+				raise UserError(_("This product is used in the following documents and cannot be deleted:\n%s") % ", ".join(documents))
 			else:
 				raise UserError("This product can be deleted")
