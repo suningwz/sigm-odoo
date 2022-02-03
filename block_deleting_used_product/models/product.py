@@ -15,6 +15,6 @@ class ProductTemplate(models.Model):
 				for line in tol:
 					if line.order_id.name not in documents:
 						documents.append(line.order_id.name)
-				raise UserError(_("This product is used in the following documents and cannot be deleted:\n%s") % ", ".join(documents))
+				raise UserError(_("This product is used in the following document(s) and cannot be deleted:\n%s") % ", ".join(documents))
 			else:
 				super(ProductTemplate, record).unlink()
