@@ -15,4 +15,4 @@ class ProductTemplate(models.Model):
 				documents_name = [order.name for order in orders if order.name not in documents_name]
 				raise UserError(_("This product is used in the following documents and cannot be deleted:\n%s") % ", ".join(documents_name))
 			else:
-				raisee UserError("This product can be deleted")
+				raise UserError("This product can be deleted")
