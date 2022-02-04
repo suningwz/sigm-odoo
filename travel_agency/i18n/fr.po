@@ -800,7 +800,7 @@ msgstr "Numéro de Billet"
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_to
 msgid "To"
-msgstr ""
+msgstr "À"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_total
