@@ -74,7 +74,7 @@
                     <thead>
                         <tr>
                             <th name="th_description" class="text-left">Description</th>
-                            <th name="th_quantity" class="text-right">Quantity</th>
+                            <th name="th_quantity" class="text-center">Quantity</th>
                             <!-- <th name="th_priceunit" class="text-right">Unit Price</th> -->
                             <!-- <th name="th_discount" t-if="display_discount" class="text-right" groups="product.group_discount_per_so_line">
                                 <span>Disc.%</span>
@@ -94,7 +94,7 @@
 
                         <tr>
                             <td name="td_name" class="text-left"><span t-field="doc.global_label"/></td>
-                            <td name="td_quantity" class="text-right"><span t-esc="1"/></td>
+                            <td name="td_quantity" class="text-center"><span t-esc="1"/></td>
                             <td name="td_total" class="text-right o_price_total"><span t-esc="total"/></td>
                         </tr>
 
