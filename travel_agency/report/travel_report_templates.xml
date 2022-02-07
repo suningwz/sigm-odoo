@@ -94,7 +94,7 @@
 
                         <tr>
                             <td name="td_name" class="text-left"><span t-field="doc.global_label"/></td>
-                            <td name="td_quantity" class="text-left"><span t-esc="1"/></td>
+                            <td name="td_quantity" class="text-right"><span t-esc="1"/></td>
                             <td name="td_total" class="text-right o_price_total"><span t-esc="total"/></td>
                         </tr>
 
