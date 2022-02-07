@@ -425,26 +425,32 @@ class TravelOrder(models.Model):
             raise UserError(_("You don't have the right to confirm a quotation!"))
 
     def action_cancel(self):
-        related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id)])
-        related_PO.button_cancel()
-        related_PO.unlink()
+        if not self.env.user.can_confirm_quotation_passing_client:
+            raise UserError(_("You don't have the right to cancel an order!"))
+        else:
+            related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id)])
+            related_PO.button_cancel()
+            related_PO.unlink()
 
-        old_state = dict(self._fields['state'].selection).get(self.state)
-        self.update({'state' : 'canceled'})
-        new_state = dict(self._fields['state'].selection).get(self.state)
+            old_state = dict(self._fields['state'].selection).get(self.state)
+            self.update({'state' : 'canceled'})
+            new_state = dict(self._fields['state'].selection).get(self.state)
 
-        message_body = _("State : %s → %s") % (old_state, new_state)
+            message_body = _("State : %s → %s") % (old_state, new_state)
 
-        self.message_post(body=message_body)
+            self.message_post(body=message_body)
 
     def action_make_quotation(self):
-        old_state = dict(self._fields['state'].selection).get(self.state)
-        self.update({'state' : 'quotation'})
-        new_state = dict(self._fields['state'].selection).get(self.state)
+        if not self.env.user.can_confirm_quotation_passing_client:
+            raise UserError(_("You don't have the right to do this action!"))
+        else:
+            old_state = dict(self._fields['state'].selection).get(self.state)
+            self.update({'state' : 'quotation'})
+            new_state = dict(self._fields['state'].selection).get(self.state)
 
-        message_body = _("State : %s → %s") % (old_state, new_state)
+            message_body = _("State : %s → %s") % (old_state, new_state)
 
-        self.message_post(body=message_body)
+            self.message_post(body=message_body)
 
     def action_view_purchase_invoice(self):
         purchase_invoices = self.mapped('purchase_invoice_ids')
