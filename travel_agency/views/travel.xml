@@ -81,30 +81,30 @@
                     </div>
                     <group name="main_group">
                         <group name="group_left">
-                            <field name="document_type" attrs="{'invisible' : [('document_type', '!=', False)], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="num_pnr" attrs="{'invisible' : [('document_type', '!=', 'amadeus')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="folder_number" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="partner_id" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}" required="True" options="{'no_create': True}"/>
+                            <field name="document_type" attrs="{'invisible' : [('document_type', '!=', False)], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="num_pnr" attrs="{'invisible' : [('document_type', '!=', 'amadeus')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="folder_number" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="partner_id" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}" required="True" options="{'no_create': True}"/>
                             <field name="partner_shipping_id" invisible="True"/>
                             <!-- <field name="transmitter" attrs="{'invisible' : [('document_type', '=', 'to')]}"/> -->
-                            <field name="transmit_date" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="followed_by" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="ref" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="transmit_date" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="followed_by" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="ref" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                         </group>
                         <group name="group_right">
-                            <field name="date_order" required="True" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="company_id" invisible="1" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="pricelist_id" options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
-                            <field name="global_label" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}"/>
+                            <field name="date_order" required="True" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="company_id" invisible="1" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="pricelist_id" options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="global_label" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                         </group>
                     </group>
                     <notebook name="order_line_notebook">
                         <page name="order_line_page" string="Travel Order Line">
 
                             <!-- Tree view of Travel Order Lines -->
-                            <field name="order_line" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}">
+                            <field name="order_line" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}">
                                 <tree editable="bottom">
                                     <field name="supplier" attrs="{'readonly' : [('product_id', '=', 196)]}" options="{'no_create': True}"/>
                                     <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
