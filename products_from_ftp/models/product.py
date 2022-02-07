@@ -92,4 +92,5 @@ class ProductTemplate(models.Model):
                 product['id_hfsql'] = id_hfsql
                 self.create(product)
 
+    comission = fields.Float(string="Commission")
     id_hfsql = fields.Char(String="ID HFSQL")

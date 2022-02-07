@@ -599,6 +599,8 @@ class TravelOrderLine(models.Model):
             else:
                 supplier.write({'active_supplier' : True})
 
+        self.percent_commission = self.product_id.commission
+
     @api.onchange('supplier')
     def onchange_supplier(self):
         # Filter product
