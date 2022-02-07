@@ -19,22 +19,22 @@ class TravelOrder(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Number', default=lambda self: _('New'), readonly=True, noupdate=True, copy=False)
-    partner_id = fields.Many2one('res.partner', string="Customer", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    partner_id = fields.Many2one('res.partner', string="Customer", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     user_id = fields.Many2one(
         'res.users', string='Person', index=True, tracking=2, default=lambda self: self.env.user,
         domain=lambda self: [('groups_id', 'in', self.env.ref('sales_team.group_sale_salesman').id)])
 
-    date_order = fields.Date(string="Date", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    date_from = fields.Date(string="From", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    date_to = fields.Date(string="To", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    date_order = fields.Date(string="Date", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    date_from = fields.Date(string="From", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    date_to = fields.Date(string="To", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
     company_id = fields.Many2one('res.company', string="Company")
 
-    transmitter = fields.Char(string="Transmitter", default="MERCURE", readonly=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    transmit_date = fields.Date(string="Date of Issue", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    followed_by = fields.Many2one('hr.employee', string="Followed by", document_type={'amadeus' : [('required', True)]}, default=lambda self: self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    ref = fields.Char(string="Reference", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    global_label = fields.Text(string="Global Label", required=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    transmitter = fields.Char(string="Transmitter", default="MERCURE", readonly=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    transmit_date = fields.Date(string="Date of Issue", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    followed_by = fields.Many2one('hr.employee', string="Followed by", document_type={'amadeus' : [('required', True)]}, default=lambda self: self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    ref = fields.Char(string="Reference", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    global_label = fields.Text(string="Global Label", required=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     state = fields.Selection([
         ('quotation', 'Quotation'), 
@@ -43,7 +43,7 @@ class TravelOrder(models.Model):
         ('canceled', 'Canceled'),
     ], string="State", default='quotation')
 
-    order_line = fields.One2many('travel.order.line', 'order_id', string="Travel Order Lines", auto_join=True, copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    order_line = fields.One2many('travel.order.line', 'order_id', string="Travel Order Lines", auto_join=True, copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     amount_untaxed = fields.Monetary(string="Amount Untaxed", store=True, readonly=True, compute="_amount_all", tracking=5)
     amount_tax = fields.Monetary(string="Amount Tax", store=True, compute="_amount_all")
@@ -99,8 +99,8 @@ class TravelOrder(models.Model):
 
     other_infos = fields.Text(string="Other Infos")
 
-    num_pnr = fields.Char(string="Number PNR", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', False)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    num_pnr = fields.Char(string="Number PNR", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     @api.depends('order_line.price_subtotal', 'order_line.amount_tax', 'order_line.amount_tva')
     def _amount_all(self):
