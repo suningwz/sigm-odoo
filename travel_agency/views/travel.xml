@@ -13,6 +13,22 @@
         <field name="company_id">1</field>
     </record>
 
+    <!-- Creating Filter in search view -->
+    <record id="to_document_filter" model="ir.ui.view">
+        <field name="name">travel.order.search</field>
+        <field name="model">travel.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="num_pnr"/>
+                <field name="folder_number"/>
+                <filter string="Billeterie" name="pnr_documents" domain="[('num_pnr', '!=', False)]"/>
+                <filter string="Tour" name="pnr_documents" domain="[('folder_number', '!=', False)]"/>
+            </search>
+        </field>
+    </record>
+
     <!-- Tree view of the Model -->
     <record id="travel_tree_view_id" model="ir.ui.view">
         <field name="name">travel.order.tree</field>
