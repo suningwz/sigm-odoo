@@ -107,7 +107,7 @@
                             <field name="order_line" attrs="{'readonly' : [('state', 'in', ('confirmed', 'canceled'))]}">
                                 <tree editable="bottom">
                                     <field name="supplier" attrs="{'readonly' : [('product_id', '=', 196)]}" options="{'no_create': True}"/>
-                                    <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', '=', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
+                                    <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
                                     <field name="name" readonly="True" invisible="1"/>
                                     <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 2)]}"/>
                                     <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 2)]}"/>
