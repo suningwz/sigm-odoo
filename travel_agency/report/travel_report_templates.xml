@@ -93,8 +93,8 @@
                         <t t-set="total" t-value="sum([line.price_total for line in doc.order_line])"/>
 
                         <tr>
-                            <td name="td_name"><span t-field="doc.global_label"/></td>
-                            <td name="td_quantity"><span t-esc="1"/></td>
+                            <td name="td_name" class="text-left"><span t-field="doc.global_label"/></td>
+                            <td name="td_quantity" class="text-left"><span t-esc="1"/></td>
                             <td name="td_total" class="text-right o_price_total"><span t-esc="total"/></td>
                         </tr>
 
