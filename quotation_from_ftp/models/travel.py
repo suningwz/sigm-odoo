@@ -68,7 +68,8 @@ class TravelOrder(models.Model):
         for row in quotations_data:
             if not row['quotation_id'] in quotations:
                 client_id = 'c' + str(row['customer_id'])
-                client = self.env['res.partner'].search([('id_hfsql', '=', client_id)])
+                # client = self.env['res.partner'].search([('id_hfsql', '=', client_id)])
+                client = self.env['res.partner'].search([('name', '=', 'Client Test')])
                 #Currency
                 currency = self.env['res.currency'].search([('name', '=', row['currency'])])
                 price_list = self.env['product.pricelist'].search([('currency_id', '=', currency.id)])
@@ -76,8 +77,9 @@ class TravelOrder(models.Model):
                 # If the client in the current line is not in odoo yet,
                 # This loop will be skiped and quotation won't be imported
                 if not len(client.ids):
-                    continue
+                    # continue
                     #client = self.env['res.partner'].create({'name' : row['client_name'], 'id_hfsql' : client_id})
+                    client = self.env['res.partner'].create({'name' : 'Client Test'})
 
                 # unique_product = self.env['product.product'].search([('name', '=', 'TOURS')])
 
