@@ -164,7 +164,7 @@
                                 </tr>
                                 <tr t-if="doc.amount_tax">
                                     <td name="td_amount_tax_label"><span>Amount Tax</span></td>
-                                    <td name="td_amount_tax"><span t-field="doc.amount_tax"/></td>
+                                    <td name="td_amount_tax" class="text-right"><span t-field="doc.amount_tax"/></td>
                                 </tr>
                                 <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
                                     <!-- <tr><td colspan="99"><span t-esc="amount_by_group"/></td></tr> -->
