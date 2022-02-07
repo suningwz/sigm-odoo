@@ -24,7 +24,7 @@
                 <field name="num_pnr"/>
                 <field name="folder_number"/>
                 <filter string="Billeterie" name="pnr_documents" domain="[('num_pnr', '!=', False)]"/>
-                <filter string="Tour" name="pnr_documents" domain="[('folder_number', '!=', False)]"/>
+                <filter string="Tour Operator" name="pnr_documents" domain="[('folder_number', '!=', False)]"/>
             </search>
         </field>
     </record>
