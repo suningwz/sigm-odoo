@@ -163,7 +163,7 @@
                                     </td>
                                 </tr>
                                 <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
-                                    <tr><td colspan="99"><span t-esc="amount_by_group"/></td></tr>
+                                    <!-- <tr><td colspan="99"><span t-esc="amount_by_group"/></td></tr> -->
                                     <tr style="">
                                         <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">
                                             <td name="td_amount_by_group_label_3">
