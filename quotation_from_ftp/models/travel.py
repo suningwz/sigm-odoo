@@ -150,7 +150,7 @@ class TravelOrder(models.Model):
                 if change:
                     quotation.write({key : quotations[id][key] for key in quotations[id] if key != 'lines'})
             else:
-                quotation = self.env['sale.order'].create({key : quotations[id][key] for key in quotations[id] if key != 'lines'})
+                quotation = self.env['travel.order'].create({key : quotations[id][key] for key in quotations[id] if key != 'lines'})
 
             # Order Line update or creation
             for line in quotations[id]['lines']:
