@@ -91,6 +91,8 @@ class TravelOrder(models.Model):
                     'document_type' : 'to',
                     'partner_id' : client.id,
                     # 'reference' : row['reference'],
+                    'global_label' : row['qh_name'],
+                    'reference' : row['qh_tourno'],
                     # 'date_order' : row['date'],
                     'currency_id': currency.id,
                     'pricelist_id' : price_list.id,
