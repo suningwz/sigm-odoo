@@ -110,7 +110,10 @@ class TravelOrder(models.Model):
 
 
             product = self.env['product.product'].search([('id_hfsql', '=', row['product_id'])])
-            supplier = self.env['res.partner'].search([('id_supplier_incadea', '=', row['supplier_id'])])
+            if row['supplier_id']:
+                supplier = self.env['res.partner'].search([('id_supplier_incadea', '=', row['supplier_id'])])
+            else:
+                supplier = None
             day = self.env['res.day'].search([('name', '=', 'Jour ' + str(row['day']))])
 
             quotations[row['quotation_id']]['lines'].append({
