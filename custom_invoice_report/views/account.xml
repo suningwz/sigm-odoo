@@ -11,22 +11,5 @@
 				</xpath>
 			</field>
 		</record>
-
-		<record id="hide_action_invoice_sent_button" model="ir.ui.view">
-			<field name="name">account.move.hide_action_invoice_sent_button.form.inherited</field>
-			<field name="model">account.move</field>
-			<field name="inherit_id" ref="account.view_move_form"/>
-			<field name="arch" type="xml">
-				<xpath expr="//button[@name='action_invoice_sent'][1]" position="replace">
-					<!-- <attribute name="attrs">{'invisible' : 1}</attribute> -->
-					<!-- <attribute name="invisible">1</attribute> -->
-					<button type="action" string="button 1"/>
-				</xpath>
-				<xpath expr="//button[@name='action_invoice_sent'][2]" position="replace">
-					<!-- <attribute name="attrs">{'invisible' : 1}</attribute> -->
-					<button type="action" string="button 2"/>
-				</xpath>
-			</field>
-		</record>
 	</data>
 </odoo>

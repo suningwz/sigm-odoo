@@ -36,6 +36,21 @@
 			</field>
 		</record>
 
+		<!-- hide action_invoice_sent button in account.move form view -->
+		<record id="account_move_hide_action_invoice_sent_button" model="ir.ui.view">
+			<field name="name">account.move.hide.action_invoice_payment.form.inherited</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_invoice_sent'][1]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//button[@name='action_invoice_sent'][2]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+			</field>
+		</record>
+
 		<!-- add print_report button in account.move form view -->
 		<record id="account_move_print_report_button" model="ir.ui.view">
 			<field name="name">account.move.print.report.button.form.inherited</field>
