@@ -102,6 +102,9 @@ class TravelOrder(models.Model):
     num_pnr = fields.Char(string="Number PNR", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
     folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
+    purchases_count = fields.Integer(string="Purchases Count", compute="_get_purchases", readonly=True)
+    purchases_id = fields.Many2many('purchase.order', string="Purchases", compute="_get_purchases", readonly=True, copy=False)
+
     @api.depends('order_line.price_subtotal', 'order_line.amount_tax', 'order_line.amount_tva')
     def _amount_all(self):
         """
@@ -144,6 +147,14 @@ class TravelOrder(models.Model):
                 fmt(l[1]['amount']), fmt(l[1]['base']),
                 len(res),
             ) for l in res]
+
+    def _get_purchases(self):
+        for order in self:
+            purchases = self.env['purchase.order'].search([('travel_order_id', '=', order.id)])
+            order.update({
+                'purchases_count' : len(purchases),
+                'purchases_id' : purchases,
+            })
 
     def _get_invoiced(self):
         for order in self:
@@ -451,6 +462,26 @@ class TravelOrder(models.Model):
             message_body = _("State : %s → %s") % (old_state, new_state)
 
             self.message_post(body=message_body)
+
+    def action_view_purchases(self):
+        purchases = self.mapped('purchases_id')
+        action = self.env.ref('purchase.purchase_rfq').read()[0]
+
+        if len(purchases) > 1:
+            action['domain'] = [('id', 'in', purchases.ids)]
+        elif len(purchases) == 1:
+            form_view = [(self.env.ref('purchase.purchase_order_form').id, 'form')]
+            if 'views' in action:
+                action['views'] = form_view + [(state, view) for state, view in action['views'] if view != 'form']
+            else:
+                action['views'] = form_view
+
+            action['res_id'] = purchases.id
+
+        else:
+            action = {'type' : 'ir.actions.act_window_close'}
+
+        return action
 
     def action_view_purchase_invoice(self):
         purchase_invoices = self.mapped('purchase_invoice_ids')
