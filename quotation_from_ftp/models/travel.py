@@ -92,7 +92,7 @@ class TravelOrder(models.Model):
                     'partner_id' : client.id,
                     # 'reference' : row['reference'],
                     'global_label' : row['global_label'],
-                    'reference' : row['reference'],
+                    'ref' : row['reference'],
                     # 'date_order' : row['date'],
                     'currency_id': currency.id,
                     'pricelist_id' : price_list.id,
