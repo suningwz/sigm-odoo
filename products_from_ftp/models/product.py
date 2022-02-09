@@ -68,12 +68,13 @@ class ProductTemplate(models.Model):
         #                            Import Products from csv file                           #
         # ------------------------------------------------------------------------------------
         for row in products_data:
-            id_hfsql = str(row['id'])
+            id_hfsql = row['id']
             record = self.search([('id_hfsql', '=', id_hfsql)])
 
             product = {
                 'id_hfsql' : id_hfsql,
                 'name' : row['name'],
+                'commission' : row['commission'],
                 'used_for' : 'to',
                 'type' : 'service',
             }
@@ -93,4 +94,4 @@ class ProductTemplate(models.Model):
                 self.create(product)
 
     commission = fields.Float(string="Commission")
-    id_hfsql = fields.Char(String="ID HFSQL")
+    id_hfsql = fields.Integer(String="ID HFSQL")
