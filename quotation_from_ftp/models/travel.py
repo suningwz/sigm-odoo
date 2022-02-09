@@ -86,6 +86,8 @@ class TravelOrder(models.Model):
                 # if not unique_product.id:
                 #     unique_product = self.env['product.product'].create({'name' : 'TOURS'})
 
+                addr = client.address_get(['delivery', 'invoice'])
+
                 quotations[row['quotation_id']] = {
                     'id_hfsql' : row['quotation_id'],
                     'document_type' : 'to',
@@ -98,6 +100,9 @@ class TravelOrder(models.Model):
                     'pricelist_id' : price_list.id,
                     'date_from' : row['from'],
                     'date_to' : row['to'],
+                    'pricelist_id' : client.property_product_pricelist and client.property_product_pricelist.id or False,
+                    'payment_term_id' : client.property_payment_term_id and client.property_payment_term_id.id or False,
+                    'partner_shipping_id' : addr['delivery'],
                     # 'lines' : [{
                     #     'id_hfsql' : row['quotation_id'],
                     #     'product_id' : unique_product.id,
