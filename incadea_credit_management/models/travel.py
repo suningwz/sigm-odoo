@@ -27,6 +27,29 @@ class TravelOrder(models.Model):
     def action_confirm_confirm(self):
         return super(TravelOrder, self).action_confirm()
 
+    # def action_confirm(self):
+    #     if not self.env.user.can_confirm_quotation:
+    #         raise UserError(_("You don't have the right to cancel an order!"))
+    #     else:
+    #         if not self.env.user.can_confirm_quotation_account_client:
+    #             if self.partner_id.general_credit >= self.partner_id.credit_limit:
+    #                 alert_msg = _("Can't confirm this quotation!\n" + \
+    #                                 "* Incadea Credit : %s\n" + \
+    #                                 "* General Credit : %s\n" + \
+    #                                 "* This Credit : %s\n" + \
+    #                                 "* Number of Quotation in Credit : %s\n") % (self.partner_id.incadea_credit, self.partner_id.general_credit, self.amount_total, len(self.search([('partner_id', '=', self.partner_id.id), ('state', '=', 'quotation')]))
+    #                 )
+    #                 raise UserError(alert_msg)
+    #             else:
+    #                 return super(TravelOrder, self).action_confirm()
+    #         else:
+    #             if self.partner_id.general_credit >= self.partner_id.credit_limit and self.partner_id.customer_type != 'account':
+    #                 raise UserError(_("You don't have the right to confirm an account customer's quotation"))
+    #             else:
+    #                 return super(TravelOrder, self).action_confirm()
+                    
+
+
     def action_confirm(self):
         if self.partner_id.general_credit >= self.partner_id.credit_limit:
             # if not self.env.user.can_confirm_quotation_even_credit_limit_is_reached:
