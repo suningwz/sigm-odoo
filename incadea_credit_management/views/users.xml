@@ -8,13 +8,13 @@
 			<field name="arch" type="xml">
 				<xpath expr="//div[@class='oe_title']" position="inside">
 					<div>
-						<field name="can_confirm_no_quotation"/>
-						<label for="can_confirm_no_quotation"/>
+						<field name="can_confirm_quotation"/>
+						<label for="can_confirm_quotation"/>
 					</div>
-					<div>
+					<!-- <div>
 						<field name="can_confirm_quotation_even_credit_limit_is_reached"/>
 						<label for="can_confirm_quotation_even_credit_limit_is_reached"/>
-					</div>
+					</div> -->
 					<div>
 						<field name="can_confirm_quotation_account_client"/>
 						<label for="can_confirm_quotation_account_client"/>
