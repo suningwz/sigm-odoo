@@ -136,7 +136,7 @@ class ResPartner(models.Model):
 class ResUsers(models.Model):
     _inherit = "res.users"
 
-    can_confirm_quotation = fields.Boolean(string="Can confirm quotation", default=True)
+    can_confirm_quotation = fields.Boolean(string="Can confirm quotation", default=False)
     # can_confirm_quotation_even_credit_limit_is_reached = fields.Boolean(string="Can confirm quotation even when credit limit is reached", default=False)
     can_confirm_quotation_account_client = fields.Boolean(string="Can confirm quotation of account client", default=False)
     can_confirm_quotation_passing_client = fields.Boolean(string="Can confirm quotation of passing client", default=False)
