@@ -21,14 +21,16 @@ class TravelOrder(models.Model):
 
     def _get_button_display_mode(self):
         for record in self:
-            record.show_confirm_button = self.env.user.can_confirm_quotation_even_credit_limit_is_reached and record.partner_id.general_credit >= record.partner_id.credit_limit and record.state == 'accepted'
+            # record.show_confirm_button = self.env.user.can_confirm_quotation_even_credit_limit_is_reached and record.partner_id.general_credit >= record.partner_id.credit_limit and record.state == 'accepted'
+            record.show_confirm_button = self.env.user.can_confirm_quotation_account_client and record.partner_id.general_credit >= record.partner_id.credit_limit and record.state == 'accepted'
 
     def action_confirm_confirm(self):
         return super(TravelOrder, self).action_confirm()
 
     def action_confirm(self):
         if self.partner_id.general_credit >= self.partner_id.credit_limit:
-            if not self.env.user.can_confirm_quotation_even_credit_limit_is_reached:
+            # if not self.env.user.can_confirm_quotation_even_credit_limit_is_reached:
+            if not self.env.user.can_confirm_quotation_account_client:
                 alert_msg = _("Can't confirm this quotation!\n" + \
                                 "* Incadea Credit : %s\n" + \
                                 "* General Credit : %s\n" + \
@@ -134,38 +136,38 @@ class ResPartner(models.Model):
 class ResUsers(models.Model):
     _inherit = "res.users"
 
-    can_confirm_no_quotation = fields.Boolean(string="Can confirm no quotation", default=True)
-    can_confirm_quotation_even_credit_limit_is_reached = fields.Boolean(string="Can confirm quotation even when credit limit is reached", default=False)
+    can_confirm_quotation = fields.Boolean(string="Can confirm quotation", default=True)
+    # can_confirm_quotation_even_credit_limit_is_reached = fields.Boolean(string="Can confirm quotation even when credit limit is reached", default=False)
     can_confirm_quotation_account_client = fields.Boolean(string="Can confirm quotation of account client", default=False)
     can_confirm_quotation_passing_client = fields.Boolean(string="Can confirm quotation of passing client", default=False)
 
-    @api.onchange('can_confirm_no_quotation')
+    @api.onchange('can_confirm_quotation')
     def _set_no_right(self):
-        if self.can_confirm_no_quotation:
+        if not self.can_confirm_quotation:
             self.update({
-                'can_confirm_quotation_even_credit_limit_is_reached' : False,
+                # 'can_confirm_quotation_even_credit_limit_is_reached' : False,
                 'can_confirm_quotation_passing_client' : False,
                 'can_confirm_quotation_account_client' : False,
             })
 
-    @api.onchange('can_confirm_quotation_even_credit_limit_is_reached')
-    def _set_right1(self):
-        if self.can_confirm_quotation_even_credit_limit_is_reached:
-            self.update({'can_confirm_no_quotation' : False})
+    # @api.onchange('can_confirm_quotation_even_credit_limit_is_reached')
+    # def _set_right1(self):
+    #     if self.can_confirm_quotation_even_credit_limit_is_reached:
+    #         self.update({'can_confirm_quotation' : False})
 
     @api.onchange('can_confirm_quotation_account_client')
     def _set_right2(self):
         if self.can_confirm_quotation_account_client:
             self.update({
-                'can_confirm_no_quotation' : False,
-                'can_confirm_quotation_even_credit_limit_is_reached' : True
+                'can_confirm_quotation' : True,
+                # 'can_confirm_quotation_even_credit_limit_is_reached' : True
             })
 
     @api.onchange('can_confirm_quotation_passing_client')
     def _set_right3(self):
         if self.can_confirm_quotation_passing_client:
             self.update({
-                'can_confirm_no_quotation' : False,
-                'can_confirm_quotation_even_credit_limit_is_reached' : True,
+                'can_confirm_quotation' : True,
+                # 'can_confirm_quotation_even_credit_limit_is_reached' : True,
                 'can_confirm_quotation_account_client' : True
             })

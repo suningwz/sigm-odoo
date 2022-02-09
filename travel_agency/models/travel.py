@@ -304,7 +304,7 @@ class TravelOrder(models.Model):
         self.message_post(body=message_body)
 
     def action_confirm(self):
-        if not self.env.user.can_confirm_no_quotation:
+        if self.env.user.can_confirm_quotation:
             # ------------------------------------------------------
             # Create Customer Invoices and confirm them
             # ------------------------------------------------------
