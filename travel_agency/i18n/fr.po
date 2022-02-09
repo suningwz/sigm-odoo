@@ -519,6 +519,10 @@ msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__name
+msgid "Number"
+msgstr "Numéro"
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__number
 msgid "Number"
 msgstr "Nombre"
