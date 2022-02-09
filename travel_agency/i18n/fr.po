@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-07 06:10+0000\n"
-"PO-Revision-Date: 2022-02-07 06:10+0000\n"
+"POT-Creation-Date: 2022-02-09 09:11+0000\n"
+"PO-Revision-Date: 2022-02-09 09:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,8 +36,18 @@ msgstr ""
 
 #. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<span>Amount Tax</span>"
+msgstr "<span>Montant Taxe</span>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
 msgid "<span>PRO FORMA # </span>"
 msgstr "<span>PRO FORMA N°</span>"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
+msgid "<span>TVA</span>"
+msgstr ""
 
 #. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
@@ -145,8 +155,8 @@ msgstr "Commandes Amadeus"
 
 #. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
-msgid "Amount"
-msgstr "Montant"
+msgid "Amount TTC"
+msgstr "Montant TTC"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_purchase_order__amount_tva
@@ -179,6 +189,11 @@ msgstr "Nombre de Pièces Jointes"
 #: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
 msgid "Back to Quotation"
 msgstr "Remettre en Devis"
+
+#. module: travel_agency
+#: model_terms:ir.ui.view,arch_db:travel_agency.to_document_filter
+msgid "Billeterie"
+msgstr ""
 
 #. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
@@ -663,7 +678,19 @@ msgid "Purchase Order Line"
 msgstr "Ligne de commande d'achat"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__purchases_id
+#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
+msgid "Purchases"
+msgstr "Achats"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__purchases_count
+msgid "Purchases Count"
+msgstr "Nombre d'achats"
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__quantity
+#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
 msgid "Quantity"
 msgstr "Quantité"
 
@@ -766,11 +793,6 @@ msgid "Tax amount by group"
 msgstr "Montant de la Taxe par groupe"
 
 #. module: travel_agency
-#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
-msgid "Taxes"
-msgstr ""
-
-#. module: travel_agency
 #: model:ir.model.fields,help:travel_agency.field_travel_order_line__display_type
 msgid "Technical field for UX purpose."
 msgstr "Champs technique à pour l'UX"
@@ -821,6 +843,7 @@ msgstr "Total Taxe"
 #: model:ir.model.fields.selection,name:travel_agency.selection__product_template__used_for__to
 #: model:ir.model.fields.selection,name:travel_agency.selection__travel_order__document_type__to
 #: model:ir.ui.menu,name:travel_agency.to_orders_menu
+#: model_terms:ir.ui.view,arch_db:travel_agency.to_document_filter
 msgid "Tour Operator"
 msgstr ""
 
@@ -867,11 +890,6 @@ msgstr "Lignes de Commande de Voyage"
 #: model:ir.model.fields,help:travel_agency.field_travel_order__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "Type d'activité d'exception enregistrée."
-
-#. module: travel_agency
-#: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
-msgid "Unit Price"
-msgstr "Transport"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_unread
