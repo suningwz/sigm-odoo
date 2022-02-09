@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-12 09:56+0000\n"
-"PO-Revision-Date: 2022-01-12 09:56+0000\n"
+"POT-Creation-Date: 2022-02-09 13:48+0000\n"
+"PO-Revision-Date: 2022-02-09 13:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: incadea_credit_management
-#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_no_quotation
-msgid "Can confirm no quotation"
-msgstr "Ne peut confirmer aucun devis"
-
-#. module: incadea_credit_management
-#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation_even_credit_limit_is_reached
-msgid "Can confirm quotation even when credit limit is reached"
-msgstr "Peut confirmer devis même si le plafond est atteint"
+#: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation
+msgid "Can confirm quotation"
+msgstr "Peut confirmer un devis"
 
 #. module: incadea_credit_management
 #: model:ir.model.fields,field_description:incadea_credit_management.field_res_users__can_confirm_quotation_account_client
