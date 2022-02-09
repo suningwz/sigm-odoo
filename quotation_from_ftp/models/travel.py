@@ -131,7 +131,7 @@ class TravelOrder(models.Model):
                 'supplier' : supplier.id if supplier else None,
                 'day' : day.id if day else None,
                 'price_unit' : row['price_unit'],
-                'commission' : row['commission'],
+                'percent_commission' : row['commission'],
                 'discount' : row['discount'],
                 'quantity' : row['quantity'],
                 'amount_tax' : row['other_tax'],
