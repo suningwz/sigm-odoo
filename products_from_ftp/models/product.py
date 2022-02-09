@@ -54,7 +54,7 @@ class ProductTemplate(models.Model):
         if state:
             session.cwd(folder_source)
 
-            filename = 'testharo_products.json'
+            filename = 'products.json'
 
             byte = BytesIO()
             session.retrbinary('RETR ' + filename, byte.write)

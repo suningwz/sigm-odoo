@@ -53,7 +53,7 @@ class TravelOrder(models.Model):
             session.cwd(folder_source)
 
             # filename = 'quotations.json'
-            filename = 'testharo_quotations.json'
+            filename = 'quotations.json'
 
             byte = BytesIO()
             session.retrbinary('RETR ' + filename, byte.write)
