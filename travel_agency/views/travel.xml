@@ -118,7 +118,7 @@
                             <field name="pricelist_id" options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="global_label" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="purchases_count"/>
-                            <field name="purchases" widget="many2many_tags"/>
+                            <field name="purchases_id" widget="many2many_tags"/>
                         </group>
                     </group>
                     <notebook name="order_line_notebook">
