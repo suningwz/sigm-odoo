@@ -21,6 +21,8 @@
             <search>
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="ref"/>
+                <field name="global_label"/>
                 <field name="num_pnr"/>
                 <field name="folder_number"/>
                 <filter string="Billeterie" name="pnr_documents" domain="[('num_pnr', '!=', False)]"/>
