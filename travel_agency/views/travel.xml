@@ -146,7 +146,7 @@
                                     <!-- disable tax_ids if product is Billet (id=3475) -->
                                     <field name="tax_ids" attrs="{'readonly' : [('product_id', '=', 3475)]}" widget="many2many_tags" options="{'no_create': True}"/>
                                     <field name="amount_tva" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"/>
-                                    <field name="amount_tax" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')]}"/>
+                                    <field name="amount_tax"/>
                                     <field name="currency_id" invisible="1"/>
                                     <!-- <field name="price_subtotal" widget="monetary" options="{'currency_field' : 'currency_id'}"/> -->
                                     <field name="price_total" widget="monetary" options="{'currency_field' : 'currency_id'}"/>
@@ -161,7 +161,7 @@
                                 <group class="oe_subtotal_footer oe_right" colspan="2" name="travel_order_total">
                                     <field name="currency_id" invisible="1"/>
                                     <field name="amount_untaxed" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
-                                    <field name="amount_tax" widget="monetary" attrs="{'invisible' : [('document_type', '=', 'to')]}" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                     <field name="amount_tva" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
                                     <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                         <label for="amount_total"/>
