@@ -245,7 +245,7 @@ class AccountMoveLine(models.Model):
         else:
             res['price_total'] = res['price_subtotal'] = subtotal
 
-        # res['price_subtotal'] += self.other_tax
+        res['price_subtotal'] += self.other_tax
         res['price_total'] += self.other_tax
 
         # In case of multi currency, round before it's use for computing debit credit
