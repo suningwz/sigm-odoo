@@ -116,7 +116,7 @@ class TravelOrder(models.Model):
                 }
 
 
-            product = self.env['product.product'].search([('id_hfsql', '=', row['product_id'])])
+            product = self.env['product.product'].search([('id_hfsql', '=', int(row['product_id'][2:]))])
             if row['supplier_id']:
                 supplier = self.env['res.partner'].search([('id_supplier_incadea', '=', row['supplier_id'])])
             else:
