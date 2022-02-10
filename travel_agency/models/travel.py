@@ -289,6 +289,7 @@ class TravelOrder(models.Model):
                     'product_qty' : line.quantity * line.number,
                     'price_unit' : line.price_unit,
                     'other_tax' : line.amount_tax,
+                    'taxes_id' : None,
                 }))
 
         for partner in purchase_orders:

@@ -813,9 +813,9 @@ msgstr "Il n'y a pas encore de commande"
 
 #. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
-msgid "This will delete the purchase order. Are you sure to continue?"
+msgid "This will cancel the purchase order. Are you sure to continue?"
 msgstr ""
-"Ceci supprimera la commande d'achat correspondant. Êtes-vous sûr de vouloir "
+"Ceci annulera la commande d'achat correspondant. Êtes-vous sûr de vouloir "
 "continuer?"
 
 #. module: travel_agency
