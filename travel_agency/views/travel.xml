@@ -128,8 +128,8 @@
                             <field name="order_line" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}">
                                 <tree editable="bottom">
                                     <!-- disable supplier if product is SERVICES FEES (id=3474) -->
-                                    <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
                                     <field name="supplier" attrs="{'readonly' : [('product_id', '=', 3474)]}" options="{'no_create': True}"/>
+                                    <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
                                     <field name="name" readonly="True" invisible="1"/>
                                     <!-- disable passenger, ticket_number, journey if product is SERVICES FEES (id=3474) -->
                                     <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 3474)]}"/>
