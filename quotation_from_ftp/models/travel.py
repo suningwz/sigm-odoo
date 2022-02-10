@@ -128,7 +128,7 @@ class TravelOrder(models.Model):
                 'product_id' : product.id,
                 'name' : product.name if product.name else '',
                 # 'display_type' : 'line_section'
-                'supplier' : supplier.id if supplier else None,
+                # 'supplier' : supplier.id if supplier else None,
                 'day' : day.id if day else None,
                 'price_unit' : row['price_unit'],
                 'percent_commission' : row['commission'],
