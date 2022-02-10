@@ -172,6 +172,7 @@
                             </group>
                         </page>
                         <page name="other_info_page" string="Other Informations">
+                            <label for="other_infos"/>
                             <field name="other_infos"/>
                         </page>
                     </notebook>
