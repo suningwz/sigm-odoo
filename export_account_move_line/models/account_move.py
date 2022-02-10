@@ -66,13 +66,23 @@ class AccountMoveLine(models.Model):
             'N° Séquence' : [],
             'Date Compta.' : [],
             'N° Document' : [],
+            'N° Doc. externe' : [],
             'N° compte général' : [],
+            'Code établ.' : [],
+            'Code département' : [],
+            'Code marque' : [],
             'Type origine' : [],
+            'N° origine' : [],
+            'VIN' : [],
+            'N° contrat atelier' : [],
             'Désignation' : [],
             'Montant' : [],
             'Montant ouvert' : [],
             'Montant TVA' : [],
             'Type compta. TVA' : [],
+            'Groupe compta.produit TVA' : [],
+            'Groupe compta. marché TVA' : [],
+            'Groupe compta. produit' : [],
             'Code journal' : [],
             'Groupe compta. marché' : [],
         }
@@ -81,13 +91,23 @@ class AccountMoveLine(models.Model):
             data['N° Séquence'].append(line.id)
             data['Date Compta.'].append(line.date)
             data['N° Document'].append(line.move_id.name)
+            data['N° Doc. externe'].append('')
             data['N° compte général'].append(line.account_id.name)
+            data['Code établ.'].append('')
+            data['Code département'].append('')
+            data['Code marque'].append('')
             data['Type origine'].append(line.journal_id.name)
+            data['N° origine'].append('')
+            data['VIN'].append('')
+            data['N° contrat atelier'].append('')
             data['Désignation'].append(line.name)
             data['Montant'].append(line.balance)
             data['Montant ouvert'].append(line.balance)
             data['Montant TVA'].append(sum(line.price_unit * line.quantity * tax.amount / 100 for tax in line.tax_ids))
             data['Type compta. TVA'].append(', '.join([tax.type_tax_use for tax in line.tax_ids]))
+            data['Groupe compta.produit TVA'].append('')
+            data['Groupe compta. marché TVA'].append('')
+            data['Groupe compta. produit'].append('')
             data['Code journal'].append(line.journal_id.type)
             data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
         df = pd.DataFrame(data)
