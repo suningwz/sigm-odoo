@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-09 09:11+0000\n"
-"PO-Revision-Date: 2022-02-09 09:11+0000\n"
+"POT-Creation-Date: 2022-02-11 07:07+0000\n"
+"PO-Revision-Date: 2022-02-11 07:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -283,6 +283,16 @@ msgid "Date"
 msgstr ""
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__date_from
+msgid "Date From"
+msgstr "Date De"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__date_to
+msgid "Date To"
+msgstr "Date À"
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__transmit_date
 msgid "Date of Issue"
 msgstr "Date d'émission"
@@ -372,11 +382,6 @@ msgstr "Abonnés (Partenaires)"
 #: model:ir.model.fields,help:travel_agency.field_travel_order__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
-
-#. module: travel_agency
-#: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_from
-msgid "From"
-msgstr "De"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_account_bank_statement_line__global_label
@@ -519,13 +524,9 @@ msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__name
-msgid "Number"
-msgstr "Numéro"
-
-#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__number
 msgid "Number"
-msgstr "Nombre"
+msgstr "Numéro"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__num_pnr
@@ -597,6 +598,21 @@ msgstr "Autres Taxes"
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger
 msgid "Passenger"
 msgstr "Passager"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_firstname
+msgid "Passenger's Firstname"
+msgstr "Nom du Passager"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_fullname
+msgid "Passenger's Fullname"
+msgstr "Nom complet du Passager"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_lastname
+msgid "Passenger's Lastname"
+msgstr "Prénom du Passager"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__payment_term_id
@@ -683,7 +699,6 @@ msgstr "Ligne de commande d'achat"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__purchases_id
-#: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
 msgid "Purchases"
 msgstr "Achats"
 
@@ -822,11 +837,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__ticket_number
 msgid "Ticket Number"
 msgstr "Numéro de Billet"
-
-#. module: travel_agency
-#: model:ir.model.fields,field_description:travel_agency.field_travel_order__date_to
-msgid "To"
-msgstr "À"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__price_total
