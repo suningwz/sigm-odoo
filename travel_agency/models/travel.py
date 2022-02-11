@@ -594,6 +594,19 @@ class TravelOrderLine(models.Model):
     day = fields.Many2one('res.day', string="Day")
 
     supplier = fields.Many2one('res.partner', string="Supplier", domain="[('id_supplier_incadea', '!=', False), ('active_supplier', '=', True)]")
+
+    date_from = fields.Date(string="Date From")
+    date_to = fields.Date(string="Date To")
+
+    # passenger_title = fields.Char(string="Passenger Title")
+    passenger_firstname = fields.Char(string="Passenger's Firstname")
+    passenger_lastname = fields.Char(string="Passenger's Lastname")
+    passenger_fullname = fields.Char(string="Passenger's Fullname", compute="_compute_fullname")
+
+    def _compute_fullname(self):
+        for record in self:
+            record = ' '.join([item for item in (record.passenger_firstname, record.passenger_lastname) if item])
+
     # --------------------------------------------------------
     # Compute amount commission value
     # --------------------------------------------------------

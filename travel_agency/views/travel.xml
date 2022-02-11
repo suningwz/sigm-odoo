@@ -108,8 +108,8 @@
                             <field name="partner_id" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}" required="True" options="{'no_create': True}"/>
                             <field name="partner_shipping_id" invisible="True"/>
                             <!-- <field name="transmitter" attrs="{'invisible' : [('document_type', '=', 'to')]}"/> -->
-                            <field name="transmit_date" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
-                            <field name="followed_by" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="transmit_date" attrs="{'invisible' : [('document_type', '!=', 'amadeus')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="followed_by" attrs="{'invisible' : [('document_type', '!=', 'amadeus')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <!-- <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/> -->
                             <!-- <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/> -->
                             <field name="ref" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
@@ -132,20 +132,24 @@
                                     <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
                                     <field name="name" readonly="True" invisible="1"/>
                                     <!-- disable passenger, ticket_number, journey if product is SERVICES FEES (id=3474) -->
-                                    <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '=', 'to')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="passenger_firstname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="passenger_lastname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="date_from" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus'), 'readonly' : [('product_id', '=', 3474)]]}"/>
+                                    <field name="date_to" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus'), 'readonly' : [('product_id', '=', 3474)]]}"/>
                                     <!-- disable custom_descri if product is Billet (id=3475) -->
                                     <field name="custom_descri" attrs="{'readonly' : [('product_id', '=', 3475)]}"/>
-                                    <field name="quantity" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')], 'readonly' : [('parent.document_type', '=', 'amadeus')]}"/>
-                                    <field name="number" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')], 'readonly' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="quantity" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')], 'readonly' : [('parent.document_type', '!=', 'to')]}"/>
+                                    <field name="number" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')], 'readonly' : [('parent.document_type', '!=', 'to')]}"/>
                                     <field name="price_unit"/>
-                                    <field name="percent_commission" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"/>
-                                    <field name="amount_commission" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"  readonly="True"/>
-                                    <field name="day" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}" options="{'no_create' : False}"/>
+                                    <field name="percent_commission" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"/>
+                                    <field name="amount_commission" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"  readonly="True"/>
+                                    <field name="day" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}" options="{'no_create' : False}"/>
                                     <!-- disable tax_ids if product is Billet (id=3475) -->
                                     <field name="tax_ids" attrs="{'readonly' : [('product_id', '=', 3475)]}" widget="many2many_tags" options="{'no_create': True}"/>
-                                    <field name="amount_tva" attrs="{'column_invisible' : [('parent.document_type', '=', 'amadeus')]}"/>
+                                    <field name="amount_tva" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"/>
                                     <field name="amount_tax"/>
                                     <field name="currency_id" invisible="1"/>
                                     <!-- <field name="price_subtotal" widget="monetary" options="{'currency_field' : 'currency_id'}"/> -->
