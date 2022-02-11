@@ -80,11 +80,12 @@ class AccountMoveLine(models.Model):
             'Montant ouvert' : [],
             'Montant TVA' : [],
             'Type compta. TVA' : [],
-            'Groupe compta.produit TVA' : [],
             'Groupe compta. marché TVA' : [],
+            'Groupe compta. produit TVA' : [],
+            'Groupe compta. marché' : [],
             'Groupe compta. produit' : [],
             'Code journal' : [],
-            'Groupe compta. marché' : [],
+            'Code Utilisateur' : [],
         }
 
         for line in move_lines:
@@ -105,11 +106,12 @@ class AccountMoveLine(models.Model):
             data['Montant ouvert'].append(line.balance)
             data['Montant TVA'].append(sum(line.price_unit * line.quantity * tax.amount / 100 for tax in line.tax_ids))
             data['Type compta. TVA'].append(', '.join([tax.type_tax_use for tax in line.tax_ids]))
-            data['Groupe compta.produit TVA'].append('')
             data['Groupe compta. marché TVA'].append('')
+            data['Groupe compta. produit TVA'].append('')
+            data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
             data['Groupe compta. produit'].append('')
             data['Code journal'].append(line.journal_id.type)
-            data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
+            data['Code Utilisateur'].append('')
         df = pd.DataFrame(data)
         # ----------------------------------------------
 
