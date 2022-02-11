@@ -26,8 +26,8 @@ class TravelOrder(models.Model):
         domain=lambda self: [('groups_id', 'in', self.env.ref('sales_team.group_sale_salesman').id)])
 
     date_order = fields.Date(string="Date", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    date_from = fields.Date(string="From", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    date_to = fields.Date(string="To", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    # date_from = fields.Date(string="From", default=dt.strftime(dt.now().date(), '%Y-%m-%d'), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    # date_to = fields.Date(string="To", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
     company_id = fields.Many2one('res.company', string="Company")
 
     transmitter = fields.Char(string="Transmitter", default="MERCURE", readonly=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})

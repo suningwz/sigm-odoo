@@ -110,8 +110,8 @@
                             <!-- <field name="transmitter" attrs="{'invisible' : [('document_type', '=', 'to')]}"/> -->
                             <field name="transmit_date" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="followed_by" attrs="{'invisible' : [('document_type', '=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
-                            <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
-                            <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <!-- <field name="date_from" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/> -->
+                            <!-- <field name="date_to" attrs="{'invisible' : [('document_type', '!=', 'to')], 'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/> -->
                             <field name="ref" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                         </group>
                         <group name="group_right">
