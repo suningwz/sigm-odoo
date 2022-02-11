@@ -57,39 +57,115 @@ class AccountMoveLine(models.Model):
         # df = pd.DataFrame(data, columns=['N° Séquence', 'Date Compta.', 'N° Document', 'N° compte général', 'Type origine', 'Désignation', 'Montant', 'Montant ouvert', 'Groupe compta. marché'])
 
         # ----------------------------------------------
-        # Instead of query
+        # Instead of query (based on Ecritures Incadea)
         # ----------------------------------------------
+        # invoices_id = self.env['account.move'].search([('move_type', 'in', ('in_invoice', 'out_invoice', 'in_refund', 'out_refund'))]).ids
+        # move_lines = self.env['account.move.line'].search([('move_id', 'in', invoices_id)])
+
+        # data = {
+        #     'N° Séquence' : [],
+        #     'Date Compta.' : [],
+        #     'N° Document' : [],
+        #     'N° Doc. externe' : [],
+        #     'N° compte général' : [],
+        #     'Code établ.' : [],
+        #     'Code département' : [],
+        #     'Code marque' : [],
+        #     'Type origine' : [],
+        #     'N° origine' : [],
+        #     'VIN' : [],
+        #     'N° contrat atelier' : [],
+        #     'Désignation' : [],
+        #     'Montant' : [],
+        #     'Montant ouvert' : [],
+        #     'Montant TVA' : [],
+        #     'Type compta. TVA' : [],
+        #     'Groupe compta. marché TVA' : [],
+        #     'Groupe compta. produit TVA' : [],
+        #     'Groupe compta. marché' : [],
+        #     'Groupe compta. produit' : [],
+        #     'Code journal' : [],
+        #     'Code Utilisateur' : [],
+        # }
+
+        # for line in move_lines:
+        #     data['N° Séquence'].append(line.id)
+        #     data['Date Compta.'].append(line.date)
+        #     data['N° Document'].append(line.move_id.name)
+        #     data['N° Doc. externe'].append('')
+        #     data['N° compte général'].append(line.account_id.name)
+        #     data['Code établ.'].append('')
+        #     data['Code département'].append('')
+        #     data['Code marque'].append('')
+        #     data['Type origine'].append(line.journal_id.name)
+        #     data['N° origine'].append('')
+        #     data['VIN'].append('')
+        #     data['N° contrat atelier'].append('')
+        #     data['Désignation'].append(line.name)
+        #     data['Montant'].append(line.balance)
+        #     data['Montant ouvert'].append(line.balance)
+        #     data['Montant TVA'].append(sum(line.price_unit * line.quantity * tax.amount / 100 for tax in line.tax_ids))
+        #     data['Type compta. TVA'].append(', '.join([tax.type_tax_use for tax in line.tax_ids]))
+        #     data['Groupe compta. marché TVA'].append('')
+        #     data['Groupe compta. produit TVA'].append('')
+        #     data['Groupe compta. marché'].append('C10' if line.partner_id.in_group else 'C05')
+        #     data['Groupe compta. produit'].append('')
+        #     data['Code journal'].append(line.journal_id.type)
+        #     data['Code Utilisateur'].append('')
+        # df = pd.DataFrame(data)
+        # ----------------------------------------------
+
+        # -------------------------------------------------------
+        # Instead of query (based on Ecritures LOCPRO Attendues)
+        # -------------------------------------------------------
         invoices_id = self.env['account.move'].search([('move_type', 'in', ('in_invoice', 'out_invoice', 'in_refund', 'out_refund'))]).ids
         move_lines = self.env['account.move.line'].search([('move_id', 'in', invoices_id)])
 
         data = {
-            'N° Séquence' : [],
-            'Date Compta.' : [],
-            'N° Document' : [],
-            'N° Doc. externe' : [],
-            'N° compte général' : [],
-            'Code établ.' : [],
-            'Code département' : [],
-            'Code marque' : [],
-            'Type origine' : [],
-            'N° origine' : [],
-            'VIN' : [],
-            'N° contrat atelier' : [],
-            'Désignation' : [],
-            'Montant' : [],
-            'Montant ouvert' : [],
-            'Montant TVA' : [],
-            'Type compta. TVA' : [],
-            'Groupe compta. marché TVA' : [],
-            'Groupe compta. produit TVA' : [],
-            'Groupe compta. marché' : [],
-            'Groupe compta. produit' : [],
-            'Code journal' : [],
-            'Code Utilisateur' : [],
+            'Journal Template Name' : ['Nom modèle feuille'],
+            'Line No.' : ['N° ligne'],
+            'Account Type' : ['Type compte'],
+            'Account No.' : ['N° compte'],
+            'Posting Date' : ['Date comptabilisation'],
+            'Document Type' : ['Type document'],
+            'Document No.' : ['N° Document'],
+            'Description' : ['Désignation'],
+            'VAT%' : ['%TVA'],
+            'Currency Code' : ['Code devise'],
+            'Amount' : ['Montant'],
+            'Amount(LCY)' : ['Montant DS'],
+            'Currency Factor' : ['Facteur devise'],
+            'Inv. Discount(LCY)' : ['Remises facture DS'],
+            'Sell-to/Buy-from No.' : ["N° Donneur/Preneur d'ordre"],
+            'Posting Group' : ['Groupe comptabilisation'],
+            'Department Code' : ['Code département'],
+            'Make Code' : ['Code marque'],
+            'Salepers./Purch. Code' : ['Code vendeur/acheteur'],
+            'Source Code' : ['Code journal'],
+            'System-Created Entry' : ['Ecriture système'],
+            'Due Date' : ["Date d'échéance"],
+            'Journal Batch Name' : ['Nom feuille'],
+            'Posting Type' : ['Type comptabilisation'],
+            'Document Date' : ['Date document'],
+            'External Document No.' : ['N° Doc. externe'],
+            'FA Posting Date' : ['Date compta. immo.'],
+            'FA Posting Type' : ['Type compta. immo.'],
+            'Depreciation Book Code' : ["Code loi d'ammortissement"],
+            'Branch Code' : ['Code établissement'],
+            'Main Area' : ['Zone principale'],
+            'VIN' : ['VIN'],
+            'Service Contract No.' : ['N° contrat atelier'],
+            'Exclude Adjust. Exch. Rates' : ['Exclure ajustement taux de change'],
+            'General Business Posting Group' : ['Groupe compta marché'],
+            'Updated' : ['Traité'],
+            'Updated Error' : ['Erreur'],
+            'To Update' : ['A traiter'],
+            'User ID' : ['Code utilisateur'],
+            'Number Of Errors' : ["Nombre d'erreurs"],
+            'Comments' : ['Commentaires'],
         }
 
         for line in move_lines:
-            data['N° Séquence'].append(line.id)
             data['Date Compta.'].append(line.date)
             data['N° Document'].append(line.move_id.name)
             data['N° Doc. externe'].append('')
@@ -112,6 +188,48 @@ class AccountMoveLine(models.Model):
             data['Groupe compta. produit'].append('')
             data['Code journal'].append(line.journal_id.type)
             data['Code Utilisateur'].append('')
+
+            data['Journal Template Name'].append('')
+            data['Line No.'].append(line.id)
+            data['Account Type'].append('Client' if line.account_id.code[:3] == '411' else 'Fournisseur' if line.account_id.code[:3] == '401' else 'Général')
+            data['Account No.'].append(line.account_id.code)
+            data['Posting Date'].append(line.date)
+            data['Document Type'].append('Facture' if line.move_id.move_type[3:] == 'invoice' else 'Avoir' if line.move_id.move_type[3:] == 'refund' else '')
+            data['Document No.'].append(line.move_id.name)
+            data['Description'].append(line.name)
+            data['VAT%'].append(line.taxes_id.amount)
+            data['Currency Code'].append('' if not line.currency_id else line.currency_id.name)
+            data['Amount'].append(line.balance)
+            data['Amount(LCY)'].append('')
+            data['Currency Factor'].append('')
+            data['Inv. Discount(LCY)'].append('')
+            data['Sell-to/Buy-from No.'].append('')
+            data['Posting Group'].append('')
+            data['Department Code'].append('')
+            data['Make Code'].append('')
+            data['Salepers./Purch. Code'].append('')
+            data['Source Code'].append(line.journal_id.type)
+            data['System-Created Entry'].append('')
+            data['Due Date'].append(line.date_maturity)
+            data['Journal Batch Name'].append('')
+            data['Posting Type'].append('')
+            data['Document Date'].append(line.move_id.invoice_date)
+            data['External Document No.'].append('')
+            data['FA Posting Date'].append('')
+            data['FA Posting Type'].append('')
+            data['Depreciation Book Code'].append('')
+            data['Branch Code'].append('')
+            data['Main Area'].append('')
+            data['VIN'].append('')
+            data['Service Contract No.'].append('')
+            data['Exclude Adjust. Exch. Rates'].append('')
+            data['General Business Posting Group'].append('C10' if line.partner_id.in_group else 'C05')
+            data['Updated'].append('')
+            data['Updated Error'].append('')
+            data['To Update'].append('')
+            data['User ID'].append('')
+            data['Number Of Errors'].append('')
+            data['Comments'].append('')
         df = pd.DataFrame(data)
         # ----------------------------------------------
 
