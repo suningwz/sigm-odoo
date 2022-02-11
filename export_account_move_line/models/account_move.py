@@ -174,7 +174,7 @@ class AccountMoveLine(models.Model):
             data['Document Type'].append('Facture' if line.move_id.move_type[3:] == 'invoice' else 'Avoir' if line.move_id.move_type[3:] == 'refund' else '')
             data['Document No.'].append(line.move_id.name)
             data['Description'].append(line.name)
-            data['VAT%'].append(line.taxes_id.amount)
+            data['VAT%'].append(line.tax_ids.amount)
             data['Currency Code'].append('' if not line.currency_id else line.currency_id.name)
             data['Amount'].append(line.balance)
             data['Amount(LCY)'].append('')
