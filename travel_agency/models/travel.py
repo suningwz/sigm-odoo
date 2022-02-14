@@ -105,6 +105,14 @@ class TravelOrder(models.Model):
     purchases_count = fields.Integer(string="Purchases Count", compute="_get_purchases", readonly=True)
     purchases_id = fields.Many2many('purchase.order', string="Purchases", compute="_get_purchases", readonly=True, copy=False)
 
+    record_locator = fields.Char(string="Record Locator")
+    agent_sign_booking = fields.Char(string="Agent Sign Booking")
+    service_carrier = fields.Char(string="Service Carrier")
+    flight_num = fields.Char(string="Flight Number")
+    bkg_class = fields.Char(string="Bkg Class")
+    ama_name = fields.Char(string="Ama Name")
+    ac_rec_loc = fields.Char(string="Ac Rec Loc")
+
     @api.depends('order_line.price_subtotal', 'order_line.amount_tax', 'order_line.amount_tva')
     def _amount_all(self):
         """
@@ -595,8 +603,18 @@ class TravelOrderLine(models.Model):
 
     supplier = fields.Many2one('res.partner', string="Supplier", domain="[('id_supplier_incadea', '!=', False), ('active_supplier', '=', True)]")
 
+    status = fields.Selection([
+        ('issued', 'Issued'),
+        ('reissued', 'Reissued'),
+        ('refund', 'Refund'),
+        ('void', 'Void')
+    ], string="Status")
+
     date_from = fields.Date(string="Departure Date")
+    departure_time = fields.Time(string="Departure Time")
+
     date_to = fields.Date(string="Arrival Date")
+    arrival_time = fields.Time(string="Arrival Time")
 
     # passenger_title = fields.Char(string="Passenger Title")
     passenger_firstname = fields.Char(string="Passenger's Firstname")
@@ -605,6 +623,11 @@ class TravelOrderLine(models.Model):
 
     start_point = fields.Char(string="Departure")
     end_point = fields.Char(string="Arrival")
+
+    baggage_allow = fields.Char(string="Baggage Allow")
+    terminal_check_in = fields.Char(string="Terminal Check In")
+    terminal_arrival = fields.Char(string="Terminal Arrival")
+
 
     def _compute_fullname(self):
         for record in self:
