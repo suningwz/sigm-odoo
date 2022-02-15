@@ -1,25 +1,25 @@
 # ############################################################################################################
 #                                   This module was created by Muriel Rémi                                   #
-#                                      Creation date: 28 September 2021                                      #
+#                                       Creation date: 15 February 2022                                      #
 # ############################################################################################################
 # -*- coding: utf-8 -*-
 {
-    'name' : 'Import Incadea Clients from an FTP Server',
+    'name' : 'Add No G field in Res Partner',
     'version' : '1.1',
-    'summary': 'Import Incadea Clients from an FTP Server',
+    'summary': 'Add No G field in Res Partner',
     'sequence': -20,
     'author' : 'Muriel Rémi Cyr',
     'description': """
-Contacts from Incadea
-=====================
-This module is created to allow odoo to import Incadea clients from an FTP server...
+        Add No G field in Res Partner
+        =============================
+        This module adds no_g field in res.partner model to define side account of the partner
     """,
     'category': '',
     'website': 'https://www.odoo.com/page/billing',
     'images' : [],
-    'depends' : ['base', 'group_account_managing', 'add_no_g_field_in_res_partner'],
+    'depends' : ['base'],
     'data': [
-        'data/cron.xml',
+        "views/partner.xml",
     ],
     'demo': [],
     'qweb': [],
