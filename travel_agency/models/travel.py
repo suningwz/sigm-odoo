@@ -184,20 +184,20 @@ class TravelOrder(models.Model):
         # Create name of each travel order lines
         # -----------------------------------------------------
         # raise UserError(str(vals))
-        # if 'order_line' in vals:
-        #     for line in vals['order_line']:
-        #         values = line[2]
-        #         name_elements = [
-        #             '' if not 'journey' in values else values['journey'], 
-        #             '' if not 'ticket_number' in values else values['ticket_number'], 
-        #             '' if not 'passenger' in values else values['passenger'], 
-        #             '' if not 'custom_descri' in values else values['custom_descri']
-        #         ]
-        #         name_elements = [item for item in name_elements if item]
-        #         if any(name_elements):
-        #             values.update({'name' : ' - '.join(name_elements)})
-        #         else:
-        #             values.update({'name' : self.env['product.product'].browse(values['product_id']).name})
+        if 'order_line' in vals:
+            for line in vals['order_line']:
+                values = line[2]
+                name_elements = [
+                    '' if not 'journey' in values else values['journey'], 
+                    '' if not 'ticket_number' in values else values['ticket_number'], 
+                    '' if not 'passenger' in values else values['passenger'], 
+                    '' if not 'custom_descri' in values else values['custom_descri']
+                ]
+                name_elements = [item for item in name_elements if item]
+                if any(name_elements):
+                    values.update({'name' : ' - '.join(name_elements)})
+                else:
+                    values.update({'name' : self.env['product.product'].browse(values['product_id']).name})
         # -----------------------------------------------------
 
         return super(TravelOrder, self).create(vals)
@@ -648,7 +648,7 @@ class TravelOrderLine(models.Model):
             record.passenger_fullname = ' '.join([item for item in (record.passenger_firstname, record.passenger_lastname) if item])
             if record.passenger_fullname:
                 # record.passenger_fullname = ' '.join([item in [dict(record._fields['passenger_title'].selection).get(self.record), record.passenger_fullname] if item])
-                record.passenger_fullname = ' '.join([item for item in (dict(record._fields['passenger_title'].selection).get(self.passenger_title), record.passenger_fullname) if item])
+                record.passenger_fullname = ' '.join([item for item in (dict(record._fields['passenger_title'].selection).get(record.passenger_title), record.passenger_fullname) if item])
             else:
                 record.passenger_fullname = ''
 
