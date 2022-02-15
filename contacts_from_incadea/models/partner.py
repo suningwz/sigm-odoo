@@ -18,6 +18,7 @@ class ResPartner(models.Model):
 
     _inherit = "res.partner"
     id_incadea = fields.Char(String="ID Incadea")
+    no_g = fields.Char(string="No G")
 
     def import_from_incadea(self):
         __dir__ = os.path.dirname(__file__)
@@ -85,7 +86,8 @@ class ResPartner(models.Model):
                     'company_type' : 'company' if row['CustomerType_G'] == 'Société' else 'person',
                     'lang' : 'fr_FR' if row['LanguageCode_G'] == 'FR' else 'en_US' if row['LanguageCode_G'] == 'EN' else '',
                     # 'customer_rank' : int(row['type'] == 'customer'),
-                    # 'supplier_rank' : int(row['type'] == 'supplier')
+                    # 'supplier_rank' : int(row['type'] == 'supplier'),
+                    'no_g' : str(row['No_G'])
                 }
                 
                 if len(record.ids):
