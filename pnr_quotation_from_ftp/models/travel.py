@@ -93,7 +93,7 @@ class TravelOrder(models.Model):
                     'pnr_number' : row['Pnr'],
                     'num_pnr' : row['Pnr'],
                     'transmitter' : ' '.join(row['Emission'].split()),
-                    'transmit_date' : dt.strptime(row["Date d'émission"],'%Y-%m-%d') if row["Date d'émission"] != '' else dt.today(),
+                    'transmit_date' : dt.strptime(row["Date d'émission"],'%d-%m-%Y') if row["Date d'émission"] != '' else dt.today(),
                     'followed_by' : follower,
                     'ref' : row['Réf. Cde'],
                     'date_order' : dt.today(),# dt.strptime(row["Echéance"], '%Y-%m-%d') if row["Echéance"] != '' else ,
