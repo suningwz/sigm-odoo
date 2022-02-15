@@ -636,6 +636,7 @@ class TravelOrderLine(models.Model):
     terminal_arrival = fields.Char(string="Terminal Arrival")
 
 
+    @api.depends('passenger_title', 'passenger_firstname', 'passenger_lastname')
     def _compute_fullname(self):
         for record in self:
             record.passenger_fullname = ' '.join([item for item in (record.passenger_lastname) if item])
