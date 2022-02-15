@@ -747,6 +747,7 @@ class TravelOrderLine(models.Model):
 
     @api.onchange('start_point')
     def onchange_departure(self):
+        self.start_point = '' if not self.start_point else self.start_point.upper()
         name = []
         if self.journey:
             name.append(self.journey)
@@ -760,6 +761,7 @@ class TravelOrderLine(models.Model):
 
     @api.onchange('end_point')
     def onchange_arrival(self):
+        self.end_point = '' if not self.end_point else self.end_point.upper()
         name = []
         if self.journey:
             name.append(self.journey)
