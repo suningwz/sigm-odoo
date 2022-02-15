@@ -241,4 +241,4 @@ class AccountMoveLine(models.Model):
         session.cwd(_CONFIG_['csvfiles']['dest'])
 
         # Sending the file
-        session.storbinary('STOR Ecritures_Comptables.csv', bio)
+        session.storbinary('STOR Ecritures_Comptables(test).csv', bio)
