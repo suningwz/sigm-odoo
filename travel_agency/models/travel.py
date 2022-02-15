@@ -618,7 +618,12 @@ class TravelOrderLine(models.Model):
     date_to = fields.Date(string="Arrival Date")
     arrival_time = fields.Char(string="Arrival Time")
 
-    # passenger_title = fields.Char(string="Passenger Title")
+    passenger_title = fields.Selection([
+        ('mr', 'MR'),
+        ('mrs', 'MRS'),
+        ('mss', 'MSS'),
+        ('chd', 'CHD'),
+    ], string="Passenger Title")
     passenger_firstname = fields.Char(string="Passenger's Firstname")
     passenger_lastname = fields.Char(string="Passenger's Lastname")
     passenger_fullname = fields.Char(string="Passenger's Fullname", compute="_compute_fullname")
