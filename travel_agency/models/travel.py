@@ -743,8 +743,21 @@ class TravelOrderLine(models.Model):
             name.append(self.custom_descri)
         self.name = " - ".join(name)
 
-    @api.onchange('journey')
-    def onchange_journey(self):
+    @api.onchange('start_point')
+    def onchange_departure(self):
+        name = []
+        if self.journey:
+            name.append(self.journey)
+        if self.ticket_number:
+            name.append(self.ticket_number)
+        if self.passenger_fullname:
+            name.append(self.passenger_fullname)
+        if self.custom_descri:
+            name.append(self.custom_descri)
+        self.name = " - ".join(name)
+
+    @api.onchange('end_point')
+    def onchange_arrival(self):
         name = []
         if self.journey:
             name.append(self.journey)
