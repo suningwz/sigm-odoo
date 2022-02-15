@@ -18,7 +18,7 @@ class ResPartner(models.Model):
 
     _inherit = "res.partner"
     id_incadea = fields.Char(String="ID Incadea")
-    # no_g = fields.Char(string="No G")
+    no_g = fields.Char(string="No G")
 
     def import_from_incadea(self):
         __dir__ = os.path.dirname(__file__)

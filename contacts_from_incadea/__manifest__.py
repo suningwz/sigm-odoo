@@ -17,9 +17,10 @@ This module is created to allow odoo to import Incadea clients from an FTP serve
     'category': '',
     'website': 'https://www.odoo.com/page/billing',
     'images' : [],
-    'depends' : ['base', 'group_account_managing', 'add_no_g_field_in_res_partner'],
+    'depends' : ['base', 'group_account_managing'],
     'data': [
         'data/cron.xml',
+        'views/partner.xml',
     ],
     'demo': [],
     'qweb': [],
