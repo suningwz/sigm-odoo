@@ -612,7 +612,7 @@ msgstr "Passager"
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_firstname
 msgid "Passenger's Firstname"
-msgstr "Nom du Passager"
+msgstr "Prénom du Passager"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_fullname
@@ -622,7 +622,7 @@ msgstr "Nom complet du Passager"
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_lastname
 msgid "Passenger's Lastname"
-msgstr "Prénom du Passager"
+msgstr "Nom du Passager"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__payment_term_id

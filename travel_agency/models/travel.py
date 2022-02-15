@@ -699,7 +699,7 @@ class TravelOrderLine(models.Model):
                 product.write({'active_product' : True})
 
     @api.onchange('passenger_firstname')
-    def onchange_passenger(self):
+    def onchange_firstname(self):
         name = []
         if self.journey:
             name.append(self.journey)
@@ -712,7 +712,7 @@ class TravelOrderLine(models.Model):
         self.name = " - ".join(name)
 
     @api.onchange('passenger_lastname')
-    def onchange_passenger(self):
+    def onchange_lastname(self):
         name = []
         if self.journey:
             name.append(self.journey)
