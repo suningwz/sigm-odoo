@@ -642,7 +642,7 @@ class TravelOrderLine(models.Model):
             record.passenger_fullname = ' '.join([item for item in (record.passenger_firstname, record.passenger_lastname) if item])
             if record.passenger_fullname:
                 # record.passenger_fullname = ' '.join([item in [dict(record._fields['passenger_title'].selection).get(self.record), record.passenger_fullname] if item])
-                record.passenger_fullname = ' '.join([item for item in (dict(record._fields['passenger_title'].selection).get(self.title), record.passenger_fullname) if item])
+                record.passenger_fullname = ' '.join([item for item in (dict(record._fields['passenger_title'].selection).get(self.passenger_title), record.passenger_fullname) if item])
             else:
                 record.passenger_fullname = ''
 
