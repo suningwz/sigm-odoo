@@ -19,7 +19,7 @@
     'images' : [],
     'depends' : ['base'],
     'data': [
-        # "views/partner.xml",
+        "views/partner.xml",
     ],
     'demo': [],
     'qweb': [],
