@@ -313,136 +313,136 @@ class TravelOrder(models.Model):
         self.message_post(body=message_body)
 
     def action_confirm(self):
-        if self.env.user.can_confirm_quotation:
-            # ------------------------------------------------------
-            # Create Customer Invoices and confirm them
-            # ------------------------------------------------------
-            invoice_values = {
-                'partner_id' : self.partner_id.id,
-                'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'),
-                'global_label' : self.global_label,
-                'move_type' : 'out_invoice',
-                'journal_id' : 1,
-                # 'company_id' : self.company_id.id,
-                'invoice_origin' : self.name,
-                'currency_id' : self.currency_id.id,
-                'invoice_line_ids' : [],
-            }
+        # if self.env.user.can_confirm_quotation:
+        # ------------------------------------------------------
+        # Create Customer Invoices and confirm them
+        # ------------------------------------------------------
+        invoice_values = {
+            'partner_id' : self.partner_id.id,
+            'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'),
+            'global_label' : self.global_label,
+            'move_type' : 'out_invoice',
+            'journal_id' : 1,
+            # 'company_id' : self.company_id.id,
+            'invoice_origin' : self.name,
+            'currency_id' : self.currency_id.id,
+            'invoice_line_ids' : [],
+        }
 
-            if self.document_type == 'to' :
-                for line in self.order_line:
-                    invoice_line = (0,0,{
-                        'product_id' : line.product_id.id,
-                        'name' : line.name,
-                        'quantity' : line.quantity * line.number,
-                        'price_unit' : line.price_unit,
-                        'tax_ids' : line.tax_ids,
-                        # 'other_tax' : line.amount_tax,
-                    })
+        if self.document_type == 'to' :
+            for line in self.order_line:
+                invoice_line = (0,0,{
+                    'product_id' : line.product_id.id,
+                    'name' : line.name,
+                    'quantity' : line.quantity * line.number,
+                    'price_unit' : line.price_unit,
+                    'tax_ids' : line.tax_ids,
+                    # 'other_tax' : line.amount_tax,
+                })
 
-                    invoice_values['invoice_line_ids'].append(invoice_line)
+                invoice_values['invoice_line_ids'].append(invoice_line)
 
-                # -----------------------------#
-                # Append line commission
-                # -----------------------------#
+            # -----------------------------#
+            # Append line commission
+            # -----------------------------#
 
-                # Search for product commission
-                commission_product = self.env['product.product'].search([('name', '=', "COMMISSION")])
+            # Search for product commission
+            commission_product = self.env['product.product'].search([('name', '=', "COMMISSION")])
 
-                if not commission_product :
-                    commission_product = self.env['product.product'].create({'name':'COMMISSION'})
+            if not commission_product :
+                commission_product = self.env['product.product'].create({'name':'COMMISSION'})
 
-                # Compute amount commission
-                
-                amount_commission_total = self.amount_total - sum([line.price_unit for line in self.order_line ]) 
-                amount_commission_unit = amount_commission_total - self.amount_tva
-                commission_line = (0,0,{
-                        'product_id' : commission_product.id,
-                        'name' : commission_product.name,
-                        'quantity' : 1,
-                        'price_unit' : amount_commission_unit,
-                        'tax_ids' : self.order_line[0].tax_ids,
-                        # 'other_tax' : line.amount_tax,
-                    })
-                invoice_values['invoice_line_ids'].append(commission_line)
+            # Compute amount commission
+            
+            amount_commission_total = self.amount_total - sum([line.price_unit for line in self.order_line ]) 
+            amount_commission_unit = amount_commission_total - self.amount_tva
+            commission_line = (0,0,{
+                    'product_id' : commission_product.id,
+                    'name' : commission_product.name,
+                    'quantity' : 1,
+                    'price_unit' : amount_commission_unit,
+                    'tax_ids' : self.order_line[0].tax_ids,
+                    # 'other_tax' : line.amount_tax,
+                })
+            invoice_values['invoice_line_ids'].append(commission_line)
 
-            else :
-                for line in self.order_line:
-                    invoice_line = (0,0,{
-                        'product_id' : line.product_id.id,
-                        'name' : line.name,
-                        'quantity' : line.quantity * line.number,
-                        'price_unit' : line.price_unit,
-                        'tax_ids' : line.tax_ids,
-                        'other_tax' : line.amount_tax,
-                    })
+        else :
+            for line in self.order_line:
+                invoice_line = (0,0,{
+                    'product_id' : line.product_id.id,
+                    'name' : line.name,
+                    'quantity' : line.quantity * line.number,
+                    'price_unit' : line.price_unit,
+                    'tax_ids' : line.tax_ids,
+                    'other_tax' : line.amount_tax,
+                })
 
-                    invoice_values['invoice_line_ids'].append(invoice_line)
+                invoice_values['invoice_line_ids'].append(invoice_line)
 
-            customer_invoice = self.env['account.move'].create(invoice_values)
-            customer_invoice.action_post()
-            # ------------------------------------------------------
+        customer_invoice = self.env['account.move'].create(invoice_values)
+        customer_invoice.action_post()
+        # ------------------------------------------------------
 
-            # ------------------------------------------------------
-            # Create invoice for the suppliers and confirm them
-            # ------------------------------------------------------
-            # supplier_invoices = {}
-            # for line in self.order_line:
-            #     if line.supplier:
-            #         if not line.supplier in supplier_invoices:
-            #             supplier_invoices[line.supplier] = {
-            #                 'partner_id' : line.supplier.id,
-            #                 'ref' : _("Travel Invoice : %s") % self.name,
-            #                 'move_type' : 'in_invoice',
-            #                 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'),
-            #                 'currency_id' : self.currency_id,
-            #                 'invoice_origin' : self.name,
-            #                 'invoice_line_ids' : []
-            #             }
+        # ------------------------------------------------------
+        # Create invoice for the suppliers and confirm them
+        # ------------------------------------------------------
+        # supplier_invoices = {}
+        # for line in self.order_line:
+        #     if line.supplier:
+        #         if not line.supplier in supplier_invoices:
+        #             supplier_invoices[line.supplier] = {
+        #                 'partner_id' : line.supplier.id,
+        #                 'ref' : _("Travel Invoice : %s") % self.name,
+        #                 'move_type' : 'in_invoice',
+        #                 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'),
+        #                 'currency_id' : self.currency_id,
+        #                 'invoice_origin' : self.name,
+        #                 'invoice_line_ids' : []
+        #             }
 
-            #         supplier_invoices[line.supplier]['invoice_line_ids'].append((0,0,{
-            #             'product_id' : line.product_id.id,
-            #             'name' : line.name,
-            #             'quantity' : line.quantity,
-            #             'price_unit' : line.price_unit,
-            #             'tax_ids' : line.tax_ids,
-            #             'other_tax' : line.amount_tax,
-            #         }))
+        #         supplier_invoices[line.supplier]['invoice_line_ids'].append((0,0,{
+        #             'product_id' : line.product_id.id,
+        #             'name' : line.name,
+        #             'quantity' : line.quantity,
+        #             'price_unit' : line.price_unit,
+        #             'tax_ids' : line.tax_ids,
+        #             'other_tax' : line.amount_tax,
+        #         }))
 
-            # for partner in supplier_invoices:
-            #     purchase_invoice = self.env['account.move'].create(supplier_invoices[partner])
-            #     purchase_invoice.action_post()
-            # ------------------------------------------------------
+        # for partner in supplier_invoices:
+        #     purchase_invoice = self.env['account.move'].create(supplier_invoices[partner])
+        #     purchase_invoice.action_post()
+        # ------------------------------------------------------
 
-            # ------------------------------------------------------
-            # Confirm invoice of corresponding purchase order
-            # ------------------------------------------------------
-            related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id), ('state', '=', 'purchase')])
-            for po in related_PO:
-                supplier_invoice = po.action_create_invoice()
+        # ------------------------------------------------------
+        # Confirm invoice of corresponding purchase order
+        # ------------------------------------------------------
+        related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id), ('state', '=', 'purchase')])
+        for po in related_PO:
+            supplier_invoice = po.action_create_invoice()
 
-                # raise UserError(str(supplier_invoice))
+            # raise UserError(str(supplier_invoice))
 
-                supplier_invoice = self.env['account.move'].browse(supplier_invoice['res_id'])
+            supplier_invoice = self.env['account.move'].browse(supplier_invoice['res_id'])
 
-                supplier_invoice.update({'ref' : _("Travel Invoice : %s") % self.name, 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'), 'global_label' : self.global_label, 'invoice_origin' : self.name})
+            supplier_invoice.update({'ref' : _("Travel Invoice : %s") % self.name, 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'), 'global_label' : self.global_label, 'invoice_origin' : self.name})
 
-                supplier_invoice.action_post()
+            supplier_invoice.action_post()
 
-                # raise UserError(str(supplier_invoices))
+            # raise UserError(str(supplier_invoices))
 
-                # for invoice in supplier_invoices:
-                #     invoice.update({'ref' : _("Travel Invoice : %s") % self.name, 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'), 'global_label' : self.global_label, 'invoice_origin' : self.name})
-            # ------------------------------------------------------
-            old_state = dict(self._fields['state'].selection).get(self.state)
-            self.update({'state' : 'confirmed'})
-            new_state = dict(self._fields['state'].selection).get(self.state)
+            # for invoice in supplier_invoices:
+            #     invoice.update({'ref' : _("Travel Invoice : %s") % self.name, 'invoice_date' : dt.strftime(dt.now().date(), '%Y-%m-%d'), 'global_label' : self.global_label, 'invoice_origin' : self.name})
+        # ------------------------------------------------------
+        old_state = dict(self._fields['state'].selection).get(self.state)
+        self.update({'state' : 'confirmed'})
+        new_state = dict(self._fields['state'].selection).get(self.state)
 
-            message_body = _("State : %s → %s") % (old_state, new_state)
+        message_body = _("State : %s → %s") % (old_state, new_state)
 
-            self.message_post(body=message_body)
-        else:
-            raise UserError(_("You don't have the right to confirm a quotation!"))
+        self.message_post(body=message_body)
+        # else:
+        #     raise UserError(_("You don't have the right to confirm a quotation!"))
 
     def action_cancel(self):
         if not self.env.user.can_confirm_quotation_passing_client:
