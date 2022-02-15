@@ -8,7 +8,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="//button[@name='action_cancel']" position="before">
 					<field name="button_to_show" invisible="1"/>
-                    <button name="action_confirm_confirm" class="btn btn-primary" confirm="This customer has unregulated credit. Would you continue to confirm the quotation?" id="action_confirm_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('button_to_show', '!=', 'confirm_confirm')]}"/>
+                    <button name="action_confirm_confirm" class="btn btn-primary" confirm="This customer has unregulated credit. Would you continue to confirm the quotation?" id="action_confirm_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': ['|', ('button_to_show', '!=', 'confirm_confirm'), ('state', '!=', 'accepted')]}"/>
 				</xpath>
 				<xpath expr="//button[@name='action_confirm']" position="attributes">
 					<attribute name="attrs">{'invisible' : ['|', '|', ('button_to_show', '!=', 'confirm'), ('state', '!=', 'accepted'), ('id', '=', False)]}</attribute>
