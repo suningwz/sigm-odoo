@@ -130,15 +130,15 @@
                                     <!-- disable supplier if product is SERVICES FEES (id=3474) -->
                                     <field name="supplier" attrs="{'readonly' : [('product_id', '=', 3474)]}" options="{'no_create': True}"/>
                                     <field name="product_id" options="{'no_create': True}" domain="['&amp;', ('used_for', 'in', (parent.document_type, 'both')), ('active_product', '=', True)]"/>
-                                    <field name="name" readonly="True"/>
+                                    <field name="name" readonly="True" invisible="1"/>
                                     <!-- disable passenger, ticket_number, journey if product is SERVICES FEES (id=3474) -->
                                     <!-- <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
-                                    <field name="passenger_fullname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <!-- <field name="passenger_fullname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
                                     <field name="passenger_title" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="passenger_firstname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="passenger_lastname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <!-- <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
                                     <field name="start_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="end_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="custom_descri" attrs="{'readonly' : [('product_id', '=', 3475)]}"/>
