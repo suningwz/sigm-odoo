@@ -195,14 +195,14 @@ class ResUsers(models.Model):
     can_confirm_quotation = fields.Boolean(string="Can confirm quotation", default=False)
     # can_confirm_quotation_even_credit_limit_is_reached = fields.Boolean(string="Can confirm quotation even when credit limit is reached", default=False)
     can_confirm_quotation_account_client = fields.Boolean(string="Can confirm quotation of account client", default=False)
-    can_confirm_quotation_passing_client = fields.Boolean(string="Can confirm quotation of passing client", default=False)
+    # can_confirm_quotation_passing_client = fields.Boolean(string="Can confirm quotation of passing client", default=False)
 
     @api.onchange('can_confirm_quotation')
     def _set_no_right(self):
         if not self.can_confirm_quotation:
             self.update({
                 # 'can_confirm_quotation_even_credit_limit_is_reached' : False,
-                'can_confirm_quotation_passing_client' : False,
+                # 'can_confirm_quotation_passing_client' : False,
                 'can_confirm_quotation_account_client' : False,
             })
 
@@ -219,11 +219,11 @@ class ResUsers(models.Model):
                 # 'can_confirm_quotation_even_credit_limit_is_reached' : True
             })
 
-    @api.onchange('can_confirm_quotation_passing_client')
-    def _set_right3(self):
-        if self.can_confirm_quotation_passing_client:
-            self.update({
-                'can_confirm_quotation' : True,
-                # 'can_confirm_quotation_even_credit_limit_is_reached' : True,
-                'can_confirm_quotation_account_client' : True
-            })
+    # @api.onchange('can_confirm_quotation_passing_client')
+    # def _set_right3(self):
+    #     if self.can_confirm_quotation_passing_client:
+    #         self.update({
+    #             'can_confirm_quotation' : True,
+    #             # 'can_confirm_quotation_even_credit_limit_is_reached' : True,
+    #             'can_confirm_quotation_account_client' : True
+    #         })

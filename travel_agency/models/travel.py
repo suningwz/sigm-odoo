@@ -445,7 +445,8 @@ class TravelOrder(models.Model):
         #     raise UserError(_("You don't have the right to confirm a quotation!"))
 
     def action_cancel(self):
-        if not self.env.user.can_confirm_quotation_passing_client:
+        # if not self.env.user.can_confirm_quotation_passing_client:
+        if not self.env.user.can_confirm_quotation_account_client:
             raise UserError(_("You don't have the right to cancel an order!"))
         else:
             related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id)])
@@ -461,7 +462,8 @@ class TravelOrder(models.Model):
             self.message_post(body=message_body)
 
     def action_make_quotation(self):
-        if not self.env.user.can_confirm_quotation_passing_client:
+        # if not self.env.user.can_confirm_quotation_passing_client:
+        if not self.env.user.can_confirm_quotation_account_client:
             raise UserError(_("You don't have the right to do this action!"))
         else:
             old_state = dict(self._fields['state'].selection).get(self.state)
