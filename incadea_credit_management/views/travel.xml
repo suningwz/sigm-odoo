@@ -7,11 +7,11 @@
 			<field name="inherit_id" ref="travel_agency.travel_form_view_id"/>
 			<field name="arch" type="xml">
 				<xpath expr="//button[@name='action_cancel']" position="before">
-					<field name="show_confirm_button" invisible="1"/>
-                    <button name="action_confirm_confirm" class="btn btn-primary" confirm="This customer has unregulated credit. Would you continue to confirm the quotation?" id="action_confirm_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('show_confirm_button', '=', False)]}"/>
+					<field name="button_to_show" invisible="1"/>
+                    <button name="action_confirm_confirm" class="btn btn-primary" confirm="This customer has unregulated credit. Would you continue to confirm the quotation?" id="action_confirm_confirm" data-hotkey="v" string="Confirm" type="object" attrs="{'invisible': [('button_to_show', '=', 'confirm_confirm')]}"/>
 				</xpath>
 				<xpath expr="//button[@name='action_confirm']" position="attributes">
-					<attribute name="attrs">{'invisible' : ['|', '|', ('show_confirm_button', '=', True), ('state', '!=', 'accepted'), ('id', '=', False)]}</attribute>
+					<attribute name="attrs">{'invisible' : ['|', '|', ('button_to_show', '=', 'none'), ('state', '!=', 'accepted'), ('id', '=', False)]}</attribute>
 				</xpath>
 			</field>
 		</record>
