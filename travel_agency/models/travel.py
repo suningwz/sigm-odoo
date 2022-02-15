@@ -638,17 +638,18 @@ class TravelOrderLine(models.Model):
 
     @api.depends('journey', 'ticket_number', 'passenger_fullname', 'custom_descri')
     def _compute_name(self):
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
-        
+        for record in self:
+            name = []
+            if record.journey:
+                name.append(record.journey)
+            if record.ticket_number:
+                name.append(record.ticket_number)
+            if record.passenger_fullname:
+                name.append(record.passenger_fullname)
+            if record.custom_descri:
+                name.append(record.custom_descri)
+            record.name = " - ".join(name)
+
 
     @api.depends('start_point', 'end_point')
     def _compute_journey(self):
