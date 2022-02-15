@@ -8,7 +8,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='category_id']" position="after">
 					<field name="credit_limit" attrs="{'invisible' : [('customer_type', '=', 'passing')]}"/>
-					<field name="general_credit"/>
+					<field name="general_credit" attrs="{'invisible' : [('customer_type', '=', 'passing')]}"/>
 				</xpath>
 			</field>
 		</record>
