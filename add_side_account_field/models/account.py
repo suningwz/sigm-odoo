@@ -10,4 +10,4 @@ class AccountMoveLine(models.Model):
 
 	def _compute_side_account(self):
 		for record in self:
-			record.side_account = ('cl' if record.partner_id.customer_rank else 'fr' if record.partner_id.supplier_rank else '_') + str(record.partner_id.no_g)
+			record.side_account = '' if not record.partner_id.no_g else ('cl' if record.partner_id.customer_rank else 'fr' if record.partner_id.supplier_rank else '_') + str(record.partner_id.no_g)
