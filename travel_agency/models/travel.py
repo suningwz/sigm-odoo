@@ -573,7 +573,7 @@ class TravelOrderLine(models.Model):
     _description = 'Travel Order Line'
 
     product_id = fields.Many2one('product.product', string="Product", domain="[('active_product', '=', True)]")
-    name = fields.Char(string="Description")
+    name = fields.Char(string="Description", compute="_compute_name")
     # supplier = fields.Many2one('res.partner', string="Supplier", domain="[('supplier_rank', '=', 1)]")
     passenger = fields.Char(string="Passenger")
     ticket_number = fields.Char(string="Ticket Number")
@@ -635,6 +635,20 @@ class TravelOrderLine(models.Model):
     terminal_check_in = fields.Char(string="Terminal Check In")
     terminal_arrival = fields.Char(string="Terminal Arrival")
 
+
+    @api.depends('journey', 'ticket_number', 'passenger_fullname', 'custom_descri')
+    def _compute_name(self):
+        name = []
+        if self.journey:
+            name.append(self.journey)
+        if self.ticket_number:
+            name.append(self.ticket_number)
+        if self.passenger_fullname:
+            name.append(self.passenger_fullname)
+        if self.custom_descri:
+            name.append(self.custom_descri)
+        self.name = " - ".join(name)
+        
 
     @api.depends('start_point', 'end_point')
     def _compute_journey(self):
@@ -707,86 +721,86 @@ class TravelOrderLine(models.Model):
     @api.onchange('passenger_firstname')
     def onchange_firstname(self):
         self.passenger_firstname = '' if not self.passenger_firstname else self.passenger_firstname.upper()
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+        # name = []
+        # if self.journey:
+        #     name.append(self.journey)
+        # if self.ticket_number:
+        #     name.append(self.ticket_number)
+        # if self.passenger_fullname:
+        #     name.append(self.passenger_fullname)
+        # if self.custom_descri:
+        #     name.append(self.custom_descri)
+        # self.name = " - ".join(name)
 
     @api.onchange('passenger_lastname')
     def onchange_lastname(self):
         self.passenger_lastname = '' if not self.passenger_lastname else self.passenger_lastname.upper()
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+        # name = []
+        # if self.journey:
+        #     name.append(self.journey)
+        # if self.ticket_number:
+        #     name.append(self.ticket_number)
+        # if self.passenger_fullname:
+        #     name.append(self.passenger_fullname)
+        # if self.custom_descri:
+        #     name.append(self.custom_descri)
+        # self.name = " - ".join(name)
 
-    @api.onchange('ticket_number')
-    def onchange_ticket_number(self):
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+    # @api.onchange('ticket_number')
+    # def onchange_ticket_number(self):
+    #     name = []
+    #     if self.journey:
+    #         name.append(self.journey)
+    #     if self.ticket_number:
+    #         name.append(self.ticket_number)
+    #     if self.passenger_fullname:
+    #         name.append(self.passenger_fullname)
+    #     if self.custom_descri:
+    #         name.append(self.custom_descri)
+    #     self.name = " - ".join(name)
 
     @api.onchange('start_point')
     def onchange_departure(self):
         self.start_point = '' if not self.start_point else self.start_point.upper()
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+        # name = []
+        # if self.journey:
+        #     name.append(self.journey)
+        # if self.ticket_number:
+        #     name.append(self.ticket_number)
+        # if self.passenger_fullname:
+        #     name.append(self.passenger_fullname)
+        # if self.custom_descri:
+        #     name.append(self.custom_descri)
+        # self.name = " - ".join(name)
 
     @api.onchange('end_point')
     def onchange_arrival(self):
         self.end_point = '' if not self.end_point else self.end_point.upper()
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+        # name = []
+        # if self.journey:
+        #     name.append(self.journey)
+        # if self.ticket_number:
+        #     name.append(self.ticket_number)
+        # if self.passenger_fullname:
+        #     name.append(self.passenger_fullname)
+        # if self.custom_descri:
+        #     name.append(self.custom_descri)
+        # self.name = " - ".join(name)
 
     
 
-    @api.onchange('custom_descri')
-    def onchange_custom_descri(self):
-        name = []
-        if self.journey:
-            name.append(self.journey)
-        if self.ticket_number:
-            name.append(self.ticket_number)
-        if self.passenger_fullname:
-            name.append(self.passenger_fullname)
-        if self.custom_descri:
-            name.append(self.custom_descri)
-        self.name = " - ".join(name)
+    # @api.onchange('custom_descri')
+    # def onchange_custom_descri(self):
+    #     name = []
+    #     if self.journey:
+    #         name.append(self.journey)
+    #     if self.ticket_number:
+    #         name.append(self.ticket_number)
+    #     if self.passenger_fullname:
+    #         name.append(self.passenger_fullname)
+    #     if self.custom_descri:
+    #         name.append(self.custom_descri)
+    #     self.name = " - ".join(name)
     # --------------------------------------------------------
 
     @api.depends('quantity', 'number', 'discount', 'price_unit', 'tax_ids', 'amount_tax', 'amount_commission')
