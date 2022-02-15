@@ -70,7 +70,7 @@ class ResPartner(models.Model):
                 record = self.search([('id_supplier_incadea', '=', id_supplier_incadea)])
 
                 contact = {
-                    # 'no_g' : str(row['No_G']),
+                    'no_g' : str(row['No_G']),
                     'name' : row['FirstName_G'] + ' ' + row['LastName_G'],
                     # 'is_company' : row['cl_type'] == 2,
                     'street' : row['Address_G'],

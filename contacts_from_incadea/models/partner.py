@@ -87,7 +87,7 @@ class ResPartner(models.Model):
                     'lang' : 'fr_FR' if row['LanguageCode_G'] == 'FR' else 'en_US' if row['LanguageCode_G'] == 'EN' else '',
                     # 'customer_rank' : int(row['type'] == 'customer'),
                     # 'supplier_rank' : int(row['type'] == 'supplier'),
-                    # 'no_g' : str(row['No_G'])
+                    'no_g' : str(row['No_G'])
                 }
                 
                 if len(record.ids):
