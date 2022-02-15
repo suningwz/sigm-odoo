@@ -611,10 +611,10 @@ class TravelOrderLine(models.Model):
     ], string="Status")
 
     date_from = fields.Date(string="Departure Date")
-    departure_time = fields.Time(string="Departure Time")
+    departure_time = fields.Char(string="Departure Time")
 
     date_to = fields.Date(string="Arrival Date")
-    arrival_time = fields.Time(string="Arrival Time")
+    arrival_time = fields.Char(string="Arrival Time")
 
     # passenger_title = fields.Char(string="Passenger Title")
     passenger_firstname = fields.Char(string="Passenger's Firstname")
