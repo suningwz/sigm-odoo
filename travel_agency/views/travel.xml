@@ -78,7 +78,7 @@
                 <header>
                     <button name="print_quotation_order" type="object" string="Print Quotation" class="oe_highlight" attrs="{'invisible' : ['|', ('state' , '!=', 'quotation'), ('id', '=', False)]}"/>
                     <button name="print_quotation_order" type="object" string="Print Order" class="oe_highlight" attrs="{'invisible' : ['|', ('state' , 'in', ('quotation', 'canceled')), ('id', '=', False)]}"/>
-                    <button name="print_proforma" type="object" string="Print Pro Forma" class="oe_highlight" attrs="{'invisible' : [('state', '!=', 'quotation')]}"/>
+                    <button name="print_proforma" type="object" string="Print Pro Forma" class="oe_highlight" attrs="{'invisible' : ['|', ('state', '!=', 'quotation'), ('id', '=', False)]}"/>
                     <button name="action_accept" type="object" string="Accept" attrs="{'invisible' : ['|', ('state', '!=', 'quotation'), ('id', '=', False)]}" class="oe_highlight"/>
                     <button name="action_confirm" type="object" string="Confirm" attrs="{'invisible' : ['|', ('state', '!=', 'accepted'), ('id', '=', False)]}" class="oe_highlight"/>
                     <button name="action_cancel" confirm="This will cancel the purchase order. Are you sure to continue?" type="object" string="Cancel" attrs="{'invisible' : ['|', ('state', '=', 'canceled'), ('id', '=', False)]}"/>
