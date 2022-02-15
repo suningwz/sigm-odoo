@@ -706,7 +706,7 @@ class TravelOrderLine(models.Model):
 
     @api.onchange('passenger_firstname')
     def onchange_firstname(self):
-        self.passenger_firstname = self.passenger_firstname.upper()
+        self.passenger_firstname = '' if not self.passenger_firstname else self.passenger_firstname.upper()
         name = []
         if self.journey:
             name.append(self.journey)
@@ -720,7 +720,7 @@ class TravelOrderLine(models.Model):
 
     @api.onchange('passenger_lastname')
     def onchange_lastname(self):
-        self.passenger_lastname = self.passenger_lastname.upper()
+        self.passenger_lastname = '' if not self.passenger_lastname else self.passenger_lastname.upper()
         name = []
         if self.journey:
             name.append(self.journey)
