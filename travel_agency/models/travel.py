@@ -638,7 +638,11 @@ class TravelOrderLine(models.Model):
 
     def _compute_fullname(self):
         for record in self:
-            record = ' '.join([item for item in (record.passenger_firstname, record.passenger_lastname) if item])
+            record.passenger_fullname = ' '.join([item for item in (record.passenger_lastname) if item])
+            if record.passenger_fullname:
+                record.passenger_fullname = ' '.join([dict(record._fields['passenger_title'].selection).get(self.record), record.passenger_fullname])
+            else:
+                record.passenger_fullname = ''
 
     # --------------------------------------------------------
     # Compute amount commission value
