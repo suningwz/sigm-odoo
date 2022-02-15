@@ -336,7 +336,7 @@ class TravelOrder(models.Model):
                         'name' : line.name,
                         'quantity' : line.quantity * line.number,
                         'price_unit' : line.price_unit,
-                        # 'tax_ids' : line.tax_ids,
+                        'tax_ids' : line.tax_ids,
                         # 'other_tax' : line.amount_tax,
                     })
 
