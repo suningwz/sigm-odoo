@@ -640,7 +640,7 @@ class TravelOrderLine(models.Model):
     def _compute_journey(self):
         for record in self:
             points = [record.start_point, record.end_point]
-            record.journey = ' - '.join(points) if if all(points) else ''
+            record.journey = ' - '.join(points) if all(points) else ''
 
     @api.depends('passenger_title', 'passenger_firstname', 'passenger_lastname')
     def _compute_fullname(self):
