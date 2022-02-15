@@ -139,11 +139,11 @@
                                     <field name="passenger_lastname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="ticket_number" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="journey" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="start_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="end_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="custom_descri" attrs="{'readonly' : [('product_id', '=', 3475)]}"/>
                                     <field name="date_from" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="date_to" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="start_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="end_point" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <!-- disable custom_descri if product is Billet (id=3475) -->
                                     <field name="quantity" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')], 'readonly' : [('parent.document_type', '!=', 'to')]}"/>
                                     <field name="number" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')], 'readonly' : [('parent.document_type', '!=', 'to')]}"/>

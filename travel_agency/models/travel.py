@@ -577,7 +577,6 @@ class TravelOrderLine(models.Model):
     # supplier = fields.Many2one('res.partner', string="Supplier", domain="[('supplier_rank', '=', 1)]")
     passenger = fields.Char(string="Passenger")
     ticket_number = fields.Char(string="Ticket Number")
-    journey = fields.Char(string="Journey")
     custom_descri = fields.Char(string="Custom Description")
     number = fields.Integer(string="Number", default=1)
     quantity = fields.Integer(string="Quantity", default=1)
@@ -626,15 +625,22 @@ class TravelOrderLine(models.Model):
     ], string="Passenger Title")
     passenger_firstname = fields.Char(string="Passenger's Firstname")
     passenger_lastname = fields.Char(string="Passenger's Lastname")
-    passenger_fullname = fields.Char(string="Passenger's Fullname", compute="_compute_fullname")
+    passenger_fullname = fields.Char(string="Passenger's Fullname", compute="_compute_fullname", readonly=True)
 
     start_point = fields.Char(string="Departure")
     end_point = fields.Char(string="Arrival")
+    journey = fields.Char(string="Journey", compute="_compute_journey", readonly=True)
 
     baggage_allow = fields.Char(string="Baggage Allow")
     terminal_check_in = fields.Char(string="Terminal Check In")
     terminal_arrival = fields.Char(string="Terminal Arrival")
 
+
+    @api.depends('start_point', 'end_point')
+    def _compute_journey(self):
+        for record in self:
+            points = [record.start_point, record.end_point]
+            record.journey = ' - '.join(points) if if all(points) else ''
 
     @api.depends('passenger_title', 'passenger_firstname', 'passenger_lastname')
     def _compute_fullname(self):
