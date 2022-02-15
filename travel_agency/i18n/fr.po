@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 07:32+0000\n"
-"PO-Revision-Date: 2022-02-11 07:32+0000\n"
+"POT-Creation-Date: 2022-02-15 18:03+0000\n"
+"PO-Revision-Date: 2022-02-15 18:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -85,6 +85,11 @@ msgid "<strong>Total</strong>"
 msgstr "<strong>Total TTC</strong>"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__ac_rec_loc
+msgid "Ac Rec Loc"
+msgstr ""
+
+#. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.travel_form_view_id
 msgid "Accept"
 msgstr "Accepter"
@@ -131,10 +136,20 @@ msgid "Activity Type Icon"
 msgstr "Icône du Type d'Activité"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__agent_sign_booking
+msgid "Agent Sign Booking"
+msgstr ""
+
+#. module: travel_agency
 #: model:ir.actions.act_window,name:travel_agency.travel_agency_all_record
 #: model:ir.ui.menu,name:travel_agency.all_orders_menu
 msgid "All Orders"
 msgstr "Toutes les Commandes"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__ama_name
+msgid "Ama Name"
+msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields.selection,name:travel_agency.selection__product_template__used_for__amadeus
@@ -191,6 +206,11 @@ msgid "Arrival Date"
 msgstr "Date d'arrivé"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__arrival_time
+msgid "Arrival Time"
+msgstr "Heure d'arrivée"
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_attachment_count
 msgid "Attachment Count"
 msgstr "Nombre de Pièces Jointes"
@@ -201,8 +221,23 @@ msgid "Back to Quotation"
 msgstr "Remettre en Devis"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__baggage_allow
+msgid "Baggage Allow"
+msgstr ""
+
+#. module: travel_agency
 #: model_terms:ir.ui.view,arch_db:travel_agency.to_document_filter
 msgid "Billeterie"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__bkg_class
+msgid "Bkg Class"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__passenger_title__chd
+msgid "CHD"
 msgstr ""
 
 #. module: travel_agency
@@ -319,6 +354,11 @@ msgid "Departure Date"
 msgstr "Date de départ"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__departure_time
+msgid "Departure Time"
+msgstr "Heure de départ"
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__name
 #: model_terms:ir.ui.view,arch_db:travel_agency.report_travelorder_document
 msgid "Description"
@@ -367,6 +407,11 @@ msgstr ""
 "Les positions fiscales sont utilisées pour adapter les taxes et les comptes "
 "pour desclients particuliers ou des commandes/factures de voyage. La valeur "
 "par défaut provient du client."
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__flight_num
+msgid "Flight Number"
+msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__folder_number
@@ -451,6 +496,11 @@ msgid "Is Follower"
 msgstr "Est Abonné"
 
 #. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__status__issued
+msgid "Issued"
+msgstr ""
+
+#. module: travel_agency
 #: model:ir.model,name:travel_agency.model_account_move
 msgid "Journal Entry"
 msgstr "Pièce comptable"
@@ -480,6 +530,21 @@ msgstr "Dernière Mise à jour par"
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__write_date
 msgid "Last Updated on"
 msgstr "Dernière Mise à jour le"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__passenger_title__mr
+msgid "MR"
+msgstr "MR"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__passenger_title__mrs
+msgid "MRS"
+msgstr "MME"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__passenger_title__mss
+msgid "MSS"
+msgstr "MLLE"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__message_main_attachment_id
@@ -608,6 +673,11 @@ msgstr "Autres Taxes"
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger
 msgid "Passenger"
 msgstr "Passager"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_title
+msgid "Passenger Title"
+msgstr "Civilité du passager"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__passenger_firstname
@@ -739,9 +809,24 @@ msgid "Quotation / Order"
 msgstr "Devis / Commande"
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__record_locator
+msgid "Record Locator"
+msgstr ""
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__ref
 msgid "Reference"
 msgstr "Référence"
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__status__refund
+msgid "Refund"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__status__reissued
+msgid "Reissued"
+msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__activity_user_id
@@ -770,6 +855,11 @@ msgid "Section"
 msgstr ""
 
 #. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order__service_carrier
+msgid "Service Carrier"
+msgstr ""
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__signature
 msgid "Signature"
 msgstr ""
@@ -792,6 +882,11 @@ msgstr "État"
 #, python-format
 msgid "State : %s → %s"
 msgstr "État : %s → %s"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__status
+msgid "Status"
+msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,help:travel_agency.field_travel_order__activity_state
@@ -825,6 +920,16 @@ msgstr "Montant de la Taxe par groupe"
 #: model:ir.model.fields,help:travel_agency.field_travel_order_line__display_type
 msgid "Technical field for UX purpose."
 msgstr "Champs technique à pour l'UX"
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__terminal_arrival
+msgid "Terminal Arrival"
+msgstr ""
+
+#. module: travel_agency
+#: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__terminal_check_in
+msgid "Terminal Check In"
+msgstr ""
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__note
@@ -937,6 +1042,11 @@ msgid "VAT"
 msgstr "TVA"
 
 #. module: travel_agency
+#: model:ir.model.fields.selection,name:travel_agency.selection__travel_order_line__status__void
+msgid "Void"
+msgstr ""
+
+#. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order__website_message_ids
 msgid "Website Messages"
 msgstr "Messages du Site Web"
@@ -957,12 +1067,6 @@ msgstr "Vous ne pouvez pas effacer un document qui a été %s!"
 #, python-format
 msgid "You don't have the right to cancel an order!"
 msgstr "Vous n'avez pas le droit d'annuler une commande!"
-
-#. module: travel_agency
-#: code:addons/travel_agency/models/travel.py:0
-#, python-format
-msgid "You don't have the right to confirm a quotation!"
-msgstr "Vous n'avez pas le droit de confirmer un devis"
 
 #. module: travel_agency
 #: code:addons/travel_agency/models/travel.py:0
