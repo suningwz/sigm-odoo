@@ -18,7 +18,11 @@ class TravelOrder(models.Model):
     _inherit = "travel.order"
 
     # show_confirm_button = fields.Boolean(store=False, compute="_get_button_display_mode")
-    button_to_show = fields.Selection(['none', 'confirm', 'confirm_confirm'], string="Button to show", store=False, compute="_get_button_to_show")
+    button_to_show = fields.Selection([
+        ('none', 'None'), 
+        ('confirm', 'Confirm'), 
+        ('confirm_confirm', 'Confirm confirm')
+    ], string="Button to show", store=False, compute="_get_button_to_show")
 
     # def _get_button_display_mode(self):
     #     for record in self:
@@ -27,15 +31,12 @@ class TravelOrder(models.Model):
 
     def _get_button_to_show(self):
         if not self.env.user.can_confirm_quotation:
-            # self.button_to_show = 'none'
-            self.udpate({'button_to_show' : 'none'})
+            self.button_to_show = 'none'
         else:
             if self.partner_id.general_credit < self.partner_id.credit_limit:
-                # self.button_to_show = 'confirm'
-                self.update({'button_to_show' : 'confirm'})
+                self.button_to_show = 'confirm'
             else:
-                # self.button_to_show = 'confirm_confirm'
-                self.update({'button_to_show' : 'confirm_confirm'})
+                self.button_to_show = 'confirm_confirm'
 
 
     def action_confirm_confirm(self):
