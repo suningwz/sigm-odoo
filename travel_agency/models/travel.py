@@ -719,8 +719,8 @@ class TravelOrderLine(models.Model):
         self.name = " - ".join(name)
 
     @api.onchange('passenger_lastname')
-        self.passenger_lastname = self.passenger_lastname.upper()
     def onchange_lastname(self):
+        self.passenger_lastname = self.passenger_lastname.upper()
         name = []
         if self.journey:
             name.append(self.journey)

@@ -133,7 +133,7 @@
                                     <field name="name" readonly="True"/>
                                     <!-- disable passenger, ticket_number, journey if product is SERVICES FEES (id=3474) -->
                                     <!-- <field name="passenger" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
-                                    <!-- <field name="passenger_fullname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
+                                    <field name="passenger_fullname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="passenger_title" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="passenger_firstname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="passenger_lastname" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
