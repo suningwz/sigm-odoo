@@ -17,17 +17,11 @@ from io import BytesIO
 class TravelOrder(models.Model):
     _inherit = "travel.order"
 
-    # show_confirm_button = fields.Boolean(store=False, compute="_get_button_display_mode")
     button_to_show = fields.Selection([
         ('none', 'None'), 
         ('confirm', 'Confirm'), 
         ('confirm_confirm', 'Confirm confirm')
     ], string="Button to show", store=False, compute="_get_button_to_show")
-
-    # def _get_button_display_mode(self):
-    #     for record in self:
-    #         # record.show_confirm_button = self.env.user.can_confirm_quotation_even_credit_limit_is_reached and record.partner_id.general_credit >= record.partner_id.credit_limit and record.state == 'accepted'
-    #         record.show_confirm_button = self.env.user.can_confirm_quotation_account_client and record.partner_id.general_credit >= record.partner_id.credit_limit and record.state == 'accepted'
 
     def _get_button_to_show(self):
         if not self.env.user.can_confirm_quotation:
