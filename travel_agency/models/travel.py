@@ -698,7 +698,20 @@ class TravelOrderLine(models.Model):
             else:
                 product.write({'active_product' : True})
 
-    @api.onchange('passenger_fullname')
+    @api.onchange('passenger_firstname')
+    def onchange_passenger(self):
+        name = []
+        if self.journey:
+            name.append(self.journey)
+        if self.ticket_number:
+            name.append(self.ticket_number)
+        if self.passenger_fullname:
+            name.append(self.passenger_fullname)
+        if self.custom_descri:
+            name.append(self.custom_descri)
+        self.name = " - ".join(name)
+
+    @api.onchange('passenger_lastname')
     def onchange_passenger(self):
         name = []
         if self.journey:
