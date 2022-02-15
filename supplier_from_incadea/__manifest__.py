@@ -17,7 +17,7 @@
     'category': '',
     'website': 'https://www.odoo.com/page/billing',
     'images' : [],
-    'depends' : ['base'],
+    'depends' : ['base', 'add_no_g_field_in_res_partner'],
     'data': [
         'data/cron.xml',
     ],
