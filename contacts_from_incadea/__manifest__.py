@@ -20,7 +20,6 @@ This module is created to allow odoo to import Incadea clients from an FTP serve
     'depends' : ['base', 'group_account_managing'],
     'data': [
         'data/cron.xml',
-        'views/partner.xml',
     ],
     'demo': [],
     'qweb': [],
