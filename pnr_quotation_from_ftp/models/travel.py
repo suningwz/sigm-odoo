@@ -148,7 +148,7 @@ class TravelOrder(models.Model):
                 'passenger_lastname' : lastname,
                 'passenger_firstname' : firstname,
                 'title' : row['Title'],
-                'status' : row['Status']
+                'status' : row['Status'],
                 'ticket_number' : row['No'],
                 'start_point' : row['OrigCity'],
                 'end_point' : row['DestCity'],
