@@ -22,6 +22,7 @@ class TravelOrder(models.Model):
     _inherit = "travel.order"
 
     pnr_number = fields.Char(String="Quotation PNR Number")
+    creation_date = fields.Date(string="Creation Date")
 
     def import_qpnr_from_ftp(self):
         
@@ -59,7 +60,8 @@ class TravelOrder(models.Model):
         if state:
             session.cwd(folder_source)
 
-            filename = 'ExportedPnr.csv'
+            # filename = 'ExportedPnr.csv'
+            filename = 'pnrExport.csv'
 
             byte = BytesIO()
             session.retrbinary('RETR ' + filename, byte.write)
@@ -77,27 +79,46 @@ class TravelOrder(models.Model):
         # Convert pandas dataframe into json like data
         quotations = {}
         for index, row in quotations_data.iterrows():
-            if not row['Pnr'] in quotations:
+            if not row['RecordLocator'] in quotations:
                 Doit = ' '.join(row['Doit'].split())
                 Adresse = ' '.join(row['Adresse'].split())
                 followed_by = ' '.join(row['Suivi par'].split())
 
-                client = self.env['res.partner'].search([('name', '=', Doit)])
-                follower = self.env['hr.employee'].search([('name', '=', followed_by)])
+                if Doit:
+                    client = self.env['res.partner'].search([('name', '=', Doit)])
+                else:
+                    client = self.env['res.partner'].search([('name', '=', 'Client Temporaire')])
                 if not len(client.ids):
                     client = self.env['res.partner'].create({'name' : Doit, 'street' : Adresse})
 
+                follower = self.env['hr.employee'].search([('name', '=', followed_by)])
+
                 addr = client.address_get(['delivery', 'invoice'])
 
-                quotations[row['Pnr']] = {
-                    'pnr_number' : row['Pnr'],
-                    'num_pnr' : row['Pnr'],
+                quotations[row['RecordLocator']] = {
+                    'pnr_number' : row['RecordLocator'],
+                    'num_pnr' : row['RecordLocator'],
+                    'record_locator' : row['RecordLocator'],
+                    # 'date' : row['Date'],
+                    'creation_date' : dt.strptime(row['CreationDate'], '%m/%d/%Y') if row['CreationDate'] != '' else None,
                     'transmitter' : ' '.join(row['Emission'].split()),
-                    'transmit_date' : dt.strptime(row["Date d'émission"],'%d/%m/%Y') if row["Date d'émission"] != '' else dt.today(),
+                    'transmit_date' : dt.strptime(row["Date d'émission"],'%m/%d/%Y') if row["Date d'émission"] != '' else dt.today(),
                     'followed_by' : follower,
                     'ref' : row['Réf. Cde'],
-                    'date_order' : dt.today(),# dt.strptime(row["Echéance"], '%Y-%m-%d') if row["Echéance"] != '' else ,
+                    'due_date' : dt.strptime(row['Echéance'], '%m/%d/%Y') if row['Echéance'] != '' else None,
                     'partner_id' : client.id,
+                    'agent_sign_booking' : row['AgentSignBooking'],
+                    'change_date' : dt.strptime(row['ChangeDate'], '%m/%d/%Y') if row['ChangeDate'] != '' else None,
+                    'last_transaction_date' : dt.strptime(row['LastTransactionDate'], '%m/%d/%Y') if row['LastTransactionDate'] != '' else None,
+                    'flight_class' : row['FlightClass'],
+                    'orig_city' : row['OrigCity'],
+                    'dest_city' : row['DestCity'],
+                    'service_carrier' : row['ServiceCarrier'],
+                    'terminal_arrival' : row['TerminalArrival'],
+                    'ac_rec_loc' : row['AcRecLoc'],
+                    'action_date' : row['ActionDate'],
+
+                    'date_order' : dt.today(),# dt.strptime(row["Echéance"], '%Y-%m-%d') if row["Echéance"] != '' else ,
                     'document_type' : 'amadeus',
                     'global_label' : 'Global Label',
                     'pricelist_id' : client.property_product_pricelist and client.property_product_pricelist.id or False,
@@ -107,26 +128,37 @@ class TravelOrder(models.Model):
 
             product_name = ' '.join(row['Type'].split())
             product = self.env['product.product'].search([('name', '=', product_name)])
-            if not len(product.ids):
-                product = self.env['product.product'].create({'name' : product_name, 'used_for' : 'amadeus', 'type' : 'service'})
+            # if not len(product.ids):
+            #     product = self.env['product.product'].create({'name' : product_name, 'used_for' : 'amadeus', 'type' : 'service'})
 
-            Trajet1 = ' '.join(str(row['Trajet1']).split())
-            Billet = ' '.join(str(row['Billet']).split())
-            Designation = ' '.join(row['Désignation'].split())
-            Usager = ' '.join(row['Usager'].split())
-            Usager = ' '.join((Designation, Usager)) if Usager != 'Inconnue' else ''
-            name_elements = [item for item in (Trajet1, Billet, Usager) if item]
+            title = row['Title']
+            lastname = ' '.join(row['LastName'].split())
+            firtsname = ' '.join(row['FirstName'].split())
+
+            # Trajet1 = ' '.join(str(row['Trajet1']).split())
+            # Billet = ' '.join(str(row['Billet']).split())
+            # Designation = ' '.join(row['Désignation'].split())
+            # Usager = ' '.join(row['Usager'].split())
+            # Usager = ' '.join((Designation, Usager)) if Usager != 'Inconnue' else ''
+            # name_elements = [item for item in (Trajet1, Billet, Usager) if item]
 
             quotations[row['Pnr']]['lines'].append({
                 'num_pnr' : row['# Id'],
                 'product_id' : product.id,
-                'journey' : Trajet1,
-                'ticket_number' : Billet,
-                'passenger' : Usager,
-                'name' : ' - '.join(name_elements),
-                'price_unit' : row['Transport'],
+                'passenger_lastname' : lastname,
+                'passenger_firstname' : firstname,
+                'title' : row['Title'],
+                'status' : row['Status']
+                'ticket_number' : row['No'],
+                'start_point' : row['OrigCity'],
+                'end_point' : row['DestCity'],
+
+                # 'journey' : Trajet1,
+                # 'passenger' : Usager,
+                # 'name' : ' - '.join(name_elements),
+                # 'price_unit' : row['Transport'],
                 # 'product_uom_qty' : row['quantity'],
-                'amount_tax' : row['Taxe'],
+                # 'amount_tax' : row['Taxe'],
                 # 'price_total' : row['Total'],
                 # 'currency_id' : currency
             })
