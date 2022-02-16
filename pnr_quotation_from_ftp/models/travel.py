@@ -22,7 +22,6 @@ class TravelOrder(models.Model):
     _inherit = "travel.order"
 
     pnr_number = fields.Char(String="Quotation PNR Number")
-    creation_date = fields.Date(string="Creation Date")
 
     def import_qpnr_from_ftp(self):
         
