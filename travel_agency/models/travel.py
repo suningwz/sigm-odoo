@@ -622,6 +622,7 @@ class TravelOrderLine(models.Model):
         ('mrs', 'MRS'),
         ('mss', 'MSS'),
         ('chd', 'CHD'),
+        ('inf', 'INF'),
     ], string="Passenger Title")
     passenger_firstname = fields.Char(string="Passenger's Firstname")
     passenger_lastname = fields.Char(string="Passenger's Lastname")
