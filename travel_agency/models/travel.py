@@ -634,7 +634,7 @@ class TravelOrderLine(models.Model):
     baggage_allow = fields.Char(string="Baggage Allow")
     terminal_check_in = fields.Char(string="Terminal Check In")
     terminal_arrival = fields.Char(string="Terminal Arrival")
-    due_date = fields.Char(string="Due Date")
+    due_date = fields.Date(string="Due Date")
 
 
     @api.depends('journey', 'ticket_number', 'passenger_fullname', 'custom_descri')
