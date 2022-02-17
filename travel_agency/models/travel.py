@@ -614,7 +614,8 @@ class TravelOrderLine(models.Model):
         ],
         string="Product Type"
     )
-    product_id = fields.Many2one('product.product', string="Product", domain="[('active_product', '=', True)]")
+    # product_id = fields.Many2one('product.product', string="Product", domain="[('active_product', '=', True)]")
+    product_id = fields.Many2one('product.product', string="Product", domain=lambda self: [('category', '=', self.product_type)])
     name = fields.Char(string="Description", compute="_compute_name")
     # supplier = fields.Many2one('res.partner', string="Supplier", domain="[('supplier_rank', '=', 1)]")
     passenger = fields.Char(string="Passenger")
