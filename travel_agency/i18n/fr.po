@@ -203,7 +203,7 @@ msgstr "Arrivée"
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__date_to
 msgid "Arrival Date"
-msgstr "Date d'arrivé"
+msgstr "Date d'arrivée"
 
 #. module: travel_agency
 #: model:ir.model.fields,field_description:travel_agency.field_travel_order_line__arrival_time
