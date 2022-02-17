@@ -3,8 +3,18 @@
 
     <!-- Sequencement -->
     <record id="travel_order_sequence" model="ir.sequence">
-        <field name="name">Travel Order Sequence</field>
-        <field name="code">travel.order</field>
+        <field name="name">Travel Order Sequence (Amadeus)</field>
+        <field name="code">travel.order.amadeus</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">BI</field>
+        <field name="number_increment">1</field>
+        <field name="padding">5</field>
+        <field name="implementation">standard</field>
+        <field name="company_id">1</field>
+    </record>
+    <record id="travel_order_sequence" model="ir.sequence">
+        <field name="name">Travel Order Sequence (Tour)</field>
+        <field name="code">travel.order.to</field>
         <field name="active">TRUE</field>
         <field name="prefix">TO</field>
         <field name="number_increment">1</field>
