@@ -99,7 +99,7 @@ class TravelOrder(models.Model):
 
     other_infos = fields.Text(string="Other Infos")
 
-    num_pnr = fields.Char(string="Number PNR", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    num_pnr = fields.Char(string="Number PNR", copy=True, readonly=True)
     folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     purchases_count = fields.Integer(string="Purchases Count", compute="_get_purchases", readonly=True)
