@@ -27,13 +27,16 @@ class TravelOrder(models.Model):
         if not self.env.user.can_confirm_quotation:
             self.button_to_show = 'none'
         else:
-            if self.partner_id.general_credit < self.partner_id.credit_limit:
+            if self.partner_id.customer_type == 'passing':
                 self.button_to_show = 'confirm'
             else:
-                if self.env.user.can_confirm_quotation_account_client:
-                    self.button_to_show = 'confirm_confirm'
-                else:
+                if self.partner_id.general_credit < self.partner_id.credit_limit:
                     self.button_to_show = 'confirm'
+                else:
+                    if self.env.user.can_confirm_quotation_account_client:
+                        self.button_to_show = 'confirm_confirm'
+                    else:
+                        self.button_to_show = 'confirm'
 
 
     def action_confirm_confirm(self):
