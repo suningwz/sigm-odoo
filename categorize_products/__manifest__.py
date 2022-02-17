@@ -18,4 +18,5 @@
 	'depends' : ['product'],
 	'data' : ["views/product.xml"],
 	'installable' : True,
+	'auto_install' : False,
 }
