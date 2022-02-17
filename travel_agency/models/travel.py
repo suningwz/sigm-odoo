@@ -19,7 +19,16 @@ class TravelOrder(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Number', default=lambda self: _('New'), readonly=True, noupdate=True, copy=False)
-    partner_id = fields.Many2one('res.partner', string="Customer", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    partner_id = fields.Many2one('res.partner',
+        string="Customer", 
+        state={
+            'quotation' : [('readonly', False)], 
+            'accepted' : [('readonly', True)], 
+            'confirmed' : [('readonly', True)], 
+            'canceled' : [('readonly', True)]
+        },
+        domain=[('id_incadea', '!=', False)]
+    )
 
     user_id = fields.Many2one(
         'res.users', string='Person', index=True, tracking=2, default=lambda self: self.env.user,
