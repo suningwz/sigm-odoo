@@ -117,7 +117,7 @@
                         <group name="group_right">
                             <field name="date_order" required="True" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="company_id" invisible="1" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
-                            <field name="pricelist_id" options="{'no_create': True}" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="pricelist_id" options="{'no_create': True}" invisible="1" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="global_label" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                         </group>
                     </group>

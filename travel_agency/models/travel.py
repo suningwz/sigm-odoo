@@ -81,7 +81,7 @@ class TravelOrder(models.Model):
 
     pricelist_id = fields.Many2one(
         'product.pricelist', string="Pricelist", check_company=True, # Unrequired company
-        required=True, readonly=True, states={'quotation' : [('readonly', False)], 'confirmed' : [('readonly', False)]},
+        required=True, readonly=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="If you change the pricelist, only newly added lines will be affected."
     )
