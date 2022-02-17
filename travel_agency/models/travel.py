@@ -56,7 +56,7 @@ class TravelOrder(models.Model):
 
     amount_untaxed = fields.Monetary(string="Amount Untaxed", store=True, readonly=True, compute="_amount_all", tracking=5)
     amount_tax = fields.Monetary(string="Amount Tax", store=True, compute="_amount_all")
-    amount_tva = fields.Monetary(string="Amount TVA", store=True, readonly=True, compute="_amount_all")
+    amount_tva = fields.Monetary(string="Amount TVA on Fees", store=True, readonly=True, compute="_amount_all")
     amount_total = fields.Monetary(string="Amount Total", store=True, readonly=True, compute="_amount_all", tracking=4)
     amount_by_group = fields.Binary(string="Tax amount by group", compute="_amount_by_group", help="type : [(name, amount, base, formated amount, formated base)]")
 
@@ -111,7 +111,7 @@ class TravelOrder(models.Model):
     num_pnr = fields.Char(string="Number PNR", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]}, required=True)
     folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
-    purchases_count = fields.Integer(string="Purchases Count", compute="_get_purchases", readonly=True)
+    purchases_count = fields.Integer(string="Purchases", compute="_get_purchases", readonly=True)
     purchases_id = fields.Many2many('purchase.order', string="Purchases", compute="_get_purchases", readonly=True, copy=False)
 
     record_locator = fields.Char(string="Record Locator")
