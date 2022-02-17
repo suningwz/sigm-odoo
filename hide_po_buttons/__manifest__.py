@@ -19,6 +19,7 @@
     'images' : [],
     'depends' : ['purchase'],
     'data': [
+        "views/purchase.xml",
     ],
     'demo': [],
     'qweb': [],
