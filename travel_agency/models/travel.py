@@ -603,7 +603,7 @@ class TravelOrderLine(models.Model):
     discount = fields.Float(string="Discount (%)", digits="Discount", default=0.0)
     tax_ids = fields.Many2many('account.tax', string="VAT")
     amount_tax = fields.Float(string="Other Taxes")
-    amount_tva = fields.Float(string="Amount TVA", compute="_compute_amount")
+    amount_tva = fields.Float(string="Amount TVA on Fees", compute="_compute_amount")
     price_subtotal = fields.Float(string="Subtotal", compute="_compute_amount")
     price_total = fields.Float(string="Total", compute="_compute_amount")
     price_tax = fields.Float(string="Total Tax", compute="_compute_amount", readonly=True, store=True)
