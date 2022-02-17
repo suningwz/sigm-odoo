@@ -33,7 +33,7 @@ class TravelOrder(models.Model):
     transmitter = fields.Char(string="Transmitter", default="MERCURE", readonly=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
     transmit_date = fields.Date(string="Date of Issue", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
     followed_by = fields.Many2one('hr.employee', string="Followed by", document_type={'amadeus' : [('required', True)]}, default=lambda self: self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]), state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
-    ref = fields.Char(string="Reference", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    ref = fields.Char(string="Reference", state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]}, required=True)
     global_label = fields.Text(string="Global Label", required=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
 
     state = fields.Selection([
