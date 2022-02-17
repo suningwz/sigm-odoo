@@ -729,7 +729,7 @@ class TravelOrderLine(models.Model):
     # --------------------------------------------------------
     @api.onchange('product_id')
     def onchange_product(self):
-        raise UserError(self.category)
+        raise UserError(self.product_id.category)
         name_elements = [self.journey, self.ticket_number, self.passenger, self.custom_descri]
 
         name_elements = [item for item in name_elements if item]
