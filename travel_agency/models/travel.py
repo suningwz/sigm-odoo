@@ -460,7 +460,7 @@ class TravelOrder(models.Model):
         else:
             related_PO = self.env['purchase.order'].search([('travel_order_id', '=', self.id)])
             related_PO.button_cancel()
-            # related_PO.unlink()
+            related_PO.unlink()
 
             old_state = dict(self._fields['state'].selection).get(self.state)
             self.update({'state' : 'canceled'})
