@@ -30,6 +30,9 @@
 				<xpath expr="//button[@name='button_done']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				<xpath expr="//button[@name='button_draft']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
 			</field>
 		</record>
 	</data>
