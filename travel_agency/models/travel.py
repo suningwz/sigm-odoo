@@ -121,7 +121,19 @@ class TravelOrder(models.Model):
             'amadeus' : [('required', True)]
         }
     )
-    folder_number = fields.Char(string="Folder Number", copy=True, state={'quotation' : [('readonly', False)], 'accepted' : [('readonly', True)], 'confirmed' : [('readonly', True)], 'canceled' : [('readonly', True)]})
+    folder_number = fields.Char(
+        string="Folder Number", 
+        copy=True, 
+        state={
+            'quotation' : [('readonly', False)], 
+            'accepted' : [('readonly', True)], 
+            'confirmed' : [('readonly', True)], 
+            'canceled' : [('readonly', True)]
+        },
+        document_type={
+            'to' : [('required' : True)]
+        }
+    )
 
     purchases_count = fields.Integer(string="Purchases", compute="_get_purchases", readonly=True)
     purchases_id = fields.Many2many('purchase.order', string="Purchases", compute="_get_purchases", readonly=True, copy=False)
