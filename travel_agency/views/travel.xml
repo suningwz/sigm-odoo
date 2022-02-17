@@ -169,8 +169,8 @@
                                 <group class="oe_subtotal_footer oe_right" colspan="2" name="travel_order_total">
                                     <field name="currency_id" invisible="1"/>
                                     <field name="amount_untaxed" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
-                                    <field name="amount_tax" widget="monetary" attrs="{'invisible' : [('amount_tax', '=', 0)]}" options="{'currency_field': 'currency_id'}"/>
-                                    <field name="amount_tva" widget="monetary"  options="{'currency_field': 'currency_id'}" attrs="{'invisible' : [('amount_tva', '=', 0)]}"/>
+                                    <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tva" widget="monetary"  options="{'currency_field': 'currency_id'}"/>
                                     <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                         <label for="amount_total"/>
                                     </div>
