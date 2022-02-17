@@ -131,7 +131,7 @@ class TravelOrder(models.Model):
             'canceled' : [('readonly', True)]
         },
         document_type={
-            'to' : [('required' : True)]
+            'to' : [('required', True)]
         }
     )
 
