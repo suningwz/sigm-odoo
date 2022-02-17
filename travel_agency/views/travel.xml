@@ -152,8 +152,7 @@
                                     <field name="percent_commission" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"/>
                                     <field name="amount_commission" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"  readonly="True"/>
                                     <field name="day" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}" options="{'no_create' : False}"/>
-                                    <!-- disable tax_ids if product is Billet (id=3475) -->
-                                    <field name="tax_ids" attrs="{'readonly' : [('product_id', '=', 3475)]}" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="tax_ids" readonly="1" widget="many2many_tags" options="{'no_create': True}"/>
                                     <field name="amount_tva" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')]}"/>
                                     <field name="amount_tax"/>
                                     <field name="currency_id" invisible="1"/>
