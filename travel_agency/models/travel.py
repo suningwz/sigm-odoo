@@ -211,7 +211,7 @@ class TravelOrder(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('travel.order.amadeus')
+        vals['name'] = self.env['ir.sequence'].next_by_code('travel.order.%s' % vals['document_type'])
         # vals['name'] = 'travel.order.%s' % vals['document_type']
 
         # -----------------------------------------------------
