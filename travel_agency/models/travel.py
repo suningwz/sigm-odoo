@@ -581,6 +581,14 @@ class TravelOrderLine(models.Model):
     _name = 'travel.order.line'
     _description = 'Travel Order Line'
 
+    product_type = fields.Selection(
+        [
+            ('ticket', 'Ticket'),
+            ('fees', 'Fees'),
+            ('voucher', 'Voucher'),
+        ],
+        string="Product Type"
+    )
     product_id = fields.Many2one('product.product', string="Product", domain="[('active_product', '=', True)]")
     name = fields.Char(string="Description", compute="_compute_name")
     # supplier = fields.Many2one('res.partner', string="Supplier", domain="[('supplier_rank', '=', 1)]")
