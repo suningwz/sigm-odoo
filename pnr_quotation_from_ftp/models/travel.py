@@ -106,7 +106,7 @@ class TravelOrder(models.Model):
                     'transmitter' : ' '.join(row['Emission'].split()),
                     # 'transmit_date' : dt.strptime(row["Date d'émission"],'%m/%d/%Y') if row["Date d'émission"] != '' else dt.today(),
                     'followed_by' : follower.id,
-                    'ref' : ' '.join([str(item) for item in row['Réf. Cde'].split()]),
+                    # 'ref' : ' '.join(row['Réf. Cde'].split()),
                     # 'due_date' : dt.strptime(row['Echéance'], '%m/%d/%Y') if row['Echéance'] != '' else None,
                     'partner_id' : client.id,
                     'agent_sign_booking' : ' '.join(row['AgentSignBooking'].split()),
