@@ -654,11 +654,13 @@ class TravelOrderLine(models.Model):
         ('void', 'Void')
     ], string="Status")
 
-    date_from = fields.Date(string="Departure Date")
-    departure_time = fields.Char(string="Departure Time")
+    # date_from = fields.Date(string="Departure Date")
+    # departure_time = fields.Char(string="Departure Time")
+    departure_datetime = fields.Datetime(string="Departure date")
 
-    date_to = fields.Date(string="Arrival Date")
-    arrival_time = fields.Char(string="Arrival Time")
+    # date_to = fields.Date(string="Arrival Date")
+    # arrival_time = fields.Char(string="Arrival Time")
+    arrival_datetime = fields.Datetime(string="Arrival date")
 
     passenger_title = fields.Selection([
         ('mr', 'MR'),
