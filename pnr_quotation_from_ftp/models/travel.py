@@ -24,6 +24,7 @@ class TravelOrder(models.Model):
     pnr_number = fields.Char(String="Quotation PNR Number")
 
     def import_qpnr_from_ftp(self):
+        raise UserError("fako")
         
         __dir__ = os.path.dirname(__file__)
 
