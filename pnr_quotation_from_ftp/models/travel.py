@@ -155,7 +155,7 @@ class TravelOrder(models.Model):
             quotations[RecordLocator]['lines'].append({
                 'num_pnr' : row['# Id'],
                 'product_id' : product.id,
-                'title' : title.lower(),
+                'passenger_title' : title.lower(),
                 'passenger_firstname' : firstname,
                 'passenger_lastname' : lastname,
                 'status' : ' '.join(row['Status'].split()),
