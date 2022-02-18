@@ -79,7 +79,6 @@ class TravelOrder(models.Model):
         quotations = {}
         for index, row in quotations_data.iterrows():
             RecordLocator = ' '.join(row['RecordLocator'].split())
-            raise UserError(row['Ref. Cde'])
             ref = ' '.join(row['Ref. Cde'].split())
             if not RecordLocator in quotations:
                 Doit = ' '.join(row['Doit'].split())
