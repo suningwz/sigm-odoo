@@ -136,8 +136,6 @@ class TravelOrder(models.Model):
                     'lines' : [],
                 }
 
-                raise UserError(str(quotations))
-
             product_name = ' '.join(row['Type'].split())
             product = self.env['product.product'].search([('name', '=', product_name)])
             # if not len(product.ids):
@@ -154,7 +152,7 @@ class TravelOrder(models.Model):
             # Usager = ' '.join((Designation, Usager)) if Usager != 'Inconnue' else ''
             # name_elements = [item for item in (Trajet1, Billet, Usager) if item]
 
-            quotations[row[RecordLocator]]['lines'].append({
+            quotations[RecordLocator]['lines'].append({
                 'num_pnr' : row['# Id'],
                 'product_id' : product.id,
                 'title' : title.lower(),
