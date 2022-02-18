@@ -79,7 +79,6 @@ class TravelOrder(models.Model):
         quotations = {}
         for index, row in quotations_data.iterrows():
             RecordLocator = ' '.join(row['RecordLocator'].split())
-            raise UserError("%s : %s" % (RecordLocator, type(RecordLocator)))
             if not RecordLocator in quotations:
                 Doit = ' '.join(row['Doit'].split())
                 Adresse = ' '.join(row['Adresse'].split())
@@ -136,6 +135,8 @@ class TravelOrder(models.Model):
                     'partner_shipping_id' : addr['delivery'],
                     'lines' : [],
                 }
+
+                raise UserError(str(quotations))
 
             product_name = ' '.join(row['Type'].split())
             product = self.env['product.product'].search([('name', '=', product_name)])
