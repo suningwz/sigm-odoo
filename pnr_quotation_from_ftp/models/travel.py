@@ -143,7 +143,7 @@ class TravelOrder(models.Model):
 
             title = ' '.join(row['Title'].split())
             lastname = ' '.join(row['LastName'].split())
-            firtsname = ' '.join(row['FirstName'].split())
+            firstname = ' '.join(row['FirstName'].split())
 
             # Trajet1 = ' '.join(str(row['Trajet1']).split())
             # Billet = ' '.join(str(row['Billet']).split())
