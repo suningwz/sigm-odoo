@@ -140,6 +140,9 @@ class TravelOrder(models.Model):
 
     record_locator = fields.Char(string="Record Locator")
     agent_sign_booking = fields.Char(string="Agent Sign Booking")
+    change_date = fields.Date(string="Change Date")
+    last_transaction_date = fields.Date(string="Last Transaction Date")
+    flight_class = fields.Char(string="Flight Class")
     service_carrier = fields.Char(string="Service Carrier")
     flight_num = fields.Char(string="Flight Number")
     bkg_class = fields.Char(string="Bkg Class")
