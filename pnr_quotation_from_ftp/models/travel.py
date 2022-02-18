@@ -78,7 +78,8 @@ class TravelOrder(models.Model):
         # Convert pandas dataframe into json like data
         quotations = {}
         for index, row in quotations_data.iterrows():
-            if not row['RecordLocator'] in quotations:
+            RecordLocator = ' '.join(row['RecordLocator'].split())
+            if not RecordLocator in quotations:
                 Doit = ' '.join(row['Doit'].split())
                 Adresse = ' '.join(row['Adresse'].split())
                 followed_by = ' '.join(row['Suivi par'].split())
@@ -94,30 +95,40 @@ class TravelOrder(models.Model):
 
                 addr = client.address_get(['delivery', 'invoice'])
 
-                quotations[row['RecordLocator']] = {
-                    'pnr_number' : row['RecordLocator'],
-                    'num_pnr' : row['RecordLocator'],
-                    'record_locator' : row['RecordLocator'],
-                    # 'date' : row['Date'],
+                currency = self.env['res.currency'].search([('name', '=', ' '.join(row['FareCurrency'].split()))])
+
+                quotations[RecordLocator] = {
+                    'pnr_number' : RecordLocator,
+                    'num_pnr' : RecordLocator,
+                    'record_locator' : RecordLocator,
+                    'date_order' : dt.strptime(row['Date'], '%m/%d/%Y') if row['Date'] != '' else None,
                     'creation_date' : dt.strptime(row['CreationDate'], '%m/%d/%Y') if row['CreationDate'] != '' else None,
                     'transmitter' : ' '.join(row['Emission'].split()),
                     'transmit_date' : dt.strptime(row["Date d'émission"],'%m/%d/%Y') if row["Date d'émission"] != '' else dt.today(),
-                    'followed_by' : follower,
-                    'ref' : row['Réf. Cde'],
+                    'followed_by' : follower.id,
+                    'ref' : ' '.join(row['Réf. Cde'].split()),
                     'due_date' : dt.strptime(row['Echéance'], '%m/%d/%Y') if row['Echéance'] != '' else None,
                     'partner_id' : client.id,
-                    'agent_sign_booking' : row['AgentSignBooking'],
+                    'agent_sign_booking' : ' '.join(row['AgentSignBooking'].split()),
                     'change_date' : dt.strptime(row['ChangeDate'], '%m/%d/%Y') if row['ChangeDate'] != '' else None,
                     'last_transaction_date' : dt.strptime(row['LastTransactionDate'], '%m/%d/%Y') if row['LastTransactionDate'] != '' else None,
-                    'flight_class' : row['FlightClass'],
-                    'orig_city' : row['OrigCity'],
-                    'dest_city' : row['DestCity'],
-                    'service_carrier' : row['ServiceCarrier'],
-                    'terminal_arrival' : row['TerminalArrival'],
-                    'ac_rec_loc' : row['AcRecLoc'],
-                    'action_date' : row['ActionDate'],
+                    'flight_class' : ' '.join(row['FlightClass'].split()),
+                    'orig_city' : ' '.join(row['OrigCity'].split()),
+                    'dest_city' : ' '.join(row['DestCity'].split()),
+                    'service_carrier' : ' '.join(row['ServiceCarrier'].split()),
+                    'flight_num' : ' '.join(row['FlightNo'].split()),
+                    'bkg_class' : ' '.join(row['BkgClass'].split()),
+                    'airport_code_origin' : ' '.join(row['AirportCodeOrigin'].split()),
+                    'ama_name_origin' : ' '.join(row['AmaNameOrigin'].split()),
+                    'country_origin' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryOrigin'].split()))]).id else None,
+                    'airport_code_destination' : ' '.join(row['AirportCodeDestination'].split()),
+                    'ama_name_destination' : ' '.join(row['ama_name_destination'].split()),
+                    'country_destination' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryDestination'].split()))]).id else None,
+                    # 'terminal_arrival' : row['TerminalArrival'],
+                    'ac_rec_loc' : ' '.join(row['AcRecLoc'].split()),
+                    'action_date' : dt.strptime(row['ActionDate'], '%m/%d/%Y') if row['ActionDate'] != '' else None,
 
-                    'date_order' : dt.today(),# dt.strptime(row["Echéance"], '%Y-%m-%d') if row["Echéance"] != '' else ,
+                    # 'date_order' : dt.today(),# dt.strptime(row["Echéance"], '%Y-%m-%d') if row["Echéance"] != '' else ,
                     'document_type' : 'amadeus',
                     'global_label' : 'Global Label',
                     'pricelist_id' : client.property_product_pricelist and client.property_product_pricelist.id or False,
@@ -130,7 +141,7 @@ class TravelOrder(models.Model):
             # if not len(product.ids):
             #     product = self.env['product.product'].create({'name' : product_name, 'used_for' : 'amadeus', 'type' : 'service'})
 
-            title = row['Title']
+            title = ' '.join(row['Title'].split())
             lastname = ' '.join(row['LastName'].split())
             firtsname = ' '.join(row['FirstName'].split())
 
@@ -141,16 +152,21 @@ class TravelOrder(models.Model):
             # Usager = ' '.join((Designation, Usager)) if Usager != 'Inconnue' else ''
             # name_elements = [item for item in (Trajet1, Billet, Usager) if item]
 
-            quotations[row['Pnr']]['lines'].append({
+            quotations[row[RecordLocator]]['lines'].append({
                 'num_pnr' : row['# Id'],
                 'product_id' : product.id,
-                'passenger_lastname' : lastname,
+                'title' : title.lower(),
                 'passenger_firstname' : firstname,
-                'title' : row['Title'],
-                'status' : row['Status'],
-                'ticket_number' : row['No'],
-                'start_point' : row['OrigCity'],
-                'end_point' : row['DestCity'],
+                'passenger_lastname' : lastname,
+                'status' : ' '.join(row['Status'].split()),
+                'ticket_number' : ' '.join(row['No'].split()),
+                'start_point' : ' '.join(row['OrigCity'].split()),
+                'end_point' : ' '.join(row['DestCity'].split()),
+                'departure_datetime' : dt.strptime(row['DepartureDate'], '%m/%d/%Y') if row['DepartureDate'] != '' else None,
+                'arrival_datetime' : dt.strptime(row['ArrivalDate'], '%m/%d/%Y') if row['ArrivalDate'] != '' else None,
+                'baggage_allow' : ' '.join(row['BaggageAllow'].split()),
+                'terminal_check_in' : ' '.join(row['TerminalCheckIn'].split()),
+                'terminal_arrival' : ' '.join(row['TerminalArrival'].split()),
 
                 # 'journey' : Trajet1,
                 # 'passenger' : Usager,
