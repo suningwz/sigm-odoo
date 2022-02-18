@@ -154,6 +154,7 @@ class TravelOrder(models.Model):
     airport_code_destination = fields.Char(string="Airport Code Destination")
     ama_name_destination = fields.Char(string="Ama Name Destination")
     country_destination = fields.Many2one('res.country', string="Country Destination")
+    airport_code_origin = fields.Char(string="Airport Code Destination")
     ama_name = fields.Char(string="Ama Name")
     ac_rec_loc = fields.Char(string="Ac Rec Loc")
     action_date = fields.Datetime(string="Action Date")
