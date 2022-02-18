@@ -128,6 +128,8 @@
                             <field name="date_order" required="True" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="company_id" invisible="1" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                             <field name="pricelist_id" options="{'no_create': True}" invisible="1" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
+                            <field name="departure_datetime"/>
+                            <field name="arrival_datetime"/>
                             <field name="global_label" attrs="{'readonly' : [('state', 'in', ('accepted', 'confirmed', 'canceled'))]}"/>
                         </group>
                     </group>
@@ -156,8 +158,8 @@
                                     <!-- <field name="date_from" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
                                     <field name="date_to" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
 
-                                    <field name="departure_date" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
-                                    <field name="arrival_date" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <!-- <field name="departure_datetime" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/>
+                                    <field name="arrival_datetime" attrs="{'column_invisible' : [('parent.document_type', '!=', 'amadeus')], 'readonly' : [('product_id', '=', 3474)]}"/> -->
 
                                     <!-- disable custom_descri if product is Billet (id=3475) -->
                                     <field name="quantity" attrs="{'column_invisible' : [('parent.document_type', '!=', 'to')], 'readonly' : [('parent.document_type', '!=', 'to')]}"/>
