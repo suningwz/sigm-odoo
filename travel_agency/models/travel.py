@@ -143,6 +143,8 @@ class TravelOrder(models.Model):
     change_date = fields.Date(string="Change Date")
     last_transaction_date = fields.Date(string="Last Transaction Date")
     flight_class = fields.Char(string="Flight Class")
+    orig_city = fields.Char(string="Original City")
+    dest_city = fields.Char(string="Destination City")
     service_carrier = fields.Char(string="Service Carrier")
     flight_num = fields.Char(string="Flight Number")
     bkg_class = fields.Char(string="Bkg Class")
