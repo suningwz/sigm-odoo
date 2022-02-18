@@ -120,7 +120,7 @@ class TravelOrder(models.Model):
                     'bkg_class' : ' '.join(row['BkgClass'].split()),
                     'airport_code_origin' : ' '.join(row['AirportCodeOrigin'].split()),
                     'ama_name_origin' : ' '.join(row['AmaNameOrigin'].split()),
-                    'country_origin' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryOrigin'].split()))]).id else None,
+                    'country_origin' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryOrigin'].split()))]).id, # else None,
                     'airport_code_destination' : ' '.join(row['AirportCodeDestination'].split()),
                     'ama_name_destination' : ' '.join(row['ama_name_destination'].split()),
                     'country_destination' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryDestination'].split()))]).id else None,
