@@ -79,6 +79,7 @@ class TravelOrder(models.Model):
         quotations = {}
         for index, row in quotations_data.iterrows():
             RecordLocator = ' '.join(row['RecordLocator'].split())
+            ref = ' '.join(row['Réf. Cde'])
             if not RecordLocator in quotations:
                 Doit = ' '.join(row['Doit'].split())
                 Adresse = ' '.join(row['Adresse'].split())
@@ -106,7 +107,7 @@ class TravelOrder(models.Model):
                     'transmitter' : ' '.join(row['Emission'].split()),
                     # 'transmit_date' : dt.strptime(row["Date d'émission"],'%m/%d/%Y') if row["Date d'émission"] != '' else dt.today(),
                     'followed_by' : follower.id,
-                    'ref' : ' '.join(row['Réf. Cde'].split()),
+                    'ref' : ' '.join(ref.split()),
                     # 'due_date' : dt.strptime(row['Echéance'], '%m/%d/%Y') if row['Echéance'] != '' else None,
                     'partner_id' : client.id,
                     'agent_sign_booking' : ' '.join(row['AgentSignBooking'].split()),
