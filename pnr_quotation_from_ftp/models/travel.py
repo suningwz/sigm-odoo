@@ -112,7 +112,7 @@ class TravelOrder(models.Model):
                     'agent_sign_booking' : ' '.join(row['AgentSignBooking'].split()),
                     # 'change_date' : dt.strptime(row['ChangeDate'], '%m/%d/%Y') if row['ChangeDate'] != '' else None,
                     # 'last_transaction_date' : dt.strptime(row['LastTransactionDate'], '%m/%d/%Y') if row['LastTransactionDate'] != '' else None,
-                    'flight_class' : ' '.join(row['FlightClass'].split()),
+                    'flight_class' : ' '.join(str(row['FlightClass']).split()),
                     'orig_city' : ' '.join(row['OrigCity'].split()),
                     'dest_city' : ' '.join(row['DestCity'].split()),
                     'service_carrier' : ' '.join(row['ServiceCarrier'].split()),
