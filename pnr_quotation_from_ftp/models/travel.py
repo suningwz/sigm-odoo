@@ -123,7 +123,7 @@ class TravelOrder(models.Model):
                     'country_origin' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryOrigin'].split()))]).id, # else None,
                     'airport_code_destination' : ' '.join(row['AirportCodeDestination'].split()),
                     'ama_name_destination' : ' '.join(row['ama_name_destination'].split()),
-                    'country_destination' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryDestination'].split()))]).id else None,
+                    'country_destination' : self.env['res.country'].search([('code', '=', ' '.join(row['CountryDestination'].split()))]).id, # else None,
                     # 'terminal_arrival' : row['TerminalArrival'],
                     'ac_rec_loc' : ' '.join(row['AcRecLoc'].split()),
                     'action_date' : dt.strptime(row['ActionDate'], '%m/%d/%Y') if row['ActionDate'] != '' else None,
