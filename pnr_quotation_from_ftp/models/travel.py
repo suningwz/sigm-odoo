@@ -24,7 +24,6 @@ class TravelOrder(models.Model):
     pnr_number = fields.Char(String="Quotation PNR Number")
 
     def import_qpnr_from_ftp(self):
-        raise UserError("fako")
         
         __dir__ = os.path.dirname(__file__)
 
@@ -80,6 +79,7 @@ class TravelOrder(models.Model):
         quotations = {}
         for index, row in quotations_data.iterrows():
             RecordLocator = ' '.join(row['RecordLocator'].split())
+            raise UserError("%s : %s" % (RecordLocator, type(RecordLocator)))
             if not RecordLocator in quotations:
                 Doit = ' '.join(row['Doit'].split())
                 Adresse = ' '.join(row['Adresse'].split())
