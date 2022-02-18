@@ -143,8 +143,15 @@ class TravelOrder(models.Model):
     service_carrier = fields.Char(string="Service Carrier")
     flight_num = fields.Char(string="Flight Number")
     bkg_class = fields.Char(string="Bkg Class")
+    airport_name_origin = fields.Char(string="Airport Name Origin")
+    ama_name_origin = fields.Char(string="Ama Name Origin")
+    country_origin = fields.Many2one('res.country', string="Country Origin")
+    airport_code_destination = fields.Char(string="Airport Code Destination")
+    ama_name_destination = fields.Char(string="Ama Name Destination")
+    country_destination = fields.Many2one('res.country', string="Country Destination")
     ama_name = fields.Char(string="Ama Name")
     ac_rec_loc = fields.Char(string="Ac Rec Loc")
+    action_date = fields.Datetime(string="Action Date")
 
     @api.depends('order_line.price_subtotal', 'order_line.amount_tax', 'order_line.amount_tva')
     def _amount_all(self):
